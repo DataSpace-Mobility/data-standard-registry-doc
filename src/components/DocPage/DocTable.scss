@@ -1,5 +1,4 @@
 section.DocTable {
-    height: 100%;
     padding: 20px;
     overflow-y: scroll;
 
@@ -8,7 +7,7 @@ section.DocTable {
         margin: 30px 0px;
         thead.header {
             border: none;
-            background-color: #F7F7F7;
+            background-color: #444;
         }
         .field-name {
             font-family: 'Roboto Mono', monospace;
@@ -23,13 +22,7 @@ section.DocTable {
         line-height: 1.5em;
         font-weight: 300;
     }
-    .nav-path {
-        padding-bottom: 20px;
-        padding-left: 5px;
-        font-size: .8em;
-        font-family: 'Roboto Mono', monospace;
-        border-bottom: 3px solid #41228E;
-    }
+    
     .msg-name-box {
         margin-top: 40px;
         margin-bottom: 5px;
@@ -53,9 +46,7 @@ section.DocTable {
         font-weight: 300;
     }
     .msg-table {
-        border-top: 1px dotted #ddd;
+        border-bottom: 1px dotted #ddd;
     }
-    .standard-description {
-        margin-bottom: 60px;
-    }
+    
 }

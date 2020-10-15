@@ -1,10 +1,10 @@
 .DocContentList {
     position: fixed;
     margin-top: 150px;
-    margin-left:40px;
+    margin-left: 10px;
     padding: 10px;
-    font-size: 0.8em;
-    border-left: 2px solid #333;
+    font-size: 0.6em;
+    border-left: 2px solid #ddd;
     font-family: 'Roboto Mono', monospace;
     ul {
         margin: 0;
@@ -12,7 +12,7 @@
         list-style: none;
         a {
             text-decoration: none;
-            color: #333;
+            color: #ddd;
         }
         li {
             margin: 6px 0px;

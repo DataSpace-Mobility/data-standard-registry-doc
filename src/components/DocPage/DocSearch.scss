@@ -2,7 +2,7 @@ section.DocSearch {
     position: fixed;
     height: 100%;
     width: 16%;
-    background-color: #F7F7F7;
+    background-color: #202124;
     padding: 20px;
 
     .doc-search {
@@ -11,5 +11,6 @@ section.DocSearch {
     }
     .logo-div {
         padding-bottom: 15px;
+        border-bottom: 1px solid #333;
     }
 }
