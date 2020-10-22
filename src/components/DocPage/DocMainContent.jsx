@@ -4,7 +4,9 @@ import Highlight from 'react-highlight.js';
 import GraphView from './GraphView';
 import DocTable from './DocTable';
 
-import 'highlight.js/styles/dracula.css'
+import 'highlight.js/styles/color-brewer.css';
+// import 'highlight.js/styles/atom-one-light.css'
+import './DocMainContent.scss';
 
 function DocMainContent(props) {
 
