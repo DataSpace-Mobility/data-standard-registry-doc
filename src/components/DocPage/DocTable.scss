@@ -1,3 +1,5 @@
+@import '../../Variables.scss';
+
 section.DocTable {
     padding: 20px;
     overflow-y: scroll;
@@ -5,13 +7,16 @@ section.DocTable {
     table {
         font-size: 14px;
         margin: 30px 0px;
+        border-color: $dark-grey-color;
+        color: $primary-color;
         thead.header {
             border: none;
-            background-color: #444;
+            background-color: #fff;
         }
         .field-name {
             font-family: 'Roboto Mono', monospace;
             font-weight: 700;
+            color: $secondary-color;
         }
     }
     h1 {
@@ -36,6 +41,7 @@ section.DocTable {
             color: #fff;
         }
         .msg-name {
+            color: $primary-color;
             /* padding: 4px 15px;
             border: 1px solid #222;
             border-top-right-radius: 2px;
