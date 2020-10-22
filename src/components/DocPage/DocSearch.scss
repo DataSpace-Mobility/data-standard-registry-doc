@@ -1,3 +1,5 @@
+@import '../../Variables.scss';
+
 section.DocSearch {
     height: 100%;
     width: 100%;
@@ -9,6 +11,6 @@ section.DocSearch {
         width: 100%;
     }
     .logo-div {
-        border-bottom: 7px solid #fff;
+        border-bottom: 7px solid $white-color;
     }
 }
