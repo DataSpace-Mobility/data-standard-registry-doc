@@ -354,84 +354,89 @@ message SwappingUnit {
 
     return(
         <section className="DocPage">
-            <div className="container-fluid nopadding full-width-height">
-                <div className="row nopadding full-width-height">
-                    <div className="col-2 nopadding">
-                        <section className="DocSearch">
-                            <div className="logo-div">
-                                <img src={Logo} alt="Logo"/>
-                            </div>
-                            <TextField
-                                label="Search"
-                                id="outlined-start-adornment"
-                                className="doc-search"
-                                variant="outlined"
-                                size="small"
-                                style={{
-                                    backgroundColor: "#333",
-                                    borderRadius: "5px"
-                                }}
-                                InputLabelProps={{ style: 
-                                    { 
-                                        fontSize: "1em",
-                                        color: "#bbb"
-                                    } 
-                                }}
-                            />
-                        </section>
+            <div className="left-panel">
+                <section className="DocSearch">
+                    <div className="logo-div">
+                        <img src={Logo} alt="Logo"/>
                     </div>
-                    <div className="col-8 nopadding">
-                        <div className="nav-path">Data Standards > Transit > EV Charging</div>
-                        <div className="standard-description">
-                            <h1>Electric Vehicle Charging Infrastructure</h1>
-                            <h5>
-                                Electric Vehicle Charging Infrastructure defines a common format for creation of datasets related to charging stations and any other related infrastructure. This data standard facilitates data sharing for both, EV users and charging facility operators.
-                            </h5>
+                    <TextField
+                        label="Search"
+                        id="outlined-start-adornment"
+                        className="doc-search"
+                        variant="outlined"
+                        size="small"
+                        style={{
+                            backgroundColor: "#fff",
+                            borderRadius: "5px"
+                        }}
+                        InputLabelProps={{ style: 
+                            { 
+                                fontSize: "1em",
+                                color: "#bbb"
+                            } 
+                        }}
+                    />
+                </section>
+            </div>   
+            <div className="right-panel">
+                <section>
+                    <div className="registry-name">Data Standards Registry</div>
+                    
+                    <section>
+                        <div className="row">
+                            <div className="col-10">
+                                <div className="nav-path">Data Standards > Transit > EV Charging</div>
+                                <div className="standard-description">
+                                    <h1>Electric Vehicle Charging Infrastructure</h1>
+                                    <h5>
+                                        Electric Vehicle Charging Infrastructure defines a common format for creation of datasets related to charging stations and any other related infrastructure. This data standard facilitates data sharing for both, EV users and charging facility operators.
+                                    </h5>
+                                </div>
+                                <ul className="nav nav-tabs" id="myTab" role="tablist">
+                                    <li className="nav-item" role="presentation">
+                                        <a className="nav-link active" id="doc-tab" data-toggle="tab" href="#doc" role="tab" aria-controls="doc" aria-selected="true">Documentation</a>
+                                    </li>
+                                    <li className="nav-item" role="presentation">
+                                        <a className="nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Graph Visualisation</a>
+                                    </li>
+                                    <li className="nav-item" role="presentation">
+                                        <a className="nav-link" id="sample-tab" data-toggle="tab" href="#sample" role="tab" aria-controls="sample" aria-selected="false">Sample Dataset</a>
+                                    </li>
+                                    <li className="nav-item" role="presentation">
+                                        <a className="nav-link" id="proto-tab" data-toggle="tab" href="#proto" role="tab" aria-controls="proto" aria-selected="false">Protobuf</a>
+                                    </li>
+                                </ul>
+                                <div className="tab-content" id="myTabContent">
+                                    <div className="tab-pane fade show active" id="doc" role="tabpanel" aria-labelledby="doc-tab">
+                                        <DocTable standardFileJSONArr={StandardJSON.files}/>
+                                    </div>
+                                    <div className="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
+                                        <GraphView StandardJSON={StandardJSON}/>
+                                    </div>
+                                    <div className="tab-pane fade" id="sample" role="tabpanel" aria-labelledby="sample-tab">
+                                        <Highlight language="json">
+                                            {jsonContent}
+                                        </Highlight>
+                                    </div>
+                                    <div className="tab-pane fade" id="proto" role="tabpanel" aria-labelledby="proto-tab">
+                                        <Highlight language="proto">
+                                            {content}
+                                        </Highlight>
+                                    </div>
+                                </div>   
+                            </div>
+                            <div className="col-2 nopadding">
+                                <section className="DocContentList">
+                                    <ul>
+                                        {parseContentList()}
+                                    </ul>
+                                </section>
+                            </div>
                         </div>
-                        <ul className="nav nav-tabs" id="myTab" role="tablist">
-                            <li className="nav-item" role="presentation">
-                                <a className="nav-link active" id="doc-tab" data-toggle="tab" href="#doc" role="tab" aria-controls="doc" aria-selected="true">Documentation</a>
-                            </li>
-                            <li className="nav-item" role="presentation">
-                                <a className="nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Graph Visualisation</a>
-                            </li>
-                            <li className="nav-item" role="presentation">
-                                <a className="nav-link" id="sample-tab" data-toggle="tab" href="#sample" role="tab" aria-controls="sample" aria-selected="false">Sample Dataset</a>
-                            </li>
-                            <li className="nav-item" role="presentation">
-                                <a className="nav-link" id="proto-tab" data-toggle="tab" href="#proto" role="tab" aria-controls="proto" aria-selected="false">Protobuf</a>
-                            </li>
-                        </ul>
-                        <div className="tab-content" id="myTabContent">
-                            <div className="tab-pane fade show active" id="doc" role="tabpanel" aria-labelledby="doc-tab">
-                                <DocTable standardFileJSONArr={StandardJSON.files}/>
-                            </div>
-                            <div className="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
-                                <GraphView StandardJSON={StandardJSON}/>
-                            </div>
-                            <div className="tab-pane fade" id="sample" role="tabpanel" aria-labelledby="sample-tab">
-                                <Highlight language="json">
-                                    {jsonContent}
-                                </Highlight>
-                            </div>
-                            <div className="tab-pane fade" id="proto" role="tabpanel" aria-labelledby="proto-tab">
-                                <Highlight language="proto">
-                                    {content}
-                                </Highlight>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                    <div className="col-2 nopadding">
-                        <section className="DocContentList">
-                            <ul>
-                                {parseContentList()}
-                            </ul>
-                        </section>
-                    </div>
-                </div>
+                    </section>
+                </section>
             </div>
+            
             
         </section>
     )

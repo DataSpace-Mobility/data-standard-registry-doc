@@ -1,11 +1,29 @@
+@import '../../Variables.scss';
+
 section.DocPage {
     width: 100%;
-    background-color: #303136;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
+
+    .left-panel{
+        width: 20%;
+        height: 100%;
+        position: fixed;
+        display: inline-block;
+    }
+
+    .right-panel{
+        width: 80%;
+        margin-left: 20.5%;
+        padding: 0px 5px;
+        display: inline-block;
+    }
 
     h1 {
-        font-family: 'Raleway', sans-serif;
+        font-size: 4.5em;
+        font-weight: 700;
         margin: 40px 0px;
+        color: $primary-color;
     }
     h5 {
         line-height: 1.5em;
@@ -16,23 +34,45 @@ section.DocPage {
         width: 100%;
     }
     .nav-path {
-        padding-bottom: 20px;
         padding-left: 5px;
         margin-top: 20px;
         font-size: .8em;
         font-family: 'Roboto Mono', monospace;
-        border-bottom: 3px solid #FCBF49;
+        color: $secondary-color;
+    }
+    .registry-name {
+        padding: 5px 15px;
+        margin: 20px 20px 10px 5px;
+        font-size: 1.5em;
+        border-bottom: 7px solid $primary-color;
+        color: $primary-color;
+        font-weight: 700;
+        text-align: right; 
     }
     .standard-description {
         margin-bottom: 60px;
     }
+    .nav-tabs {
+        border-bottom: 1px solid $primary-color;
+    }
     .nav-item {
         a {
-            color: #888;
+            color: $primary-color;
         }
         a:hover {
-            color: #666;
+            color: #fff;
+            background-color: $primary-color;
+            border-color: $primary-color;
         }
+        a:active {
+            color: #fff;
+        }
+    }
+    .nav-link.active {
+        color: #fff;
+        background-color: $primary-color;
+        border-color: $primary-color;
+        
     }
 
     .hljs {
