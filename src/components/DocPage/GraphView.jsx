@@ -116,9 +116,9 @@ function GraphView(props) {
 
         svgContainer.append("g")
             .attr("fill", "none")
-            .attr("stroke", "#bbb")
-            .attr("stroke-opacity", 0.4)
-            .attr("stroke-width", 1.5)
+            .attr("stroke", "#42278E")
+            .attr("stroke-opacity", 0.9)
+            .attr("stroke-width", 2)
         .selectAll("path")
             .data(root.links())
             .join("path")
@@ -135,8 +135,10 @@ function GraphView(props) {
             .join("circle")
             .attr("cx", d => d.y)
             .attr("cy", d => d.x)
-            .attr("fill", d => d.children ? "#bbb" : "#eee")
-            .attr("r", 2.5)
+            .attr("fill", d => "#fff")
+            .attr("stroke", d => d.children ? "#42278E" : "#42278E")
+            .attr("stroke-width", 2)
+            .attr("r", 3)
             .on('mouseover', (d, e) => {
                 console.log(d)
                 console.log(e)
@@ -150,7 +152,7 @@ function GraphView(props) {
             .selectAll("text")
             .data(root.descendants())
             .join("text")
-            .attr("fill", d => d.children ? "white" : "white")
+            .attr("fill", d => d.children ? "#42278E" : "#42278E")
             .attr("x", d => d.y)
             .attr("y", d => d.x)
             .attr("dy", d => d.children ? "1.51em" : "0.31em")
@@ -159,7 +161,7 @@ function GraphView(props) {
             .filter(d => d.children)
             .attr("text-anchor", "end")
             .clone(true).lower()
-            .attr("stroke", "#222");
+            .attr("stroke", "#fff");
 
             //svg.attr("viewBox", 0, 0, width, height)
 
