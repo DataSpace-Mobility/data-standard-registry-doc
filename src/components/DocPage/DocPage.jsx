@@ -12,14 +12,14 @@ function DocPage() {
 
     
 
-    useEffect(() => {
+    /* useEffect(() => {
         const observer = new IntersectionObserver(elems => {
             console.log(elems)
         });
         const elemsWithIds = document.querySelectorAll("*[id] .msg-table");
         console.log(elemsWithIds)
         elemsWithIds.forEach(elem => observer.observe(elem));
-    }, [])
+    }, []) */
 
     
 
