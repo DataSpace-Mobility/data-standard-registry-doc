@@ -12,18 +12,24 @@ function GraphView(props) {
 
     function processNode(objMap, nodeType, nodeName) {
         let obj = objMap[nodeType]
-        if(nodeType.indexOf('.') === -1) {
+        /* if(nodeType.indexOf('.') === -1) {
             return {
                 //name: nodeType + ': ' + (nodeName || '')
                 name: (nodeName || '')
             }
-        }
+        } */
 
         let children = []
         if('fields' in obj) {
             
             obj.fields.forEach(field => {
-                children.push(processNode(objMap, field.fullType, field.name))
+                if(!(field.fullType in objMap)) {
+                    children.push({
+                        name: field.name
+                    })
+                } else {
+                    children.push(processNode(objMap, field.fullType, field.name))
+                }
             })
             
         } else {
@@ -39,6 +45,8 @@ function GraphView(props) {
         if(nodeName != undefined) {
             // nName = ': ' + nodeName
             nName = nodeName
+        } else {
+            nName = 'FeedMessage'
         }
 
         if(children.length == 0) {
@@ -59,7 +67,7 @@ function GraphView(props) {
         let objMap = {}
         standardFileJSONArr.forEach(file => {
             for(let i=0; i<file.messages.length; i++) {
-                objMap[file.messages[i].fullName] = file.messages[i]
+                objMap[file.messages[i].fullName.replace(/^\./, '')] = file.messages[i]
 
                 if(file.messages[i].name == 'FeedMessage') {
                     feedMsgFullName = file.messages[i].fullName
@@ -69,14 +77,14 @@ function GraphView(props) {
 
         standardFileJSONArr.forEach(file => {
             for(let i=0; i<file.enums.length; i++) {
-                objMap[file.enums[i].fullName] = file.enums[i]
+                objMap[file.enums[i].fullName.replace(/^\./, '')] = file.enums[i]
             }
         })
         
         
         let data = processNode(objMap, feedMsgFullName, undefined)
 
-        console.log(objMap)
+        console.log(data)
 
         var width = 1000
         var height = 1000
@@ -129,7 +137,7 @@ function GraphView(props) {
                 ${d.source.y},${d.source.x}
             `);
 
-        svgContainer.append("g")
+        var nodes = svgContainer.append("g")
             .selectAll("circle")
             .data(root.descendants())
             .join("circle")
@@ -140,6 +148,20 @@ function GraphView(props) {
             .attr("stroke-width", 2)
             .attr("r", 3)
             .on('mouseover', (d, e) => {
+                /* nodes.style('fill', node_d => node_d.data.name == e.data.name ? '#F7734F': '#fff')
+                nodes.style('stroke', node_d => node_d.data.name == e.data.name ? '#F7734F': '#42278E')
+                nodes.style('r', node_d => node_d.data.name == e.data.name ? 4: 2) */
+                console.log(nodes)
+                console.log(d3.select(e))
+                // d3.select(e.ancestors()).style('fill', '#F7734F')
+                //e.ancestors()[0].style('fill', node_d => node_d.data.name == e.data.name ? '#F7734F': '#fff')
+                console.log(d)
+                console.log(e)
+            })
+            .on('mouseout', (d, e) => {
+                nodes.style('fill', '#fff')
+                nodes.style('stroke', d => d.children ? "#42278E" : "#42278E")
+                nodes.style('r', 2)
                 console.log(d)
                 console.log(e)
             })
