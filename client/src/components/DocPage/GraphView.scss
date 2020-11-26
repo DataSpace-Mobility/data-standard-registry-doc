@@ -1,0 +1,17 @@
+.GraphView {
+    width: 100%;
+    height: 100%;
+    #tree-container {
+        width: 100%;
+        height: 100%;
+        background-color: #f8f8f8;
+        #tree-container-svg {
+            width: 100%;
+            height: 600px;
+            cursor: grab;
+            circle {
+                cursor: cell;
+            }
+        }
+    }
+}

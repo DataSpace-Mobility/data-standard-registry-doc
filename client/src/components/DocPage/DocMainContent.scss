@@ -1,0 +1,51 @@
+@import '../../Variables.scss';
+
+.DocMainContent {
+    .hljs, .hljs-attr {
+        color: $dark-grey-color;
+    }
+    .hljs-attr {
+        font-weight: 600;
+        color: $primary-light-color;
+    }
+    .hljs-string {
+        color: $tertiary-color;
+    }
+    .hljs-keyword, .hljs-title, .hljs-built_in {
+        color: $primary-light-color;
+    }
+    .hljs-title {
+        font-weight: 600;
+    }
+    .vert-align {
+        width: 100%;
+        .like-share-button {
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+    .shadow-box {
+        box-shadow: 0px 3px 4px 2px #00000019;
+        padding: 5px 10px;
+        /* padding-top: 10px; */
+        margin: 10px 0px;
+        border-radius: 8px;   
+    }
+    .like-share-box {
+        width: 300px;
+        margin: 10px auto;
+        img {
+            height: 30px;
+            width: 30px;
+            display: block;
+            margin: auto auto;
+            transition: all .2s ease-in-out;
+            cursor: pointer;
+        }
+        img:hover {
+            transform: scale(1.2);
+        }
+    }
+    
+}

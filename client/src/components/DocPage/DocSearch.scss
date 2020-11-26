@@ -1,0 +1,50 @@
+@import '../../Variables.scss';
+
+section.DocSearch {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(46, 17, 101);
+    padding: 20px;
+
+    .doc-search {
+        margin-top: 15px;
+        width: 100%;
+    }
+    .logo-div {
+        border-bottom: 7px solid $white-color;
+    }
+    .navigation {
+        margin-top: 30px;
+    }
+    .collapsible {
+        background-color: transparent;
+        padding-top: 0.2rem;
+        color: #fff;
+        font-size: 16px;
+    }
+    .collapsible a {
+        color: #fff;
+        text-decoration: none;
+        padding: 0px;
+        margin: 0px;
+    }
+    .collapsible .card-header {
+        padding: 0px;
+    }
+    .collapsible .card-body {
+        padding: 0rem;
+        font-size: 14px;
+        ul {
+            margin-bottom: 0rem;
+            padding-left: 1rem;
+        }
+        li {
+            list-style-type:none;
+            margin-top: 5px;
+            a:hover {
+                color: $tertiary-color;
+            }
+        }
+    }
+
+}
