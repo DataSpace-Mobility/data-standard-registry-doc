@@ -1,81 +1,70 @@
 {
-  "header": {
-      "version": "0.0.1",
-      "incrementality": "FULL_DATASET",
-      "timestamp": 1602673612,
-      "provider": {
-          "id": "9153b228-7cc8-4765-9143-605dc2dd3f6f",
-          "name": "Ministry of Housing and Urban Affairs"
-      }
-  },
-  "stations": [
-      {
-          "id": "a63f5658-8226-453f-b6e3-a7a3071d66e0",
-          "info": {
-              "name": "EV Plugin Charging Station",
-              "address": "2nd Floor, 39, Shahpur Jat, New Delhi, Delhi 110049",
-              "image": "https://lh5.googleusercontent.com/p/AF1QipMGIuzqbhru8ramxdoD8qWBG6HTK8MVdiv4zOPh=w648-h240-k-no",
-              "operator": "EESL",
-              "owner": "ESL",
-              "acceptedModeOfPayment": ["PAYMENT_BANK_CARD", "PAYMENT_CASH", "PAYMENT_UPI"]
-          },
-          "vehicleCapacity": [
+    "header": {
+        "version": "0.0.1",
+        "incrementality": "FULL_DATASET",
+        "timestamp": 1602673612,
+        "provider": {
+            "id": "9153b228-7cc8-4765-9143-605dc2dd3f6f",
+            "name": "Ministry of Housing and Urban Affairs"
+        }
+    },
+    "junctions": [
+        {
+            "id": "a63f5658-8226-453f-b6e3-a7a3071d66e0",
+            "operationalStatus": "STATUS_NORMAL_OPERATION",
+            "carriageways": [
               {
-                  "vehicleType": "VEHICLE_TYPE_CAR",
-                  "count": 254
-              },
-              {
-                  "vehicleType": "VEHICLE_TYPE_MOTORCYCLE",
-                  "count": 654
+                "id": "542206ba-cad9-41fc-9671-aa281e3d66c7",
+                "vehicleDensity": {
+                    "vehicleCountPerMinute": 23,
+                    "vehicleCountPerHour": 262,
+                    "vehicleCountPerDay": 2633
+                },
+                "operationalStatus": "STATUS_NORMAL_OPERATION",
+                "trafficLanes": [
+                    {
+                        "id": "cbef9381-572d-4ce2-b6e1-84613e123881",
+                        "signalTiming": {
+                            "allocatedGreenSeconds": 60,
+                            "availableGreenSeconds": 60,
+                            "utilisedGreenSeconds": 56
+                        },
+                        "signalStatus": "SIGNAL_GO",
+                        "operationalStatus": "STATUS_NORMAL_OPERATION"
+                    },
+                    {
+                        "id": "36352f66-a16b-4aac-8212-190d03f57bd7",
+                        "signalTiming": {
+                            "allocatedGreenSeconds": 60,
+                            "availableGreenSeconds": 60,
+                            "utilisedGreenSeconds": 60
+                        },
+                        "signalStatus": "SIGNAL_STOP",
+                        "operationalStatus": "STATUS_NORMAL_OPERATION"
+                    },
+                    {
+                        "id": "dacb8041-9ce8-4507-acbe-b71f75a9e82e",
+                        "signalTiming": {
+                            "allocatedGreenSeconds": 60,
+                            "availableGreenSeconds": 60,
+                            "utilisedGreenSeconds": 50
+                        },
+                        "signalStatus": "SIGNAL_STOP",
+                        "operationalStatus": "STATUS_NORMAL_OPERATION"
+                    },
+                    {
+                        "id": "7350710e-b689-4543-b268-1ca08793a46b",
+                        "signalTiming": {
+                            "allocatedGreenSeconds": 15,
+                            "availableGreenSeconds": 15,
+                            "utilisedGreenSeconds": 12
+                        },
+                        "signalStatus": "SIGNAL_STOP",
+                        "operationalStatus": "STATUS_NORMAL_OPERATION"
+                    }
+                ]
               }
-          ],
-          "location": {
-              "latitude": 62.300032,
-              "longitude": 24.3782467
-          },
-          "operatingSchedule": {
-              "opening": "08:00:00",
-              "closing": "22:00:00",
-              "dayOfWeek": ["DAY_SUNDAY", "DAY_MONDAY", "DAY_TUESDAY", "DAY_WEDNESDAY", "DAY_THURSDAY", "DAY_FRIDAY", "DAY_SATURDAY"]
-          },
-          "status": "STATUS_IN_OPERATION",
-          "allowedVehicleType": ["VEHICLE_TYPE_CAR", "VEHICLE_TYPE_MOTORCYCLE"],
-          "chargingUnits": [
-              {
-                  "id": "542206ba-cad9-41fc-9671-aa281e3d66c7",
-                  "type": "CHARGING_UNIT_TYPE_WIRED_WIRELESS",
-                  "sockets": [
-                      {
-                          "id": "61a1ce7a-b10e-435d-a793-141e5d0762f6",
-                          "type": "CHARGING_UNIT_SOCKET_TYPE_BEVC_DC001"
-                      },
-                      {
-                          "id": "29db318b-0285-4054-96b7-a643bbc27a5f",
-                          "type": "CHARGING_UNIT_SOCKET_TYPE_TESLA"
-                      }
-                  ],
-                  "wirelessPods": [
-                      {
-                          "id": "2deb3ce0-8a9c-4c8e-84a2-f955954e5685",
-                          "area": 9.8,
-                          "type": "WIRELESS_POD_TYPE_CWCS"
-                      }
-                  ],
-                  "status": "STATUS_IN_OPERATION"
-              }
-          ],
-          "swappingUnits": [
-              {
-                  "id": "cbef9381-572d-4ce2-b6e1-84613e123881",
-                  "pods": [
-                      {
-                          "id": "3bfa3ce6-6be8-4248-b9a7-e327a762376b",
-                          "batteryType": "SWAPPING_POD_BATTERY_TYPE_NCA"
-                      }
-                  ],
-                  "status": "STATUS_IN_OPERATION"
-              }
-          ]
-      }
-  ]
-}
+            ]
+        }
+    ]
+  }
