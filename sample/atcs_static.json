@@ -1,0 +1,60 @@
+{
+  "header": {
+      "version": "0.0.1",
+      "incrementality": "FULL_DATASET",
+      "timestamp": 1602673612,
+      "provider": {
+          "id": "9153b228-7cc8-4765-9143-605dc2dd3f6f",
+          "name": "Ministry of Housing and Urban Affairs"
+      }
+  },
+  "junctions": [
+      {
+          "id": "a63f5658-8226-453f-b6e3-a7a3071d66e0",
+          "maxCycleTimeSeconds": 240,
+          "operationMode": "OPERATION_MODE_FULL_VA_SPLIT",
+          "location": {
+            "latitude": 62.300032,
+            "longitude": 24.3782467
+          },
+          "corridorRelationships": [
+            {
+              "corridorId": "123E",
+              "distanceFromOriginJunction": 3.4,
+              "sequenceNo": 1
+            }
+          ],
+          "carriageways": [
+            {
+              "id": "542206ba-cad9-41fc-9671-aa281e3d66c7",
+              "sequenceNo": 1,
+              "location": {
+                "latitude": 62.300124,
+                "longitude": 24.3782345
+              },
+              "trafficLanes": [
+                {
+                  "id": "cbef9381-572d-4ce2-b6e1-84613e123881",
+                  "sequenceNo": 1,
+                  "direction": {
+                    "to": "Delhi",
+                    "from": "Gurugram",
+                    "turn": "TURN_DIRECTION_RIGHT"
+                  },
+                  "modeOfTransportAllowed": "MOTORISED"
+                }
+              ]
+            }
+          ]
+      }
+  ],
+  "corridors": [
+    {
+      "corridorId": "66b6b755-99b6-4c90-9f6f-06bb491a99ba",
+      "corridorName": "Delhi-Gurugram",
+      "junctionId": [
+        "a63f5658-8226-453f-b6e3-a7a3071d66e0"
+      ]
+    }
+  ]
+}
