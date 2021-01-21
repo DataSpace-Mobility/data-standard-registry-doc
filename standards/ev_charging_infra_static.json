@@ -1,0 +1,780 @@
+{
+    "info": {
+        "name": "Automatic Traffic Control Specification - Static",
+        "description": "ATCS Static data standard defines a common format to share static information from proprietary Adaptive Traffic Control Systems. It provides information on individual junction locations in relation to larger traffic corridors, maximum allotted signal cycle time at each junction along with permitted directions of traffic flow and permitted modes of transport on each traffic lane. Additionally, it shares details of the service provider and mode of operation of the system. ATCS Static data standard is based on Protocol Buffers. The hierarchy of elements and their type definitions are specified in the linked .proto file.",  
+        "sector": "Transit",
+        "category": "TrafficSignal"
+    },
+    "time": {
+    "lastUpdatedOn": "09:30 AM, 21st Jan, 2021 IST",
+    "createdOn": "09:30 AM, 21st Jan, 2021 IST"
+    },
+    "version": "v0.0.1",
+    "license": "Apache 2.0",
+    "protoURL": "https://raw.githubusercontent.com/DataSpace-Mobility/data-standard-registry/master/transit/atcs/TrafficSignalStatic.proto",
+    "files": [
+        {
+          "name": "Header.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "Incrementality",
+              "longName": "Header.Incrementality",
+              "fullName": ".Header.Incrementality",
+              "description": "Determines whether the current fetch is incremental.",
+              "values": [
+                {
+                  "name": "UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "FULL_DATASET",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "DIFFERENTIAL",
+                  "number": "2",
+                  "description": ""
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "Header",
+              "longName": "Header",
+              "fullName": ".Header",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "version",
+                  "description": "Version of the dataset.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "incrementality",
+                  "description": "",
+                  "label": "",
+                  "type": "Incrementality",
+                  "longType": "Header.Incrementality",
+                  "fullType": "Header.Incrementality",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "timestamp",
+                  "description": "This timestamp identifies the moment when the content of this feed has been\ncreated (time at the server). In POSIX time (i.e., number of seconds since\nJanuary 1st 1970 00:00:00 UTC).",
+                  "label": "",
+                  "type": "uint64",
+                  "longType": "uint64",
+                  "fullType": "uint64",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "provider",
+                  "description": "Publisher/Provider of the dataset.",
+                  "label": "",
+                  "type": "Provider",
+                  "longType": "Provider",
+                  "fullType": "Provider",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Provider",
+              "longName": "Provider",
+              "fullName": ".Provider",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identifier of the provider.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "name",
+                  "description": "Name of the provider.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        },
+        {
+          "name": "Location.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "Location",
+              "longName": "Location",
+              "fullName": ".Location",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "latitude",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "longitude",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        },
+        {
+          "name": "TrafficSignalStatic.proto",
+          "description": "",
+          "package": "atcs_traffic_signal_static",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "OperationMode",
+              "longName": "Junction.OperationMode",
+              "fullName": "atcs_traffic_signal_static.Junction.OperationMode",
+              "description": "",
+              "values": [
+                {
+                  "name": "OPERATION_MODE_UNKNOWN",
+                  "number": "0",
+                  "description": "Junction operation mode is not known."
+                },
+                {
+                  "name": "OPERATION_MODE_TIMER_FIXED",
+                  "number": "1",
+                  "description": "Junction changes the signal bases on fixed time for red and green light."
+                },
+                {
+                  "name": "OPERATION_MODE_FULL_VA_SPLIT",
+                  "number": "2",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "Turn",
+              "longName": "TrafficLane.Direction.Turn",
+              "fullName": "atcs_traffic_signal_static.TrafficLane.Direction.Turn",
+              "description": "",
+              "values": [
+                {
+                  "name": "TURN_DIRECTION_UNKNOWN",
+                  "number": "0",
+                  "description": "Turn direction is unknown."
+                },
+                {
+                  "name": "TURN_DIRECTION_LEFT",
+                  "number": "1",
+                  "description": "This lane turns to the left."
+                },
+                {
+                  "name": "TURN_DIRECTION_STRAIGHT",
+                  "number": "2",
+                  "description": "This lane goes straight."
+                },
+                {
+                  "name": "TURN_DIRECTION_RIGHT",
+                  "number": "3",
+                  "description": "This lane turns to the right."
+                },
+                {
+                  "name": "TURN_DIRECTION_U_TURN",
+                  "number": "4",
+                  "description": "This lane takes a u-turn."
+                }
+              ]
+            },
+            {
+              "name": "ModeOfTransportAllowed",
+              "longName": "TrafficLane.ModeOfTransportAllowed",
+              "fullName": "atcs_traffic_signal_static.TrafficLane.ModeOfTransportAllowed",
+              "description": "Type of modes that are allowed through a lane.",
+              "values": [
+                {
+                  "name": "MOTORISED",
+                  "number": "0",
+                  "description": "Motorised vehicles are allowed on this lane."
+                },
+                {
+                  "name": "BICYCLE",
+                  "number": "1",
+                  "description": "Bicycles are allowed on this lane."
+                },
+                {
+                  "name": "PEDESTRIAN",
+                  "number": "2",
+                  "description": "Pedestrians are allowed on this lane."
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "Carriageway",
+              "longName": "Carriageway",
+              "fullName": "atcs_traffic_signal_static.Carriageway",
+              "description": "Information about the Carriageway. A Carriageway is a set of TrafficLanes which follow a common direction in the beginning and then splits.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique ID for the way.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "sequenceNo",
+                  "description": "Position (ordered) of the way in the junction. Traffic signal change will follow this order.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "location",
+                  "description": "Location on the carriageway where traffic halts. Given by the latitude and longitude in deegres utilising the WGS-84 coordinate system.",
+                  "label": "",
+                  "type": "Location",
+                  "longType": "Location",
+                  "fullType": "Location",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "trafficLanes",
+                  "description": "Lane level information for the way.",
+                  "label": "repeated",
+                  "type": "TrafficLane",
+                  "longType": "TrafficLane",
+                  "fullType": "atcs_traffic_signal_static.TrafficLane",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Corridor",
+              "longName": "Corridor",
+              "fullName": "atcs_traffic_signal_static.Corridor",
+              "description": "Corridor is a set of junctions. One junction can be part of multiple corridors.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "corridorId",
+                  "description": "Unique ID allocated to the corridor.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "corridorName",
+                  "description": "Name of the corridor.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "junctionId",
+                  "description": "List of all junction IDs in the corridor.",
+                  "label": "repeated",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "FeedMessage",
+              "longName": "FeedMessage",
+              "fullName": "atcs_traffic_signal_static.FeedMessage",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "header",
+                  "description": "Metadata",
+                  "label": "",
+                  "type": "Header",
+                  "longType": "Header",
+                  "fullType": "Header",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "junctions",
+                  "description": "Information about all the junctions in the system.",
+                  "label": "repeated",
+                  "type": "Junction",
+                  "longType": "Junction",
+                  "fullType": "atcs_traffic_signal_static.Junction",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "corridors",
+                  "description": "Information on all the corridors.",
+                  "label": "repeated",
+                  "type": "Corridor",
+                  "longType": "Corridor",
+                  "fullType": "atcs_traffic_signal_static.Corridor",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Junction",
+              "longName": "Junction",
+              "fullName": "atcs_traffic_signal_static.Junction",
+              "description": "A Junction is a physical  point where at least two roads meet, hence traffic can change between different routes and/or directions at it.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique ID of the junction.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "maxCycleTimeSeconds",
+                  "description": "Aggregated time in seconds for green signal across all ways in that junction.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "operationMode",
+                  "description": "",
+                  "label": "",
+                  "type": "OperationMode",
+                  "longType": "Junction.OperationMode",
+                  "fullType": "atcs_traffic_signal_static.Junction.OperationMode",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "location",
+                  "description": "Location of the controller installed at the junction.",
+                  "label": "",
+                  "type": "Location",
+                  "longType": "Location",
+                  "fullType": "Location",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "corridorRelationships",
+                  "description": "",
+                  "label": "repeated",
+                  "type": "CorridorRelationship",
+                  "longType": "Junction.CorridorRelationship",
+                  "fullType": "atcs_traffic_signal_static.Junction.CorridorRelationship",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "carriageways",
+                  "description": "Information on each carriageway inbound and outbound from the junction.",
+                  "label": "repeated",
+                  "type": "Carriageway",
+                  "longType": "Carriageway",
+                  "fullType": "atcs_traffic_signal_static.Carriageway",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "CorridorRelationship",
+              "longName": "Junction.CorridorRelationship",
+              "fullName": "atcs_traffic_signal_static.Junction.CorridorRelationship",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "corridorId",
+                  "description": "ID of the corridor this junction is related to.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "distanceFromOriginJunction",
+                  "description": "Distance in Km from the first junction in the corridor",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "sequenceNo",
+                  "description": "Position of the junction within the corridor.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "TrafficLane",
+              "longName": "TrafficLane",
+              "fullName": "atcs_traffic_signal_static.TrafficLane",
+              "description": "A TrafficLane is a section of a carriageway that is designated (usually by lines of other physical barriers as bollards) to be used by a single line of vehicles to organise traffic and guide drivers\nDescribes a direction of travel. Although a way can have multiple traffic lanes in each direction, this structure groups them and represents all traffic in one direction per TrafficLane.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique ID of the lane.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "sequenceNo",
+                  "description": "Position (ordered) of the way in the junction. Traffic signal change will follow this order.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "direction",
+                  "description": "",
+                  "label": "",
+                  "type": "Direction",
+                  "longType": "TrafficLane.Direction",
+                  "fullType": "atcs_traffic_signal_static.TrafficLane.Direction",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "modeOfTransportAllowed",
+                  "description": "Typology of vehicles allowed to circulate at the TrafficLane.",
+                  "label": "",
+                  "type": "ModeOfTransportAllowed",
+                  "longType": "TrafficLane.ModeOfTransportAllowed",
+                  "fullType": "atcs_traffic_signal_static.TrafficLane.ModeOfTransportAllowed",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Direction",
+              "longName": "TrafficLane.Direction",
+              "fullName": "atcs_traffic_signal_static.TrafficLane.Direction",
+              "description": "Direction or change of direction permited for the vehicles at the TrafficLane.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "to",
+                  "description": "Name of a significant place from which the way is leading from.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "from",
+                  "description": "Name of a significant place to which the way is leading to.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "turn",
+                  "description": "",
+                  "label": "",
+                  "type": "Turn",
+                  "longType": "TrafficLane.Direction.Turn",
+                  "fullType": "atcs_traffic_signal_static.TrafficLane.Direction.Turn",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        }
+      ],
+      "scalarValueTypes": [
+        {
+          "protoType": "double",
+          "notes": "",
+          "cppType": "double",
+          "csType": "double",
+          "goType": "float64",
+          "javaType": "double",
+          "phpType": "float",
+          "pythonType": "float",
+          "rubyType": "Float"
+        },
+        {
+          "protoType": "float",
+          "notes": "",
+          "cppType": "float",
+          "csType": "float",
+          "goType": "float32",
+          "javaType": "float",
+          "phpType": "float",
+          "pythonType": "float",
+          "rubyType": "Float"
+        },
+        {
+          "protoType": "int32",
+          "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "int64",
+          "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "uint32",
+          "notes": "Uses variable-length encoding.",
+          "cppType": "uint32",
+          "csType": "uint",
+          "goType": "uint32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int/long",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "uint64",
+          "notes": "Uses variable-length encoding.",
+          "cppType": "uint64",
+          "csType": "ulong",
+          "goType": "uint64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sint32",
+          "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sint64",
+          "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "fixed32",
+          "notes": "Always four bytes. More efficient than uint32 if values are often greater than 2^28.",
+          "cppType": "uint32",
+          "csType": "uint",
+          "goType": "uint32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "fixed64",
+          "notes": "Always eight bytes. More efficient than uint64 if values are often greater than 2^56.",
+          "cppType": "uint64",
+          "csType": "ulong",
+          "goType": "uint64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "sfixed32",
+          "notes": "Always four bytes.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sfixed64",
+          "notes": "Always eight bytes.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "bool",
+          "notes": "",
+          "cppType": "bool",
+          "csType": "bool",
+          "goType": "bool",
+          "javaType": "boolean",
+          "phpType": "boolean",
+          "pythonType": "boolean",
+          "rubyType": "TrueClass/FalseClass"
+        },
+        {
+          "protoType": "string",
+          "notes": "A string must always contain UTF-8 encoded or 7-bit ASCII text.",
+          "cppType": "string",
+          "csType": "string",
+          "goType": "string",
+          "javaType": "String",
+          "phpType": "string",
+          "pythonType": "str/unicode",
+          "rubyType": "String (UTF-8)"
+        },
+        {
+          "protoType": "bytes",
+          "notes": "May contain any arbitrary sequence of bytes.",
+          "cppType": "string",
+          "csType": "ByteString",
+          "goType": "[]byte",
+          "javaType": "ByteString",
+          "phpType": "string",
+          "pythonType": "str",
+          "rubyType": "String (ASCII-8BIT)"
+        }
+      ]
+  }
