@@ -49,16 +49,20 @@
             font-size: 1em;
             margin-top: 5px;
             text-align: center;
-            font-family: Consolas;
+            font-family: 'Roboto Mono', monospace;
             font-size: 1.2em;
             text-align: left;
         }
         .version {
-            /* font-size: 1.5em; */
-            font-family: Consolas;
+            font-size: 0.9em;
+            font-family: 'Roboto Mono', monospace;
+        }
+        .license {
+            font-size: 0.9em;
+            font-family: 'Roboto Mono', monospace;
         }
         .last-updated {
-            font-size: .9em;
+            font-size: .7em;
 
         }
     }

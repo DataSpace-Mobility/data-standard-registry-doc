@@ -41,7 +41,7 @@ function DocContentList(props) {
             </div>
             <div className="shadow-box hori-align">
                 <img src={License} alt=""/>
-                <div className="content">Apache 2.0</div>
+                <div className="content license">Apache 2.0</div>
             </div>
             <div className="shadow-box hori-align">
                 <img src={Clock} alt=""/>
