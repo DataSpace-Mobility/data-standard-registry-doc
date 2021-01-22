@@ -1,6 +1,6 @@
 {
     "info": {
-        "name": "Automatic Traffic Control Specification - Realtime",
+        "name": "Adaptive Traffic Control Specification - Realtime",
         "description": "ATCS Realtime standard defines a common format to share realtime information from proprietary Adaptive Traffic Control Systems about the operational status of traffic signals, signal timing, signal status along with approximate vehicle density on each arm of a road junction. ATCS Realtime data standard is based on Protocol Buffers. The hierarchy of elements and their type definitions are specified in the linked .proto file.",  
         "sector": "Transit",
         "category": "TrafficSignal"
