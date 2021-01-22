@@ -19,7 +19,7 @@
           },
           "corridorRelationships": [
             {
-              "corridorId": "123E",
+              "corridorId": "66b6b755-99b6-4c90-9f6f-06bb491a99ba",
               "distanceFromOriginJunction": 3.4,
               "sequenceNo": 1
             }
@@ -41,7 +41,11 @@
                     "from": "Gurugram",
                     "turn": "TURN_DIRECTION_RIGHT"
                   },
-                  "modeOfTransportAllowed": "MOTORISED"
+                  "modeOfTransportAllowed": "MOTORISED",
+                  "location": {
+                    "latitude": 62.300124,
+                    "longitude": 24.3782345
+                  }
                 }
               ]
             }
