@@ -15,3 +15,5 @@ const data_schema = Schema({
         default:nll
     }
 })
+
+module.exports = mongoose.model('data_schema',data_schema)
