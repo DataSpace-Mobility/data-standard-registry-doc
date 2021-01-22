@@ -350,7 +350,7 @@
                 "defaultValue": ""
               },
               {
-                "name": "junctionId",
+                "name": "junctionIdsInCorridor",
                 "description": "List of all junction IDs in the corridor.",
                 "label": "repeated",
                 "type": "string",
