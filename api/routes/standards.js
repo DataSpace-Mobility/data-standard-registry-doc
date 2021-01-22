@@ -12,6 +12,6 @@ router.get('/:id', StandardController.getById);
  */
 
  router.post('/insert',require('../controllers/standard/data.controller').insert_data);
- router.post('/insert',require('../controllers/standard/data.controller').get_data);
+ router.post('/get',require('../controllers/standard/data.controller').get_data);
 
 module.exports = router;
