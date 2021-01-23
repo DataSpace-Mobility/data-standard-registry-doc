@@ -255,13 +255,18 @@
                 "description": "Motorised vehicles are allowed on this lane."
               },
               {
-                "name": "BICYCLE",
+                "name": "BUS",
                 "number": "1",
+                "description": "Only buses are allowed on this lane."
+              },
+              {
+                "name": "BICYCLE",
+                "number": "2",
                 "description": "Bicycles are allowed on this lane."
               },
               {
                 "name": "PEDESTRIAN",
-                "number": "2",
+                "number": "3",
                 "description": "Pedestrians are allowed on this lane."
               }
             ]
@@ -289,18 +294,8 @@
                 "defaultValue": ""
               },
               {
-                "name": "sequenceNo",
-                "description": "Position (ordered) of the way in the junction. Traffic signal change will follow this order.",
-                "label": "",
-                "type": "uint32",
-                "longType": "uint32",
-                "fullType": "uint32",
-                "ismap": false,
-                "defaultValue": ""
-              },
-              {
                 "name": "location",
-                "description": "Location on the carriageway where traffic halts. Given by the latitude and longitude in deegres utilising the WGS-84 coordinate system.",
+                "description": "Location on the carriageway where traffic halts. Given by the latitude and longitude in deegres utilising the WGS-84 coordinate system. For lane level stop points look at the location datapoint in TrafficLane.",
                 "label": "",
                 "type": "Location",
                 "longType": "Location",
@@ -535,11 +530,21 @@
               },
               {
                 "name": "sequenceNo",
-                "description": "Position (ordered) of the way in the junction. Traffic signal change will follow this order.",
+                "description": "Position (ordered) of the lane in the junction. This value is with respect to the junction. Similar value for two lanes would mean that the traffic starts on them simultaneously.",
                 "label": "",
                 "type": "uint32",
                 "longType": "uint32",
                 "fullType": "uint32",
+                "ismap": false,
+                "defaultValue": ""
+              },
+              {
+                "name": "shape",
+                "description": "Series of lat/lon points defining a lane. Its is an encoded polyline string. Refer to https://developers.google.com/maps/documentation/utilities/polylinealgorithm to know how to decode the string. to get a series of lat/lon points.",
+                "label": "",
+                "type": "string",
+                "longType": "string",
+                "fullType": "string",
                 "ismap": false,
                 "defaultValue": ""
               },
