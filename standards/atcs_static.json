@@ -417,6 +417,16 @@
                 "defaultValue": ""
               },
               {
+                "name": "name",
+                "description": "Name of the junction.",
+                "label": "",
+                "type": "string",
+                "longType": "string",
+                "fullType": "string",
+                "ismap": false,
+                "defaultValue": ""
+              },
+              {
                 "name": "maxCycleTimeSeconds",
                 "description": "Aggregated time in seconds for green signal across all ways in that junction.",
                 "label": "",

@@ -11,6 +11,7 @@
   "junctions": [
       {
           "id": "a63f5658-8226-453f-b6e3-a7a3071d66e0",
+          "name": "Mehrauli Chowk",
           "maxCycleTimeSeconds": 240,
           "operationMode": "OPERATION_MODE_FULL_VA_SPLIT",
           "location": {
