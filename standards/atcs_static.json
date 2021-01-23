@@ -353,6 +353,16 @@
                 "fullType": "string",
                 "ismap": false,
                 "defaultValue": ""
+              },
+              {
+                "name": "shape",
+                "description": "Series of lat/lon points defining a corridor. It is an encoded polyline string. Refer to https://developers.google.com/maps/documentation/utilities/polylinealgorithm to know how to decode the string. to get a series of lat/lon points.",
+                "label": "",
+                "type": "string",
+                "longType": "string",
+                "fullType": "string",
+                "ismap": false,
+                "defaultValue": ""
               }
             ]
           },
