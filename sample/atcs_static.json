@@ -57,7 +57,7 @@
     {
       "corridorId": "66b6b755-99b6-4c90-9f6f-06bb491a99ba",
       "corridorName": "Delhi-Gurugram",
-      "junctionId": [
+      "junctionIdsInCorridor": [
         "a63f5658-8226-453f-b6e3-a7a3071d66e0"
       ]
     }
