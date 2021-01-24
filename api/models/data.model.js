@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = new mongoose.Schema();
 
-const data_schema = Schema({
+const data_schema = mongoose.Schema({
     header:{
         type:String,
         default:null
@@ -12,7 +11,7 @@ const data_schema = Schema({
     },
     description:{
         type:String,
-        default:nll
+        default:null
     }
 })
 
