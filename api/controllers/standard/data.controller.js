@@ -14,7 +14,7 @@ const insert_data = async (req, res) => {
           description: description,
         })
         .then((result) => {
-          if (result) console.log(`Inserted`);
+          if (result) console.log(`Inserted ${req.body.indexOf(i)+1}`);
         })
         .catch((err) => {
           res.json({
