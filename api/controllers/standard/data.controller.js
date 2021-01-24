@@ -64,13 +64,17 @@ const get_data = async (req, res) => {
   for (let i of header_array) {
     const values = await data.find({ header: i });
     let arr = [];
-    for (let i of values) {
-      temp = {};
-      temp[`${i.sub_connected}`] = i.description;
-      arr.push(temp);
+    if(values.length>0){
+      for (let i of values) {
+        temp = {};
+        temp[`${i.sub_connected}`] = i.description;
+        arr.push(temp);
+      }
+      console.log(i,arr);
+      json_data[i] = arr;
+    }else{
+      res.json({message:"No responses found",status:404})
     }
-    console.log(i,arr);
-    json_data[i] = arr;
   }
   if(Object.keys(json_data).length == 0){
     res.json({message:"No responses found",status:404})
