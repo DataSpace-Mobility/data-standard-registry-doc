@@ -10,7 +10,7 @@
     "createdOn": "09:30 AM, 26th Oct, 2020 IST"
   },
   "version": "v0.0.1",
-  "license": "Apache 2.0",
+  "license": "MIT",
   "protoURL": "https://raw.githubusercontent.com/DataSpace-Mobility/data-standard-registry/master/transit/fare_collection/FareCollection.proto",
   "files": [
     {
