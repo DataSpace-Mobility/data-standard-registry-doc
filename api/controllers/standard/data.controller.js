@@ -16,7 +16,13 @@ const insert_data = async (req, res) => {
         .then((result) => {
           if (result) console.log(`Inserted`);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          res.json({
+            status:404,
+            message:"Server Error",
+            description:`${err}`
+          })
+        });
     }
   } else {
     const heading = req.body.header;
@@ -32,7 +38,13 @@ const insert_data = async (req, res) => {
       .then((result) => {
         if (result) console.log(`Inserted`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        res.json({
+          status:404,
+          message:"Server Error",
+          description:`${err}`
+        })
+      })
   }
   res.json({
     status:200,
@@ -60,7 +72,11 @@ const get_data = async (req, res) => {
     console.log(i,arr);
     json_data[i] = arr;
   }
-  res.json(json_data).status(200);
+  if(Object.keys(json_data).length == 0){
+    res.json({message:"No responses found",status:404})
+  }else{
+    res.json({message:"Sucessfull",status:200,data:json_data}).status(200);
+  }
 };
 
 module.exports = {
