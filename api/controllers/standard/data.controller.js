@@ -72,8 +72,6 @@ const get_data = async (req, res) => {
       }
       console.log(i,arr);
       json_data[i] = arr;
-    }else{
-      res.json({message:"No responses found",status:404})
     }
   }
   if(Object.keys(json_data).length == 0){
