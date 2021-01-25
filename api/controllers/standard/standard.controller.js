@@ -1,28 +1,36 @@
 var Standard = require('../../models/standard.model');
 
-var create = (req, res, next) => {
+var create = async (req, res, next) => {
     let data = req.body;
     const shortName = data.info.shortName;
-    const data_check = Standard.findOne({info:{shortName:shortName}});
+    const data_check = await Standard.findOne({info:{shortName:shortName}});
     if(data_check){
         res.json({
             status:409,
             message:"Duplicate entry found"
         });
     }
-    var newStandard = new Standard(req.body);
-
-    newStandard.save(function (err) {
-        if (err)
+    const api_auth_key = data.api_auth_key;
+    delete data['api_auth_key'];
+    if(process.env.api_auth_key === api_auth_key){
+        var newStandard = new Standard(data);
+        newStandard.save(function (err) {
+            if (err)
+                res.json({
+                    status:404,
+                    message:"Insert Unsucesessfull"
+                })
             res.json({
-                status:404,
-                message:"Insert Unsucesessfull"
-            })
-        res.json({
-            status:200,
-            message: 'Insert Sucessfull'
+                status:200,
+                message: 'Insert Sucessfull'
+            });
         });
-    });
+    }else{
+        res.json({
+            status:404,
+            message:"Invalid / No auth key found"
+        })
+    }
 };
 
 var get = (req, res, next) => {
