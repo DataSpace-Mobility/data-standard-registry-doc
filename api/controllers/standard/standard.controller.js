@@ -1,13 +1,17 @@
 var Standard = require('../../models/standard.model');
 
-var create = (req, res, next) => {
+var create = (req, res, next) => {   
     var newStandard = new Standard(req.body);
 
     newStandard.save(function (err) {
         if (err)
-            return next(err);
+            res.json({
+                status:404,
+                message:"Insert Unsucesessfull"
+            })
         res.json({
-            message: 'User created'
+            status:200,
+            message: 'Insert Sucessfull'
         });
     });
 };
