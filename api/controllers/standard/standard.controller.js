@@ -45,6 +45,18 @@ var get = (req, res, next) => {
     });
 };
 
+const getLatestByShortName = async (req,res) => {
+    const shortName = req.body.shortName;
+    console.log('here')
+    await Standard.find({
+        "$where":() => {return {"info.shortName":shortName}},
+        "$sort":() => {return {"versions.created_at":-1}},
+        "$slice":() => {return 1}
+    }).then(result => {
+        res.status(200).json(result[0])
+    }).catch(err => console.log(err))
+}
+
 var getById = (req, res, next) => {
     Standard.find({}, function (err, standards) {
         if (err)
@@ -53,4 +65,4 @@ var getById = (req, res, next) => {
     });
 };
 
-module.exports = { create, get, getById }
+module.exports = { create, get, getById, getLatestByShortName }
