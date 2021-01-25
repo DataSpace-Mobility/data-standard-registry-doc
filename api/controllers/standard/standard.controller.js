@@ -16,13 +16,13 @@ var create = async (req, res, next) => {
                             .then(result => {
                                 res.json({
                                     status:200,
-                                    message: 'Insert Sucessfull'
+                                    message: 'Insert Successful'
                                 });
                             })
                             .catch(err => {
                                 res.json({
                                     status:404,
-                                    message:"Insert Unsucesessfull",
+                                    message:"Standard creation failed",
                                     description:err
                                 })
                             });
