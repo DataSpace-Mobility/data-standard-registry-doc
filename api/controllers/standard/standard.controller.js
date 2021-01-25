@@ -1,6 +1,15 @@
 var Standard = require('../../models/standard.model');
 
-var create = (req, res, next) => {   
+var create = (req, res, next) => {
+    let data = req.body;
+    const shortName = data.info.shortName;
+    const data_check = Standard.findOne({info:{shortName:shortName}});
+    if(data_check){
+        res.json({
+            status:409,
+            message:"Duplicate entry found"
+        });
+    }
     var newStandard = new Standard(req.body);
 
     newStandard.save(function (err) {
