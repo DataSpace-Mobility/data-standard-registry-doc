@@ -73,6 +73,23 @@ const getAllStandardByUUID = async (req, res) => {
     .catch((err) => console.log(err));
 };
 
+const getLatestStandardByUUID = async (req, res) => {
+    const uuid = req.body.uuid;
+    await Standard.find({ "uuid": uuid })
+      .then((result) => {
+        if (result.length > 0) {
+          result = result[0];
+          result["versions"] = [
+            result["versions"][result["versions"].length - 1],
+          ];
+          res.json(result).status(200);
+        } else {
+          res.json({ status: 404, message: `No data found for ${uuid}` });
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
 const getLatestByShortName = async (req, res) => {
   const shortName = req.body.shortName;
   await Standard.find({ "info.shortName": shortName })
@@ -139,4 +156,5 @@ module.exports = {
   updateStandard,
   getAllByShortName,
   getAllStandardByUUID,
+  getLatestStandardByUUID
 };
