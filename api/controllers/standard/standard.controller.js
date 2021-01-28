@@ -10,8 +10,8 @@ var create = async (req, res, next) => {
             }else{
                 {
                     const api_auth_key = data.api_auth_key;
-                    delete data['api_auth_key'];
                     if(data.api_auth_key && process.env.api_auth_key === api_auth_key){
+                        delete data['api_auth_key'];
                         await Standard.create(data)
                             .then(result => {
                                 res.json({
