@@ -70,11 +70,14 @@ const updateStandard = async (req, res) => {
       .then(async (result) => {
         if (result.length > 0) {
           result = result[0];
-          result["version"] = [result["version"][result["version"].length - 1]];
-          version = result['versions'].version
-          version[increment_standard]++;
+          result["versions"] = [result["versions"][result["versions"].length - 1]];
+          version = result['versions'][0].version
+          version[`${increment_standard}`]++;
           versions['version'] = version
           await Standard.update({$push:{"versions":versions}})
+            .then(result => {
+                res.json({status:200,message:`Updated Standard`})
+            }).catch(err => res.json({status:404,message:`Updated Standard failed`,description:err}))
         }else{
             res.json({status:404,message:`No data found for ${shortName}`})
         }
