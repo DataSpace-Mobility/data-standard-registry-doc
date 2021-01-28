@@ -45,44 +45,69 @@ var get = (req, res, next) => {
   });
 };
 
+const getAllByShortName = async (req, res) => {
+  const shortName = req.body.shortName;
+  await Standard.find({ "info.shortName": shortName })
+    .then((result) => {
+      if (result.length > 0) {
+        result = result[0];
+        res.json(result).status(200);
+      } else {
+        res.json({ status: 404, message: `No data found for ${shortName}` });
+      }
+    })
+    .catch((err) => console.log(err));
+};
+
 const getLatestByShortName = async (req, res) => {
   const shortName = req.body.shortName;
   await Standard.find({ "info.shortName": shortName })
     .then((result) => {
       if (result.length > 0) {
         result = result[0];
-        result["versions"] = [result["versions"][result["versions"].length - 1]];
+        result["versions"] = [
+          result["versions"][result["versions"].length - 1],
+        ];
         res.json(result).status(200);
-      }else{
-          res.json({status:404,message:`No data found for ${shortName}`})
+      } else {
+        res.json({ status: 404, message: `No data found for ${shortName}` });
       }
     })
     .catch((err) => console.log(err));
 };
 
 const updateStandard = async (req, res) => {
-    const shortName = req.body.shortName;
-    // Assuming input versions is an array
-    const versions = req.body.versions[0];
-    // what to update, options -> major, minor, or patch
-    const increment_standard = req.body.increment_standard;
-    await Standard.find({ "info.shortName": shortName })
-      .then(async (result) => {
-        if (result.length > 0) {
-          result = result[0];
-          result["versions"] = [result["versions"][result["versions"].length - 1]];
-          version = result['versions'][0].version
-          version[`${increment_standard}`]++;
-          versions['version'] = version
-          await Standard.update({$push:{"versions":versions}})
-            .then(result => {
-                res.json({status:200,message:`Updated Standard`})
-            }).catch(err => res.json({status:404,message:`Updated Standard failed`,description:err}))
-        }else{
-            res.json({status:404,message:`No data found for ${shortName}`})
-        }
-      })
-      .catch((err) => console.log(err));
+  const shortName = req.body.shortName;
+  // Assuming input versions is an array
+  const versions = req.body.versions[0];
+  // what to update, options -> major, minor, or patch
+  const increment_standard = req.body.increment_standard;
+  await Standard.find({ "info.shortName": shortName })
+    .then(async (result) => {
+      if (result.length > 0) {
+        result = result[0];
+        result["versions"] = [
+          result["versions"][result["versions"].length - 1],
+        ];
+        version = result["versions"][0].version;
+        version[`${increment_standard}`]++;
+        versions["version"] = version;
+        await Standard.update({ $push: { versions: versions } })
+          .then((result) => {
+            res.json({ status: 200, message: `Updated Standard` });
+          })
+          .catch((err) =>
+            res.json({
+              status: 404,
+              message: `Updated Standard failed`,
+              description: err,
+            })
+          );
+      } else {
+        res.json({ status: 404, message: `No data found for ${shortName}` });
+      }
+    })
+    .catch((err) => console.log(err));
 };
 
 var getById = (req, res, next) => {
@@ -92,4 +117,4 @@ var getById = (req, res, next) => {
   });
 };
 
-module.exports = { create, get, getById, getLatestByShortName, updateStandard };
+module.exports = { create, get, getById, getLatestByShortName, updateStandard, getAllByShortName };
