@@ -9,5 +9,6 @@ router.get('/:id', StandardController.getById);
 router.post('/getLatestbyShortName',StandardController.getLatestByShortName);
 router.post('/updateStandard',StandardController.updateStandard);
 router.post('/getAllByShortName',StandardController.getAllByShortName);
+router.post('/getAllStandardByUUID',StandardController.getAllStandardByUUID);
 
 module.exports = router;
