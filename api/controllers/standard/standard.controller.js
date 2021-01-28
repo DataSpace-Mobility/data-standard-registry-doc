@@ -11,7 +11,7 @@ var create = async (req, res, next) => {
                 {
                     const api_auth_key = data.api_auth_key;
                     delete data['api_auth_key'];
-                    if(process.env.api_auth_key === api_auth_key){
+                    if(data.api_auth_key && process.env.api_auth_key === api_auth_key){
                         await Standard.create(data)
                             .then(result => {
                                 res.json({
@@ -47,7 +47,6 @@ var get = (req, res, next) => {
 
 const getLatestByShortName = async (req,res) => {
     const shortName = req.body.shortName;
-    console.log('here')
     await Standard.find({
         "$where":() => {return {"info.shortName":shortName}},
         "$sort":() => {return {"versions.created_at":-1}},
