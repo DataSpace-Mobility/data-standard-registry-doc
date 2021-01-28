@@ -21,7 +21,11 @@ var StandardSchema = new mongoose.Schema({
     },
     versions: [{
         uuid: { type: String, default: uuidv4 },
-        version: { type: String, default: "v0.0.1" },
+        version: { 
+            major:{type: Number, default: 0},
+            minor: {type: Number, default: 0},
+            patch:{type: Number, default: 1}
+        },
         isDraft: { type: Boolean, default: true },
         isPublished: { type: Boolean, default: true },
         createdAt: { type: Date, default: Date.now },
