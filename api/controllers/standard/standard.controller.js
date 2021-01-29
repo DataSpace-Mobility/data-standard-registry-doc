@@ -121,7 +121,17 @@ const updateStandard = async (req, res) => {
           result["versions"][result["versions"].length - 1],
         ];
         version = result["versions"][0].version;
-        version[`${kindOfUpdate.toLowerCase()}`]++;
+        if(kindOfUpdate.toLowerCase == 'major'){
+          version['major']++;
+          version['minor'] = 0;
+          version['patch'] = 0;
+        }
+        else if(kindOfUpdate.toLowerCase == 'minor') {
+          version['minor']++;
+          version['patch'] = 0;
+        } else{
+          version['patch']++;
+        }
         version['updated_at'] = new Date()
         versions["version"] = version;
         await Standard.update({ $push: { versions: versions } })
