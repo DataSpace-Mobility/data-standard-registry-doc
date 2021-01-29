@@ -112,7 +112,7 @@ const updateStandard = async (req, res) => {
   // Assuming input versions is an array
   const versions = req.body.versions[0];
   // what to update, options -> major, minor, or patch
-  const increment_standard = req.body.increment_standard;
+  const kindOfUpdate = req.body.kindOfUpdate;
   await Standard.find({ "info.shortName": shortName })
     .then(async (result) => {
       if (result.length > 0) {
@@ -121,7 +121,7 @@ const updateStandard = async (req, res) => {
           result["versions"][result["versions"].length - 1],
         ];
         version = result["versions"][0].version;
-        version[`${increment_standard}`]++;
+        version[`${kindOfUpdate.toLowerCase()}`]++;
         versions["version"] = version;
         await Standard.update({ $push: { versions: versions } })
           .then((result) => {
