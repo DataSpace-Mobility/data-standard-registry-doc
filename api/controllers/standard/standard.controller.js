@@ -55,7 +55,7 @@ var get = (req, res, next) => {
   });
 };
 
-const getAllByShortName = async (req, res) => {
+const getAllVersionsByShortName = async (req, res) => {
   const shortName = req.body.shortName;
   if (shortName) {
     await Standard.find({ "info.shortName": shortName })
@@ -76,7 +76,7 @@ const getAllByShortName = async (req, res) => {
   }
 };
 
-const getAllStandardByUUID = async (req, res) => {
+const getAllVersionsByUUID = async (req, res) => {
   const uuid = req.body.uuid;
   if (uuid) {
     await Standard.find({ uuid: uuid })
@@ -97,7 +97,7 @@ const getAllStandardByUUID = async (req, res) => {
   }
 };
 
-const getLatestStandardByUUID = async (req, res) => {
+const getLatestVersionByUUID = async (req, res) => {
   const uuid = req.body.uuid;
   if (uuid) {
     await Standard.find({ uuid: uuid })
@@ -121,7 +121,7 @@ const getLatestStandardByUUID = async (req, res) => {
   }
 };
 
-const getLatestByShortName = async (req, res) => {
+const getLatestVersionByShortName = async (req, res) => {
   const shortName = req.body.shortName;
   if (shortName) {
     await Standard.find({ "info.shortName": shortName })
@@ -222,9 +222,9 @@ module.exports = {
   create,
   get,
   getById,
-  getLatestByShortName,
+  getLatestVersionByShortName,
   updateStandard,
-  getAllByShortName,
-  getAllStandardByUUID,
-  getLatestStandardByUUID,
+  getAllVersionsByShortName,
+  getAllVersionsByUUID,
+  getLatestVersionByUUID,
 };
