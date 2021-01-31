@@ -61,7 +61,7 @@ const getAllByShortName = async (req, res) => {
 
 const getAllStandardByUUID = async (req, res) => {
   const uuid = req.body.uuid;
-  await Standard.find({ "uuid": uuid })
+  await Standard.find({ uuid: uuid })
     .then((result) => {
       if (result.length > 0) {
         result = result[0];
@@ -74,21 +74,21 @@ const getAllStandardByUUID = async (req, res) => {
 };
 
 const getLatestStandardByUUID = async (req, res) => {
-    const uuid = req.body.uuid;
-    await Standard.find({ "uuid": uuid })
-      .then((result) => {
-        if (result.length > 0) {
-          result = result[0];
-          result["versions"] = [
-            result["versions"][result["versions"].length - 1],
-          ];
-          res.json(result).status(200);
-        } else {
-          res.json({ status: 404, message: `No data found for ${uuid}` });
-        }
-      })
-      .catch((err) => console.log(err));
-  };
+  const uuid = req.body.uuid;
+  await Standard.find({ uuid: uuid })
+    .then((result) => {
+      if (result.length > 0) {
+        result = result[0];
+        result["versions"] = [
+          result["versions"][result["versions"].length - 1],
+        ];
+        res.json(result).status(200);
+      } else {
+        res.json({ status: 404, message: `No data found for ${uuid}` });
+      }
+    })
+    .catch((err) => console.log(err));
+};
 
 const getLatestByShortName = async (req, res) => {
   const shortName = req.body.shortName;
@@ -113,43 +113,50 @@ const updateStandard = async (req, res) => {
   const versions = req.body.versions[0];
   // what to update, options -> major, minor, or patch
   const kindOfUpdate = req.body.kindOfUpdate;
-  await Standard.find({ "info.shortName": shortName })
-    .then(async (result) => {
-      if (result.length > 0) {
-        result = result[0];
-        result["versions"] = [
-          result["versions"][result["versions"].length - 1],
-        ];
-        version = result["versions"][0].version;
-        if(kindOfUpdate.toLowerCase == 'major'){
-          version['major']++;
-          version['minor'] = 0;
-          version['patch'] = 0;
-        }
-        else if(kindOfUpdate.toLowerCase == 'minor') {
-          version['minor']++;
-          version['patch'] = 0;
-        } else{
-          version['patch']++;
-        }
-        version['updated_at'] = new Date()
-        versions["version"] = version;
-        await Standard.update({ $push: { versions: versions } })
-          .then((result) => {
-            res.json({ status: 200, message: `Updated Standard` });
-          })
-          .catch((err) =>
-            res.json({
-              status: 404,
-              message: `Updated Standard failed`,
-              description: err,
+  const api_auth_key = data.api_auth_key;
+  if (req.body.api_auth_key && process.env.api_auth_key === api_auth_key) {
+    await Standard.find({ "info.shortName": shortName })
+      .then(async (result) => {
+        if (result.length > 0) {
+          result = result[0];
+          result["versions"] = [
+            result["versions"][result["versions"].length - 1],
+          ];
+          version = result["versions"][0].version;
+          if (kindOfUpdate.toLowerCase == "major") {
+            version["major"]++;
+            version["minor"] = 0;
+            version["patch"] = 0;
+          } else if (kindOfUpdate.toLowerCase == "minor") {
+            version["minor"]++;
+            version["patch"] = 0;
+          } else {
+            version["patch"]++;
+          }
+          version["updated_at"] = new Date();
+          versions["version"] = version;
+          await Standard.update({ $push: { versions: versions } })
+            .then((result) => {
+              res.json({ status: 200, message: `Updated Standard` });
             })
-          );
-      } else {
-        res.json({ status: 404, message: `No data found for ${shortName}` });
-      }
-    })
-    .catch((err) => console.log(err));
+            .catch((err) =>
+              res.json({
+                status: 404,
+                message: `Updated Standard failed`,
+                description: err,
+              })
+            );
+        } else {
+          res.json({ status: 404, message: `No data found for ${shortName}` });
+        }
+      })
+      .catch((err) => console.log(err));
+  } else {
+    res.json({
+      status: 404,
+      message: "Invalid / No auth key found",
+    });
+  }
 };
 
 var getById = (req, res, next) => {
@@ -167,5 +174,5 @@ module.exports = {
   updateStandard,
   getAllByShortName,
   getAllStandardByUUID,
-  getLatestStandardByUUID
+  getLatestStandardByUUID,
 };
