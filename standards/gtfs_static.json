@@ -1,0 +1,2507 @@
+{
+    "info": {
+        "name": "General Transit Feed Specification - Static",
+        "description": "The General Transit Feed Specification (GTFS) defines a common format for public transportation schedules and associated geographic information.",  
+        "sector": "Transit",
+        "category": "Public Transportation"
+    },
+    "time": {
+    "lastUpdatedOn": "09:30 AM, 21st Jan, 2021 IST",
+    "createdOn": "09:30 AM, 21st Jan, 2021 IST"
+    },
+    "version": "v1.0",
+    "license": "Apache 2.0",
+    "protoURL": "https://raw.githubusercontent.com/DataSpace-Mobility/data-standard-registry/master/transit/gtfs/GtfsStatic.proto",
+    "files": [
+        {
+          "name": "GTFSStatic.proto",
+          "description": "",
+          "package": "transit_static",
+          "hasEnums": true,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "ExceptionType",
+              "longName": "CalendarDateEntry.ExceptionType",
+              "fullName": "transit_static.CalendarDateEntry.ExceptionType",
+              "description": "",
+              "values": [
+                {
+                  "name": "EXCEPTION_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": "This value is not known."
+                },
+                {
+                  "name": "EXCEPTION_TYPE_ADDED",
+                  "number": "1",
+                  "description": "Service has been added for the specified date."
+                },
+                {
+                  "name": "EXCEPTION_TYPE_REMOVED",
+                  "number": "2",
+                  "description": "Service has been removed for the specified date."
+                }
+              ]
+            },
+            {
+              "name": "ContinousDropOffType",
+              "longName": "ContinousDropOffType",
+              "fullName": "transit_static.ContinousDropOffType",
+              "description": "",
+              "values": [
+                {
+                  "name": "CONTINOUS_DROP_OFF_TYPE_CONTINOUS",
+                  "number": "0",
+                  "description": "Continuous stopping drop-off."
+                },
+                {
+                  "name": "CONTINOUS_DROP_OFF_TYPE_NON_CONTINOUS",
+                  "number": "1",
+                  "description": "No continuous stopping drop-off."
+                },
+                {
+                  "name": "CONTINOUS_DROP_OFF_TYPE_MUST_PHONE",
+                  "number": "2",
+                  "description": "Must phone an agency to arrange continuous stopping drop-off."
+                },
+                {
+                  "name": "CONTINOUS_DROP_OFF_TYPE_MUST_COORDINATE",
+                  "number": "3",
+                  "description": "Must coordinate with a driver to arrange continuous stopping drop-off."
+                }
+              ]
+            },
+            {
+              "name": "ContinousPickupType",
+              "longName": "ContinousPickupType",
+              "fullName": "transit_static.ContinousPickupType",
+              "description": "",
+              "values": [
+                {
+                  "name": "CONTINOUS_PICKUP_TYPE_CONTINOUS",
+                  "number": "0",
+                  "description": "Continuous stopping pickup"
+                },
+                {
+                  "name": "CONTINOUS_PICKUP_TYPE_NON_CONTINOUS",
+                  "number": "1",
+                  "description": "No continuous stopping pickup."
+                },
+                {
+                  "name": "CONTINOUS_PICKUP_TYPE_MUST_PHONE",
+                  "number": "2",
+                  "description": "Must phone an agency to arrange continuous stopping pickup."
+                },
+                {
+                  "name": "CONTINOUS_PICKUP_TYPE_MUST_COORDINATE",
+                  "number": "3",
+                  "description": "Must coordinate with a driver to arrange continuous stopping pickup."
+                }
+              ]
+            },
+            {
+              "name": "PaymentMethod",
+              "longName": "FareAttribute.PaymentMethod",
+              "fullName": "transit_static.FareAttribute.PaymentMethod",
+              "description": "",
+              "values": [
+                {
+                  "name": "PAYMENT_METHOD_ONBOARD",
+                  "number": "0",
+                  "description": "Fare is paid on board."
+                },
+                {
+                  "name": "PAYMENT_METHOD_PREBOARDING",
+                  "number": "1",
+                  "description": "Fare must be paid before boarding."
+                }
+              ]
+            },
+            {
+              "name": "TransferType",
+              "longName": "FareAttribute.TransferType",
+              "fullName": "transit_static.FareAttribute.TransferType",
+              "description": "",
+              "values": [
+                {
+                  "name": "TRANSFER_TYPE_NO",
+                  "number": "0",
+                  "description": "No transfers permitted on this fare."
+                },
+                {
+                  "name": "TRANSFER_TYPE_ONCE",
+                  "number": "1",
+                  "description": "Riders may transfer once."
+                },
+                {
+                  "name": "TRANSFER_TYPE_TWICE",
+                  "number": "2",
+                  "description": "Riders may transfer twice."
+                },
+                {
+                  "name": "TRANSFER_TYPE_UNLIMITED",
+                  "number": "3",
+                  "description": "Unlimited transfers are permitted."
+                }
+              ]
+            },
+            {
+              "name": "ScheduleType",
+              "longName": "FrequencyEntry.ScheduleType",
+              "fullName": "transit_static.FrequencyEntry.ScheduleType",
+              "description": "",
+              "values": [
+                {
+                  "name": "NOT_EXACTLY",
+                  "number": "0",
+                  "description": "Frequency-based trips."
+                },
+                {
+                  "name": "EXACTLY",
+                  "number": "1",
+                  "description": "Schedule-based trips with the exact same headway throughout the day. In this case the end_time value must be greater than the last desired trip start_time but less than the last desired trip start_time + headway_secs."
+                }
+              ]
+            },
+            {
+              "name": "PathwayModeType",
+              "longName": "Pathway.PathwayModeType",
+              "fullName": "transit_static.Pathway.PathwayModeType",
+              "description": "",
+              "values": [
+                {
+                  "name": "PATHWAY_MODE_UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "PATHWAY_MODE_WALKWAY",
+                  "number": "1",
+                  "description": "walkway"
+                },
+                {
+                  "name": "PATHWAY_MODE_STAIRS",
+                  "number": "2",
+                  "description": "stairs"
+                },
+                {
+                  "name": "PATHWAY_MODE_MOVING_SIDEWALK",
+                  "number": "3",
+                  "description": "moving sidewalk/travelator"
+                },
+                {
+                  "name": "PATHWAY_MODE_ESCALATOR",
+                  "number": "4",
+                  "description": "escalator"
+                },
+                {
+                  "name": "PATHWAY_MODE_ELEVATOR",
+                  "number": "5",
+                  "description": "elevator"
+                },
+                {
+                  "name": "PATHWAY_MODE_FARE_GATE",
+                  "number": "6",
+                  "description": "(or payment gate): A pathway that crosses into an area of the station where a proof of payment is required (usually via a physical payment gate)."
+                },
+                {
+                  "name": "PATHWAY_MODE_EXIT_GATE",
+                  "number": "7",
+                  "description": "Indicates a pathway exiting an area where proof-of-payment is required into an area where proof-of-payment is no longer required."
+                }
+              ]
+            },
+            {
+              "name": "RouteType",
+              "longName": "Route.RouteType",
+              "fullName": "transit_static.Route.RouteType",
+              "description": "The route_type field describes the type of transportation used on a route.",
+              "values": [
+                {
+                  "name": "TRAM",
+                  "number": "0",
+                  "description": "Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area."
+                },
+                {
+                  "name": "SUBWAY",
+                  "number": "1",
+                  "description": "Subway, Metro. Any underground rail system within a metropolitan area."
+                },
+                {
+                  "name": "RAIL",
+                  "number": "2",
+                  "description": "Rail. Used for intercity or long-distance travel."
+                },
+                {
+                  "name": "BUS",
+                  "number": "3",
+                  "description": "Bus. Used for short- and long-distance bus routes."
+                },
+                {
+                  "name": "FERRY",
+                  "number": "4",
+                  "description": "Ferry. Used for short- and long-distance boat service."
+                },
+                {
+                  "name": "CABLE_TRAM",
+                  "number": "5",
+                  "description": "Cable car. Used for street-level cable cars where the cable runs beneath the car."
+                },
+                {
+                  "name": "AERIAL_LIFT",
+                  "number": "6",
+                  "description": "Aerial lift, suspended cable car (e.g., gondola lift, aerial tramway). Cable transport where cabins, cars, gondolas or open chairs are suspended by means of one or more cables."
+                },
+                {
+                  "name": "FUNICULAR",
+                  "number": "7",
+                  "description": "Funicular. Any rail system designed for steep inclines."
+                },
+                {
+                  "name": "TROLLEYBUS",
+                  "number": "8",
+                  "description": "Electric buses that draw power from overhead wires using poles."
+                },
+                {
+                  "name": "MONORAIL",
+                  "number": "9",
+                  "description": "Railway in which the track consists of a single rail or a beam."
+                }
+              ]
+            },
+            {
+              "name": "LocationType",
+              "longName": "Stop.LocationType",
+              "fullName": "transit_static.Stop.LocationType",
+              "description": "",
+              "values": [
+                {
+                  "name": "STOP",
+                  "number": "0",
+                  "description": "Stop (or Platform). A location where passengers board or disembark from a transit vehicle. Is called a platform when defined within a parent_station."
+                },
+                {
+                  "name": "STATION",
+                  "number": "1",
+                  "description": "A physical structure or area that contains one or more platform."
+                },
+                {
+                  "name": "ENTRANCE_EXIT",
+                  "number": "2",
+                  "description": "A location where passengers can enter or exit a station from the street. If an entrance/exit belongs to multiple stations, it can be linked by pathways to both, but the data provider must pick one of them as parent."
+                },
+                {
+                  "name": "GENERIC_NODE",
+                  "number": "3",
+                  "description": "A location within a station, not matching any other location_type, which can be used to link together pathways define in pathways.txt."
+                },
+                {
+                  "name": "BOARDING_AREA",
+                  "number": "4",
+                  "description": "A specific location on a platform, where passengers can board and/or alight vehicles."
+                }
+              ]
+            },
+            {
+              "name": "WheelchairBoarding",
+              "longName": "Stop.WheelchairBoarding",
+              "fullName": "transit_static.Stop.WheelchairBoarding",
+              "description": "",
+              "values": [
+                {
+                  "name": "UNKNOWN",
+                  "number": "0",
+                  "description": "no accessibility information for the stop"
+                },
+                {
+                  "name": "ACCESSIBLE",
+                  "number": "1",
+                  "description": "some vehicles at this stop can be boarded by a rider in a wheelchair"
+                },
+                {
+                  "name": "NOT_ACCESSIBLE",
+                  "number": "2",
+                  "description": "wheelchair boarding is not possible at this stop"
+                }
+              ]
+            },
+            {
+              "name": "DropOffType",
+              "longName": "StopTime.DropOffType",
+              "fullName": "transit_static.StopTime.DropOffType",
+              "description": "",
+              "values": [
+                {
+                  "name": "DROP_OFF_TYPE_REGULAR",
+                  "number": "0",
+                  "description": "Regularly scheduled drop off."
+                },
+                {
+                  "name": "DROP_OFF_TYPE_NOT_AVAILABLE",
+                  "number": "1",
+                  "description": "No drop off available."
+                },
+                {
+                  "name": "DROP_OFF_TYPE_PHONE_AGENCY",
+                  "number": "2",
+                  "description": "Must phone agency to arrange drop off."
+                },
+                {
+                  "name": "DROP_OFF_TYPE_DRIVER_W_DRIVER",
+                  "number": "3",
+                  "description": "Must coordinate with driver to arrange drop off."
+                }
+              ]
+            },
+            {
+              "name": "PickupType",
+              "longName": "StopTime.PickupType",
+              "fullName": "transit_static.StopTime.PickupType",
+              "description": "",
+              "values": [
+                {
+                  "name": "PICKUP_TYPE_REGULAR",
+                  "number": "0",
+                  "description": "Regularly scheduled pickup."
+                },
+                {
+                  "name": "PICKUP_TYPE_NOT_AVAILABLE",
+                  "number": "1",
+                  "description": "No pickup available."
+                },
+                {
+                  "name": "PICKUP_TYPE_PHONE_AGENCY",
+                  "number": "2",
+                  "description": "Must phone agency to arrange pickup."
+                },
+                {
+                  "name": "PICKUP_TYPE_DRIVER_W_DRIVER",
+                  "number": "3",
+                  "description": "Must coordinate with driver to arrange pickup."
+                }
+              ]
+            },
+            {
+              "name": "Timepoint",
+              "longName": "StopTime.Timepoint",
+              "fullName": "transit_static.StopTime.Timepoint",
+              "description": "",
+              "values": [
+                {
+                  "name": "TIMEPOINT_APPROX",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "TIMEPOINT_EXACT",
+                  "number": "1",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "TransferType",
+              "longName": "Transfer.TransferType",
+              "fullName": "transit_static.Transfer.TransferType",
+              "description": "",
+              "values": [
+                {
+                  "name": "TRANSFER_TYPE_RECOMMENDED",
+                  "number": "0",
+                  "description": "Recommended transfer point between routes."
+                },
+                {
+                  "name": "TRANSFER_TYPE_TIMED",
+                  "number": "1",
+                  "description": "Timed transfer point between two routes. The departing vehicle is expected to wait for the arriving one and leave sufficient time for a rider to transfer between routes."
+                },
+                {
+                  "name": "TRANSFER_TYPE_MINIMUM",
+                  "number": "2",
+                  "description": "Transfer requires a minimum amount of time between arrival and departure to ensure a connection. The time required to transfer is specified by min_transfer_time."
+                },
+                {
+                  "name": "TRANSFER_TYPE_NOT_POSSIBLE",
+                  "number": "3",
+                  "description": "Transfers are not possible between routes at the location."
+                }
+              ]
+            },
+            {
+              "name": "TableName",
+              "longName": "Translation.TableName",
+              "fullName": "transit_static.Translation.TableName",
+              "description": "",
+              "values": [
+                {
+                  "name": "AGENCY",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "STOPS",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "ROUTES",
+                  "number": "2",
+                  "description": ""
+                },
+                {
+                  "name": "TRIPS",
+                  "number": "3",
+                  "description": ""
+                },
+                {
+                  "name": "STOP_TIMES",
+                  "number": "4",
+                  "description": ""
+                },
+                {
+                  "name": "FEED_INFO",
+                  "number": "5",
+                  "description": ""
+                },
+                {
+                  "name": "PATHWAYS",
+                  "number": "6",
+                  "description": ""
+                },
+                {
+                  "name": "LEVELS",
+                  "number": "7",
+                  "description": ""
+                },
+                {
+                  "name": "ATTRIBUTIONS",
+                  "number": "8",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "BikesAllowed",
+              "longName": "Trip.BikesAllowed",
+              "fullName": "transit_static.Trip.BikesAllowed",
+              "description": "",
+              "values": [
+                {
+                  "name": "BIKES_ALLOWED_NO_INFORMATION",
+                  "number": "0",
+                  "description": "No bike information for the trip."
+                },
+                {
+                  "name": "BIKES_ALLOWED_ATLEAST_ONE_BICYCLE",
+                  "number": "1",
+                  "description": "Vehicle being used on this particular trip can accommodate at least one bicycle."
+                },
+                {
+                  "name": "BIKES_ALLOWED_NO_BICYCLE",
+                  "number": "2",
+                  "description": "No riders in wheelchairs can be accommodated on this trip."
+                }
+              ]
+            },
+            {
+              "name": "Direction",
+              "longName": "Trip.Direction",
+              "fullName": "transit_static.Trip.Direction",
+              "description": "The direction_id field contains a binary value that indicates the direction of travel for a trip.",
+              "values": [
+                {
+                  "name": "UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "INBOUND",
+                  "number": "1",
+                  "description": "Travel in the opposite direction (e.g. inbound travel)."
+                },
+                {
+                  "name": "OUTBOUND",
+                  "number": "2",
+                  "description": "Travel in one direction (e.g. outbound travel)."
+                }
+              ]
+            },
+            {
+              "name": "WheelchairAccessible",
+              "longName": "Trip.WheelchairAccessible",
+              "fullName": "transit_static.Trip.WheelchairAccessible",
+              "description": "",
+              "values": [
+                {
+                  "name": "WHEELCHAIR_ACCESSIBLE_NO_INFORMATION",
+                  "number": "0",
+                  "description": "No accessibility information for the trip."
+                },
+                {
+                  "name": "WHEELCHAIR_ACCESSIBLE_ATLEAST_ONE_WHEELCHAIR",
+                  "number": "1",
+                  "description": "Vehicle being used on this particular trip can accommodate at least one rider in a wheelchair."
+                },
+                {
+                  "name": "WHEELCHAIR_ACCESSIBLE_NO_WHEELCHAIR",
+                  "number": "2",
+                  "description": "No riders in wheelchairs can be accommodated on this trip."
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "Agency",
+              "longName": "Agency",
+              "fullName": "transit_static.Agency",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "agency_id",
+                  "description": "Identifies a transit brandwhich is often synonymous with a transit agency. Note that in some cases, such as when a single agency operates multiple separate services, agencies and brands are distinct. This document uses the term \"agency\" in place of \"brand\". A dataset may contain data from multiple agencies. This field is required when the dataset contains data for multiple transit agencies, otherwise it is optional.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_name",
+                  "description": "Full name of the transit agency.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_url",
+                  "description": "URL of the transit agency.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_timezone",
+                  "description": "Timezone where the transit agency is located. If multiple agencies are specified in the dataset, each must have the same `agency_timezone`.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_lang",
+                  "description": "Primary language used by this transit agency. This field helps GTFS consumers choose capitalization rules and other language-specific settings for the dataset.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_phone",
+                  "description": "A voice telephone number for the specified agency. This field is a string value that presents the telephone number as typical for the agency's service area. It can and should contain punctuation marks to group the digits of the number. Dialable text (for example, TriMet's 503-238-RIDE) is permitted, but the field must not contain any other descriptive text.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_fare_url",
+                  "description": "URL of a web page that allows a rider to purchase tickets or other fare instruments for that agency online.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_email",
+                  "description": "Email address actively monitored by the agency’s customer service department. This email address should be a direct contact point where transit riders can reach a customer service representative at the agency.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Attribution",
+              "longName": "Attribution",
+              "fullName": "transit_static.Attribution",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "attribution_id",
+                  "description": "Identifies an attribution for the dataset, or a subset of it. This field is useful for translations.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_id",
+                  "description": "The agency to which the attribution applies. If one agency_id, route_id, or trip_id attribution is defined, the other fields must be empty. If none are specified, the attribution applies to the whole dataset.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "route_id",
+                  "description": "This field functions in the same way as agency_id, except the attribution applies to a route. Multiple attributions can apply to the same route.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "trip_id",
+                  "description": "This field functions in the same way as agency_id, except the attribution applies to a trip. Multiple attributions can apply to the same trip.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "organization_name",
+                  "description": "The name of the organization that the dataset is attributed to.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "is_producer",
+                  "description": "The role of the organization is producer. Allowed values include the following:\n0 or empty: Organization doesn’t have this role.\n1: Organization does have this role.\nAt least one of the fields, either is_producer, is_operator, or is_authority, must be set at 1.",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "is_operator",
+                  "description": "Functions in the same way as is_producer, except the role of the organization is operator.",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "is_authority",
+                  "description": "Functions in the same way as is_producer, except the role of the organization is authority.",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "attribution_url",
+                  "description": "The URL of the organization.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "attribution_email",
+                  "description": "The email of the organization.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "attribution_phone",
+                  "description": "The phone number of the organization.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "CalendarDateEntry",
+              "longName": "CalendarDateEntry",
+              "fullName": "transit_static.CalendarDateEntry",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "service_id",
+                  "description": "The trip_id field contains an ID that identifies a trip. The trip_id is dataset unique.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "date",
+                  "description": "Date when service exception occurs.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "exception_type",
+                  "description": "Indicates whether service is available on the date specified in the date field.",
+                  "label": "",
+                  "type": "ExceptionType",
+                  "longType": "CalendarDateEntry.ExceptionType",
+                  "fullType": "transit_static.CalendarDateEntry.ExceptionType",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "CalendarEntry",
+              "longName": "CalendarEntry",
+              "fullName": "transit_static.CalendarEntry",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "service_id",
+                  "description": "The trip_id field contains an ID that identifies a trip. The trip_id is dataset unique.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "monday",
+                  "description": "",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "tuesday",
+                  "description": "",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "wednesday",
+                  "description": "",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "thursday",
+                  "description": "",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "friday",
+                  "description": "",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "saturday",
+                  "description": "",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "sunday",
+                  "description": "",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "start_date",
+                  "description": "Start service day for the service interval.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "end_date",
+                  "description": "End service day for the service interval. This service day is included in the interval.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "FareAttribute",
+              "longName": "FareAttribute",
+              "fullName": "transit_static.FareAttribute",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "fare_id",
+                  "description": "Identifies a fare class.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "price",
+                  "description": "Fare price, in the unit specified by currency_type.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "currency_type",
+                  "description": "Currency used to pay the fare.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "payment_method",
+                  "description": "Indicates when the fare must be paid.",
+                  "label": "",
+                  "type": "PaymentMethod",
+                  "longType": "FareAttribute.PaymentMethod",
+                  "fullType": "transit_static.FareAttribute.PaymentMethod",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "transfers",
+                  "description": "Indicates the number of transfers permitted on this fare. The fact that this field can be left empty is an exception to the requirement that a Required field must not be empty.",
+                  "label": "",
+                  "type": "TransferType",
+                  "longType": "FareAttribute.TransferType",
+                  "fullType": "transit_static.FareAttribute.TransferType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_id",
+                  "description": "Identifies the relevant agency for a fare. This field is required for datasets with multiple agencies defined in agency.txt, otherwise it is optional.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "transfer_duration",
+                  "description": "Length of time in seconds before a transfer expires. When transfers=0 this field can be used to indicate how long a ticket is valid for or it can can be left empty.",
+                  "label": "",
+                  "type": "int32",
+                  "longType": "int32",
+                  "fullType": "int32",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "FareRule",
+              "longName": "FareRule",
+              "fullName": "transit_static.FareRule",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "fare_id",
+                  "description": "Identifies a fare class.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "route_id",
+                  "description": "Identifies a route associated with the fare class. If several routes with the same fare attributes exist, create a record in fare_rules.txt for each route.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "origin_id",
+                  "description": "Identifies an origin zone. If a fare class has multiple origin zones, create a record in fare_rules.txt for each origin_id.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "destination_id",
+                  "description": "Identifies a destination zone. If a fare class has multiple destination zones, create a record in fare_rules.txt for each destination_id.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "contains_id",
+                  "description": "Identifies the zones that a rider will enter while using a given fare class. Used in some systems to calculate correct fare class.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "FeedHeader",
+              "longName": "FeedHeader",
+              "fullName": "transit_static.FeedHeader",
+              "description": "Metadata about a feed, included in feed messages.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "gtfs_version",
+                  "description": "",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "last_updated_on",
+                  "description": "Last update timestamp.",
+                  "label": "",
+                  "type": "uint64",
+                  "longType": "uint64",
+                  "fullType": "uint64",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "FeedInfoEntry",
+              "longName": "FeedInfoEntry",
+              "fullName": "transit_static.FeedInfoEntry",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "feed_publisher_name",
+                  "description": "Full name of the organization that publishes the dataset. This might be the same as one of the agency.agency_name values.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "feed_publisher_url",
+                  "description": "URL of the dataset publishing organization's website. This may be the same as one of the agency.agency_url values.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "feed_lang",
+                  "description": "Default language for the text in this dataset. This setting helps GTFS consumers choose capitalization rules and other language-specific settings for the dataset.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "default_lang",
+                  "description": "Defines the language used when the data consumer doesn’t know the language of the rider. It's often defined as en, English.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "feed_start_date",
+                  "description": "The dataset provides complete and reliable schedule information for service in the period from the beginning of the feed_start_date day to the end of the feed_end_date day. Both days can be left empty if unavailable. The feed_end_date date must not precede the feed_start_date date if both are given. Dataset providers are encouraged to give schedule data outside this period to advise of likely future service, but dataset consumers should treat it mindful of its non-authoritative status. If feed_start_date or feed_end_date extend beyond the active calendar dates defined in calendar.txt and calendar_dates.txt, the dataset is making an explicit assertion that there is no service for dates within the feed_start_date to feed_end_date range but not included in the active calendar dates.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "feed_end_date",
+                  "description": "Refer to the feed_start_date row in this table.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "feed_version",
+                  "description": "String that indicates the current version of their GTFS dataset. GTFS-consuming applications can display this value to help dataset publishers determine whether the latest dataset has been incorporated.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "feed_contact_email",
+                  "description": "Email address for communication regarding the GTFS dataset and data publishing practices. feed_contact_email is a technical contact for GTFS-consuming applications. Provide customer service contact information through agency.txt.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "feed_contact_url",
+                  "description": "URL for contact information, a web-form, support desk, or other tools for communication regarding the GTFS dataset and data publishing practices. feed_contact_url is a technical contact for GTFS-consuming applications. Provide customer service contact information through agency.txt.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "FeedMessage",
+              "longName": "FeedMessage",
+              "fullName": "transit_static.FeedMessage",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "header",
+                  "description": "",
+                  "label": "",
+                  "type": "FeedHeader",
+                  "longType": "FeedHeader",
+                  "fullType": "transit_static.FeedHeader",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency",
+                  "description": "Transit agencies with service represented in this dataset.",
+                  "label": "repeated",
+                  "type": "Agency",
+                  "longType": "Agency",
+                  "fullType": "transit_static.Agency",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stops",
+                  "description": "Stops where vehicles pick up or drop off riders. Also defines stations and station entrances.",
+                  "label": "repeated",
+                  "type": "Stop",
+                  "longType": "Stop",
+                  "fullType": "transit_static.Stop",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "routes",
+                  "description": "Transit routes. A route is a group of trips that are displayed to riders as a single service.",
+                  "label": "repeated",
+                  "type": "Route",
+                  "longType": "Route",
+                  "fullType": "transit_static.Route",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "trips",
+                  "description": "Trips for each route. A trip is a sequence of two or more stops that occur during a specific time period.",
+                  "label": "repeated",
+                  "type": "Trip",
+                  "longType": "Trip",
+                  "fullType": "transit_static.Trip",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stop_times",
+                  "description": "Times that a vehicle arrives at and departs from stops for each trip.",
+                  "label": "repeated",
+                  "type": "StopTime",
+                  "longType": "StopTime",
+                  "fullType": "transit_static.StopTime",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "calendar",
+                  "description": "Service dates specified using a weekly schedule with start and end dates. This file is required unless all dates of service are defined in calendar_dates.txt.",
+                  "label": "repeated",
+                  "type": "CalendarEntry",
+                  "longType": "CalendarEntry",
+                  "fullType": "transit_static.CalendarEntry",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "calendar_dates",
+                  "description": "Exceptions for the services defined in the calendar.txt. If calendar.txt is omitted, then calendar_dates.txt is required and must contain all dates of service.",
+                  "label": "repeated",
+                  "type": "CalendarDateEntry",
+                  "longType": "CalendarDateEntry",
+                  "fullType": "transit_static.CalendarDateEntry",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "fare_attributes",
+                  "description": "Fare information for a transit agency's routes.",
+                  "label": "repeated",
+                  "type": "FareAttribute",
+                  "longType": "FareAttribute",
+                  "fullType": "transit_static.FareAttribute",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "fare_rules",
+                  "description": "Rules to apply fares for itineraries.",
+                  "label": "repeated",
+                  "type": "FareRule",
+                  "longType": "FareRule",
+                  "fullType": "transit_static.FareRule",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "shapes",
+                  "description": "Rules for mapping vehicle travel paths, sometimes referred to as route alignments.",
+                  "label": "repeated",
+                  "type": "Shape",
+                  "longType": "Shape",
+                  "fullType": "transit_static.Shape",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "frequencies",
+                  "description": "Headway (time between trips) for headway-based service or a compressed representation of fixed-schedule service.",
+                  "label": "repeated",
+                  "type": "FrequencyEntry",
+                  "longType": "FrequencyEntry",
+                  "fullType": "transit_static.FrequencyEntry",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "transfers",
+                  "description": "Rules for making connections at transfer points between routes.",
+                  "label": "repeated",
+                  "type": "Transfer",
+                  "longType": "Transfer",
+                  "fullType": "transit_static.Transfer",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "pathways",
+                  "description": "Pathways linking together locations within stations.",
+                  "label": "repeated",
+                  "type": "Pathway",
+                  "longType": "Pathway",
+                  "fullType": "transit_static.Pathway",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "levels",
+                  "description": "Levels within stations.",
+                  "label": "repeated",
+                  "type": "Level",
+                  "longType": "Level",
+                  "fullType": "transit_static.Level",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "feed_info",
+                  "description": "Dataset metadata, including publisher, version, and expiration information.",
+                  "label": "repeated",
+                  "type": "FeedInfoEntry",
+                  "longType": "FeedInfoEntry",
+                  "fullType": "transit_static.FeedInfoEntry",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "translations",
+                  "description": "Translated information of a transit agency.",
+                  "label": "repeated",
+                  "type": "Translation",
+                  "longType": "Translation",
+                  "fullType": "transit_static.Translation",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "attributions",
+                  "description": "Specifies the attributions that are applied to the dataset.",
+                  "label": "repeated",
+                  "type": "Attribution",
+                  "longType": "Attribution",
+                  "fullType": "transit_static.Attribution",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "FrequencyEntry",
+              "longName": "FrequencyEntry",
+              "fullName": "transit_static.FrequencyEntry",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "trip_id",
+                  "description": "Identifies a trip to which the specified headway of service applies.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "start_time",
+                  "description": "Time at which the first vehicle departs from the first stop of the trip with the specified headway.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "end_time",
+                  "description": "Time at which service changes to a different headway (or ceases) at the first stop in the trip.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "headway_secs",
+                  "description": "Time, in seconds, between departures from the same stop (headway) for the trip, during the time interval specified by start_time and end_time. Multiple headways for the same trip are allowed, but may not overlap. New headways may start at the exact time the previous headway ends.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "exact_times",
+                  "description": "Indicates the type of service for a trip. See the file description for more information.",
+                  "label": "",
+                  "type": "ScheduleType",
+                  "longType": "FrequencyEntry.ScheduleType",
+                  "fullType": "transit_static.FrequencyEntry.ScheduleType",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Level",
+              "longName": "Level",
+              "fullName": "transit_static.Level",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "level_id",
+                  "description": "Id of the level that can be referenced from stops.txt.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "level_index",
+                  "description": "Numeric index of the level that indicates relative position of this level in relation to other levels (levels with higher indices are assumed to be located above levels with lower indices).",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "level_name",
+                  "description": "Optional name of the level (that matches level lettering/numbering used inside the building or the station). Is useful for elevator routing (e.g. “take the elevator to level “Mezzanine” or “Platforms” or “-1”).",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Pathway",
+              "longName": "Pathway",
+              "fullName": "transit_static.Pathway",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "pathway_id",
+                  "description": "The pathway_id field contains an ID that uniquely identifies the pathway. The pathway_id is used by systems as an internal identifier of this record (e.g., primary key in database), and therefore the pathway_id must be dataset unique. \nDifferent pathways can go from the same from_stop_id to the same to_stop_id. For example, this happens when two escalators are side by side in opposite direction, or when a stair is nearby and elevator and both go from the same place to the same place.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "from_stop_id",
+                  "description": "Location at which the pathway begins. It contains a stop_id that identifies a platform, entrance/exit, generic node or boarding area from the stops.txt file.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "to_stop_id",
+                  "description": "Location at which the pathway ends. It contains a stop_id that identifies a platform, entrance/exit, generic node or boarding area from the stops.txt file.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "pathway_mode",
+                  "description": "Type of pathway between the specified (from_stop_id, to_stop_id) pair.",
+                  "label": "",
+                  "type": "PathwayModeType",
+                  "longType": "Pathway.PathwayModeType",
+                  "fullType": "transit_static.Pathway.PathwayModeType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "is_bidirectional",
+                  "description": "Indicates in which direction the pathway can be used:\n0: Unidirectional pathway, it can only be used from from_stop_id to to_stop_id.\n1: Bidirectional pathway, it can be used in the two directions.",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "length",
+                  "description": "Horizontal length in meters of the pathway from the origin location (defined in from_stop_id) to the destination location (defined in to_stop_id).",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "traversal_time",
+                  "description": "Average time in seconds needed to walk through the pathway from the origin location (defined in from_stop_id) to the destination location (defined in to_stop_id).",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stair_count",
+                  "description": "Number of stairs of the pathway.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "max_slope",
+                  "description": "Maximum slope ratio of the pathway\n0: no slope.\nA float: slope ratio of the pathway, positive for upwards, negative for downwards.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "min_width",
+                  "description": "Minimum width of the pathway in meters.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "signposted_as",
+                  "description": "String of text from physical signage visible to transit riders. The string can be used to provide text directions to users, such as 'follow signs to '. The language text should appear in this field exactly how it is printed on the signs - it should not be translated.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "reversed_signposted_as",
+                  "description": "Same than the signposted_as field, but when the pathways is used backward, i.e. from the to_stop_id to the from_stop_id.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Route",
+              "longName": "Route",
+              "fullName": "transit_static.Route",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "route_id",
+                  "description": "The route_id field contains an ID that uniquely identifies a route.\nThe route_id is dataset unique.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_id",
+                  "description": "The agency_id field defines an agency for the specified route.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "route_short_name",
+                  "description": "The route_short_name contains the short name of a route.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "route_long_name",
+                  "description": "The route_long_name contains the full name of a route.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "route_desc",
+                  "description": "The route_desc field contains a description of a route.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "route_type",
+                  "description": "",
+                  "label": "",
+                  "type": "RouteType",
+                  "longType": "Route.RouteType",
+                  "fullType": "transit_static.Route.RouteType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "route_url",
+                  "description": "The route_url field contains the URL of a web page about that particular route.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "route_color",
+                  "description": "In systems that have colors assigned to routes, the route_color field defines a color that corresponds to a route.\nThe color must be provided as a six-character hexadecimal number, for example, 00FFFF.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "route_text_color",
+                  "description": "The route_text_color field can be used to specify a legible color to use for text drawn against a background of route_color.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "route_sort_order",
+                  "description": "Orders the routes in a way which is ideal for presentation to customers. Routes with smaller route_sort_order values should be displayed first.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "continous_pickup",
+                  "description": "Indicates whether a rider can board the transit vehicle anywhere along the vehicle’s travel path. The path is described by shapes.txt on every trip of the route.",
+                  "label": "",
+                  "type": "ContinousPickupType",
+                  "longType": "ContinousPickupType",
+                  "fullType": "transit_static.ContinousPickupType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "continuous_drop_off",
+                  "description": "Indicates whether a rider can alight from the transit vehicle at any point along the vehicle’s travel path. The path is described by shapes.txt on every trip of the route.",
+                  "label": "",
+                  "type": "ContinousDropOffType",
+                  "longType": "ContinousDropOffType",
+                  "fullType": "transit_static.ContinousDropOffType",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Shape",
+              "longName": "Shape",
+              "fullName": "transit_static.Shape",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "shape_id",
+                  "description": "Identifies a shape.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "shape_pt_lat",
+                  "description": "Latitude of a shape point. Each record in shapes.txt represents a shape point used to define the shape.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "shape_pt_lon",
+                  "description": "Longitude of a shape point.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "shape_pt_sequence",
+                  "description": "Sequence in which the shape points connect to form the shape. Values must increase along the trip but do not need to be consecutive.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "shape_dist_traveled",
+                  "description": "Actual distance traveled along the shape from the first shape point to the point specified in this record. Used by trip planners to show the correct portion of the shape on a map. Values must increase along with shape_pt_sequence; they cannot be used to show reverse travel along a route. Distance units must be consistent with those used in stop_times.txt.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Stop",
+              "longName": "Stop",
+              "fullName": "transit_static.Stop",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "stop_id",
+                  "description": "Identifies a stop, station, or station entrance. \nThe term \"station entrance\" refers to both station entrances and station exits. Stops, stations or station entrances are collectively referred to as locations. Multiple routes may use the same stop.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stop_code",
+                  "description": "Short text or a number that identifies the location for riders. These codes are often used in phone-based transit information systems or printed on signage to make it easier for riders to get information for a particular location. The stop_code can be the same as stop_id if it is public facing. This field should be left empty for locations without a code presented to riders.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stop_name",
+                  "description": "The stop_name field contains the name of a stop or station.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stop_desc",
+                  "description": "The stop_desc field contains a description of a stop.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stop_lat",
+                  "description": "Degrees North, in the WGS-84 coordinate system.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stop_lon",
+                  "description": "Degrees East, in the WGS-84 coordinate system.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "zone_id",
+                  "description": "Identifies the fare zone for a stop. This field is required if providing fare information using fare_rules.txt, otherwise it is optional. If this record represents a station or station entrance, the zone_id is ignored.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stop_url",
+                  "description": "URL of a web page about the location. This should be different from the agency.agency_url and the routes.route_url field values.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "location_type",
+                  "description": "Type of the location",
+                  "label": "",
+                  "type": "LocationType",
+                  "longType": "Stop.LocationType",
+                  "fullType": "transit_static.Stop.LocationType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "parent_station",
+                  "description": "Defines hierarchy between the different locations defined in stops.txt.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "agency_timezone",
+                  "description": "Timezone of the location.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "wheelchair_boarding",
+                  "description": "The exact status of the vehicle with respect to the current stop.\nIgnored if current_stop_sequence is missing.",
+                  "label": "",
+                  "type": "WheelchairBoarding",
+                  "longType": "Stop.WheelchairBoarding",
+                  "fullType": "transit_static.Stop.WheelchairBoarding",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "level_id",
+                  "description": "Level of the location. The same level can be used by multiple unlinked stations.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "platform_code",
+                  "description": "Platform identifier for a platform stop (a stop belonging to a station). This should be just the platform identifier (eg. G or 3). Words like \"platform\" or \"track\" (or the feed’s language-specific equivalent) should not be included. This allows feed consumers to more easily internationalize and localize the platform identifier into other languages.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "StopTime",
+              "longName": "StopTime",
+              "fullName": "transit_static.StopTime",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "trip_id",
+                  "description": "Identifies a trip.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "arrival_time",
+                  "description": "Arrival time at a specific stop for a specific trip on a route. If there are not separate times for arrival and departure at a stop, enter the same value for arrival_time and departure_time. For times occurring after midnight on the service day, enter the time as a value greater than 24:00:00 in HH:MM:SS local time for the day on which the trip schedule begins.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "departure_time",
+                  "description": "Departure time from a specific stop for a specific trip on a route. For times occurring after midnight on the service day, enter the time as a value greater than 24:00:00 in HH:MM:SS local time for the day on which the trip schedule begins. If there are not separate times for arrival and departure at a stop, enter the same value for arrival_time and departure_time. See the arrival_time description for more details about using timepoints correctly.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stop_id",
+                  "description": "Identifies the serviced stop. All stops serviced during a trip must have a record in stop_times.txt. Referenced locations must be stops, not stations or station entrances. A stop may be serviced multiple times in the same trip, and multiple trips and routes may service the same stop.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stop_sequence",
+                  "description": "Order of stops for a particular trip. The values must increase along the trip but do not need to be consecutive.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stop_headsign",
+                  "description": "Text that appears on signage identifying the trip's destination to riders. This field overrides the default trips.trip_headsign when the headsign changes between stops. If the headsign is displayed for an entire trip, use trips.trip_headsign instead.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "pickup_type",
+                  "description": "Indicates pickup method.",
+                  "label": "",
+                  "type": "PickupType",
+                  "longType": "StopTime.PickupType",
+                  "fullType": "transit_static.StopTime.PickupType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "drop_off_type",
+                  "description": "Indicates drop off method.",
+                  "label": "",
+                  "type": "DropOffType",
+                  "longType": "StopTime.DropOffType",
+                  "fullType": "transit_static.StopTime.DropOffType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "continuous_pickup",
+                  "description": "Indicates whether a rider can board the transit vehicle at any point along the vehicle’s travel path. The path is described by shapes.txt, from this stop_time to the next stop_time in the trip’s stop_sequence.",
+                  "label": "",
+                  "type": "ContinousPickupType",
+                  "longType": "ContinousPickupType",
+                  "fullType": "transit_static.ContinousPickupType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "continuous_drop_off",
+                  "description": "Indicates whether a rider can alight from the transit vehicle at any point along the vehicle’s travel path as described by shapes.txt, from this stop_time to the next stop_time in the trip’s stop_sequence.",
+                  "label": "",
+                  "type": "ContinousDropOffType",
+                  "longType": "ContinousDropOffType",
+                  "fullType": "transit_static.ContinousDropOffType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "shape_dist_traveled",
+                  "description": "Actual distance traveled along the associated shape, from the first stop to the stop specified in this record. This field specifies how much of the shape to draw between any two stops during a trip. Must be in the same units used in shapes.txt. Values used for shape_dist_traveled must increase along with stop_sequence; they cannot be used to show reverse travel along a route.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "timepoint",
+                  "description": "Indicates if arrival and departure times for a stop are strictly adhered to by the vehicle or if they are instead approximate and/or interpolated times. This field allows a GTFS producer to provide interpolated stop-times, while indicating that the times are approximate.",
+                  "label": "",
+                  "type": "Timepoint",
+                  "longType": "StopTime.Timepoint",
+                  "fullType": "transit_static.StopTime.Timepoint",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Transfer",
+              "longName": "Transfer",
+              "fullName": "transit_static.Transfer",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "from_stop_id",
+                  "description": "Identifies a stop or station where a connection between routes begins. If this field refers to a station, the transfer rule applies to all its child stops.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "to_stop_id",
+                  "description": "Identifies a stop or station where a connection between routes ends. If this field refers to a station, the transfer rule applies to all child stops.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "transfer_type",
+                  "description": "Indicates the type of connection for the specified (from_stop_id, to_stop_id) pair.",
+                  "label": "",
+                  "type": "TransferType",
+                  "longType": "Transfer.TransferType",
+                  "fullType": "transit_static.Transfer.TransferType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "min_transfer_time",
+                  "description": "Amount of time, in seconds, that must be available to permit a transfer between routes at the specified stops. The min_transfer_time should be sufficient to permit a typical rider to move between the two stops, including buffer time to allow for schedule variance on each route.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Translation",
+              "longName": "Translation",
+              "fullName": "transit_static.Translation",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "table_name",
+                  "description": "Defines the dataset table that contains the field to be translated.",
+                  "label": "",
+                  "type": "TableName",
+                  "longType": "Translation.TableName",
+                  "fullType": "transit_static.Translation.TableName",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "field_name",
+                  "description": "Provides the name of the field to be translated. Fields with the type \"Text\" can be translated, while fields with the types \"URL,\" \"Email,\" and \"Phone number\" can be included here to provide those resources in the correct language.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "language",
+                  "description": "Provides the language of translation.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "translation",
+                  "description": "Provides the translated value for the specified field_name.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "record_id",
+                  "description": "Defines the record that corresponds to the field to be translated. The value in record_id needs to be a main ID from a dataset table,",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "record_sub_id",
+                  "description": "Helps to translate the record that contains the field when the table referenced in record_id doesn’t have a unique ID. The value in record_sub_id is the secondary ID of a dataset table",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "field_value",
+                  "description": "Instead of using record_id and record_sub_id to define which record needs to be translated, field_value can be used to define the value for translation. When used, the translation is applied when the field identified by table_name and field_name contains the exact same value defined in field_value.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Trip",
+              "longName": "Trip",
+              "fullName": "transit_static.Trip",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "route_id",
+                  "description": "The route_id field contains an ID that uniquely identifies a route.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "service_id",
+                  "description": "The service_id contains an ID that uniquely identifies a set of dates when service is available for one or more routes.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "trip_id",
+                  "description": "The trip_id field contains an ID that identifies a trip. The trip_id is dataset unique.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "trip_headsign",
+                  "description": "The trip_headsign field contains the text that appears on a sign that identifies the trip's destination to passengers.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "trip_short_name",
+                  "description": "The trip_short_name field contains the text that appears in schedules and sign boards to identify the trip to passengers.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "direction_id",
+                  "description": "Indicates the direction of travel for a trip. This field is not used in routing; it provides a way to separate trips by direction when publishing time tables.",
+                  "label": "",
+                  "type": "Direction",
+                  "longType": "Trip.Direction",
+                  "fullType": "transit_static.Trip.Direction",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "block_id",
+                  "description": "The block_id field identifies the block to which the trip belongs.\nA block consists of two or more sequential trips made using the same vehicle,\nwhere a passenger can transfer from one trip to the next just by staying in the vehicle.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "shape_id",
+                  "description": "The shape_id field contains an ID that defines a shape for the trip.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "wheelchair_accessible",
+                  "description": "Indicates wheelchair accessibility.",
+                  "label": "",
+                  "type": "WheelchairAccessible",
+                  "longType": "Trip.WheelchairAccessible",
+                  "fullType": "transit_static.Trip.WheelchairAccessible",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "bikes_allowed",
+                  "description": "Indicates whether bikes are allowed.",
+                  "label": "",
+                  "type": "BikesAllowed",
+                  "longType": "Trip.BikesAllowed",
+                  "fullType": "transit_static.Trip.BikesAllowed",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        }
+      ],
+      "scalarValueTypes": [
+        {
+          "protoType": "double",
+          "notes": "",
+          "cppType": "double",
+          "csType": "double",
+          "goType": "float64",
+          "javaType": "double",
+          "phpType": "float",
+          "pythonType": "float",
+          "rubyType": "Float"
+        },
+        {
+          "protoType": "float",
+          "notes": "",
+          "cppType": "float",
+          "csType": "float",
+          "goType": "float32",
+          "javaType": "float",
+          "phpType": "float",
+          "pythonType": "float",
+          "rubyType": "Float"
+        },
+        {
+          "protoType": "int32",
+          "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "int64",
+          "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "uint32",
+          "notes": "Uses variable-length encoding.",
+          "cppType": "uint32",
+          "csType": "uint",
+          "goType": "uint32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int/long",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "uint64",
+          "notes": "Uses variable-length encoding.",
+          "cppType": "uint64",
+          "csType": "ulong",
+          "goType": "uint64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sint32",
+          "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sint64",
+          "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "fixed32",
+          "notes": "Always four bytes. More efficient than uint32 if values are often greater than 2^28.",
+          "cppType": "uint32",
+          "csType": "uint",
+          "goType": "uint32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "fixed64",
+          "notes": "Always eight bytes. More efficient than uint64 if values are often greater than 2^56.",
+          "cppType": "uint64",
+          "csType": "ulong",
+          "goType": "uint64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "sfixed32",
+          "notes": "Always four bytes.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sfixed64",
+          "notes": "Always eight bytes.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "bool",
+          "notes": "",
+          "cppType": "bool",
+          "csType": "bool",
+          "goType": "bool",
+          "javaType": "boolean",
+          "phpType": "boolean",
+          "pythonType": "boolean",
+          "rubyType": "TrueClass/FalseClass"
+        },
+        {
+          "protoType": "string",
+          "notes": "A string must always contain UTF-8 encoded or 7-bit ASCII text.",
+          "cppType": "string",
+          "csType": "string",
+          "goType": "string",
+          "javaType": "String",
+          "phpType": "string",
+          "pythonType": "str/unicode",
+          "rubyType": "String (UTF-8)"
+        },
+        {
+          "protoType": "bytes",
+          "notes": "May contain any arbitrary sequence of bytes.",
+          "cppType": "string",
+          "csType": "ByteString",
+          "goType": "[]byte",
+          "javaType": "ByteString",
+          "phpType": "string",
+          "pythonType": "str",
+          "rubyType": "String (ASCII-8BIT)"
+        }
+      ]
+  }

@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "Automatic Fare Collection Specification",
-    "description": "The General Transit Feed Specification (GTFS), also known as GTFS static or static transit to differentiate it from the GTFS realtime extension, defines a common format for public transportation schedules and associated geographic information. GTFS \"feeds\" let public transit agencies publish their transit data and developers write applications that consume that data in an interoperable way.",  
+    "name": "Automatic Fare Collection Specification - Realtime",
+    "description": "This specification defines the data points for fare collection in a public transport system.",  
     "sector": "Transit",
     "category": "Finance"
   },
