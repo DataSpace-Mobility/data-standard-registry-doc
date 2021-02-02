@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 
@@ -29,6 +30,59 @@ const CssTextField = withStyles({
 })(TextField);
 
 
+function renderNavBar() {
+    let items = {
+        "Traffic Management": {
+            "atcs_static": "Adaptive Traffic Control Specification - Static",
+            "atcs_realtime": "Adaptive Traffic Control Specification - Realtime"
+        },
+        "Public Transport": {
+            "afcs_realtime": "Automatic Fare Collection Specification - Realtime",
+            "gtfs_static": "General Transit Feed Specification - Static",
+            "gtfs_realtime": "General Transit Feed Specification - Realtime"
+        },
+        "Electric Mobility": {
+            "ev_charging_infra_static": "EV Charging Infrastructure Specification - Static"
+        }
+    }
+
+    let res = []
+
+    Object.keys(items).forEach((domain, idx) => {
+
+        let links = []
+
+        Object.keys(items[domain]).forEach(st => {
+            links.push(
+                <li><Link to={"/" + st}>{items[domain][st]}</Link></li>
+            )
+        })
+
+        res.push(
+            <div className="card collapsible" key={idx}>
+                <a data-toggle="collapse" data-parent="accordionEx" href={"#collapse-" + idx} aria-expanded="true" aria-controls="collapseOne1">
+                    <div className="card-header " role="tab" id={"header-" + idx}>
+                    <b>{domain}</b> <i className="fas fa-angle-down rotate-icon"></i>
+                    </div>
+                </a>
+
+                <div id={"#collapse-" + idx} className="collapse show" role="tabpanel" aria-labelledby={"header-" + idx} data-parent="accordionEx">
+                    <div className="card-body">
+                        <ul>
+                            {links}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        )
+    })
+
+    return(
+        <div className="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+            {res}
+        </div>
+    )
+}
 
 
 
@@ -59,107 +113,7 @@ function DocSearch() {
                 />
 
             <div className="navigation">
-                <div className="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
-                    <div className="card collapsible">
-                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
-                            <div className="card-header " role="tab" id="headingOne1">
-                            <b>Public Transport</b> <i className="fas fa-angle-down rotate-icon"></i>
-                            </div>
-                        </a>
-
-                        <div id="collapseOne1" className="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
-                            <div className="card-body">
-                                <ul>
-                                    <li><a href="/">Operations</a></li>
-                                    <li><a href="/">Finance</a></li>
-                                    <li><a href="/">Infrastructure</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card collapsible">
-                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
-                            <div className="card-header " role="tab" id="headingOne2">
-                            <b>Electric Mobility</b><i className="fas fa-angle-down rotate-icon"></i>
-                            </div>
-                        </a>
-
-                        <div id="collapseOne2" className="collapse" role="tabpanel" aria-labelledby="headingOne2" data-parent="#accordionEx">
-                            <div className="card-body">
-                                <ul>
-                                    <li><a href="/">EV Charging Infrastructure - realtime </a></li>
-                                    <li><a href="/">Electric Mobility Battery performance</a></li>
-                                </ul>
-                            </div>   
-                        </div>
-                    </div>
-                    <div className="card collapsible">
-                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
-                            <div className="card-header " role="tab" id="headingOne3">
-                            <b>Non-Motorised Transport</b><i className="fas fa-angle-down rotate-icon"></i>
-                            </div>
-                        </a>
-
-                        <div id="collapseOne3" className="collapse" role="tabpanel" aria-labelledby="headingOne3" data-parent="#accordionEx">
-                            <div className="card-body">
-                                <ul>
-                                    <li><a href="/">Cycling Infrastructure</a></li>
-                                    <li><a href="/">Public Bike Sharing</a></li>
-                                </ul>
-                            </div>    
-                        </div>
-                    </div>
-
-                    <div className="card collapsible">
-                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne4" aria-expanded="true" aria-controls="collapseOne4">
-                            <div className="card-header " role="tab" id="headingOne2">
-                            <b>Parking</b><i className="fas fa-angle-down rotate-icon"></i>
-                            </div>
-                        </a>
-
-                        <div id="collapseOne4" className="collapse" role="tabpanel" aria-labelledby="headingOne2" data-parent="#accordionEx">
-                            <div className="card-body">
-                                <ul>
-                                    <li><a href="/">Infrastructure</a></li>
-                                    <li><a href="/">Real-time Occupancy</a></li>
-                                </ul>
-                            </div>     
-                        </div>
-                    </div>
-
-                    <div className="card collapsible">
-                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne5" aria-expanded="true" aria-controls="collapseOne5">
-                            <div className="card-header " role="tab" id="headingOne2">
-                            <b>Road Network</b><i className="fas fa-angle-down rotate-icon"></i>
-                            </div>
-                        </a>
-
-                        <div id="collapseOne5" className="collapse " role="tabpanel" aria-labelledby="headingOne2" data-parent="#accordionEx">
-                            <div className="card-body">
-                                <ul>
-                                    <li><a href="/">Traffic</a></li>
-                                    <li><a href="/">Accidents</a></li>
-                                </ul>
-                            </div>    
-                        </div>
-                    </div>
-
-                    <div className="card collapsible">
-                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne6" aria-expanded="true" aria-controls="collapseOne6">
-                            <div className="card-header " role="tab" id="headingOne2">
-                            <b>Road Infrastructure</b><i className="fas fa-angle-down rotate-icon"></i>
-                            </div>
-                        </a>
-
-                        <div id="collapseOne6" className="collapse" role="tabpanel" aria-labelledby="headingOne2" data-parent="#accordionEx">
-                            <div className="card-body">
-                                <ul>
-                                    <li><a href="/">Road Inventory</a></li>
-                                </ul>
-                            </div>    
-                        </div>
-                    </div>
-                </div>
+                {renderNavBar()}
             </div>
     
 
