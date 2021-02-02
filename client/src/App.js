@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Switch, HashRouter as Router } from 'react-router-dom';
 
 import DocPage from './components/DocPage/DocPage'
 
@@ -10,7 +11,11 @@ function App() {
       <header className="App-header">
         
       </header>
-      <DocPage/>
+      <Router>
+        <Switch>
+          <Route exact path="/:id?" component={DocPage} />
+        </Switch>
+      </Router>
       
     </div>
   );
