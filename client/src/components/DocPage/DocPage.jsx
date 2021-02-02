@@ -6,9 +6,6 @@ import Footer from '../Footer/Footer';
 
 import './DocPage.scss';
 
-// Temp import
-import afcs from './afcs.json'
-
 function DocPage(params) {
 
     const [standardJSON, setStandardJSON] = useState(undefined)
