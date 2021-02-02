@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 
-import Logo from './logo_white.svg'
+import Logo from './img/logo_white.svg'
 
 import './DocSearch.scss';
 
