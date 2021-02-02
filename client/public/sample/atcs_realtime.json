@@ -1,0 +1,70 @@
+{
+    "header": {
+        "version": "0.0.1",
+        "incrementality": "FULL_DATASET",
+        "timestamp": 1602673612,
+        "provider": {
+            "id": "9153b228-7cc8-4765-9143-605dc2dd3f6f",
+            "name": "Ministry of Housing and Urban Affairs"
+        }
+    },
+    "junctions": [
+        {
+            "id": "a63f5658-8226-453f-b6e3-a7a3071d66e0",
+            "operationalStatus": "STATUS_NORMAL_OPERATION",
+            "carriageways": [
+              {
+                "id": "542206ba-cad9-41fc-9671-aa281e3d66c7",
+                "vehicleDensity": {
+                    "vehicleCountPerMinute": 23,
+                    "vehicleCountPerHour": 262,
+                    "vehicleCountPerDay": 2633
+                },
+                "operationalStatus": "STATUS_NORMAL_OPERATION",
+                "trafficLanes": [
+                    {
+                        "id": "cbef9381-572d-4ce2-b6e1-84613e123881",
+                        "signalTiming": {
+                            "allocatedGreenSeconds": 60,
+                            "availableGreenSeconds": 60,
+                            "utilisedGreenSeconds": 56
+                        },
+                        "signalStatus": "SIGNAL_GO",
+                        "operationalStatus": "STATUS_NORMAL_OPERATION"
+                    },
+                    {
+                        "id": "36352f66-a16b-4aac-8212-190d03f57bd7",
+                        "signalTiming": {
+                            "allocatedGreenSeconds": 60,
+                            "availableGreenSeconds": 60,
+                            "utilisedGreenSeconds": 60
+                        },
+                        "signalStatus": "SIGNAL_STOP",
+                        "operationalStatus": "STATUS_NORMAL_OPERATION"
+                    },
+                    {
+                        "id": "dacb8041-9ce8-4507-acbe-b71f75a9e82e",
+                        "signalTiming": {
+                            "allocatedGreenSeconds": 60,
+                            "availableGreenSeconds": 60,
+                            "utilisedGreenSeconds": 50
+                        },
+                        "signalStatus": "SIGNAL_STOP",
+                        "operationalStatus": "STATUS_NORMAL_OPERATION"
+                    },
+                    {
+                        "id": "7350710e-b689-4543-b268-1ca08793a46b",
+                        "signalTiming": {
+                            "allocatedGreenSeconds": 15,
+                            "availableGreenSeconds": 15,
+                            "utilisedGreenSeconds": 12
+                        },
+                        "signalStatus": "SIGNAL_STOP",
+                        "operationalStatus": "STATUS_NORMAL_OPERATION"
+                    }
+                ]
+              }
+            ]
+        }
+    ]
+  }
