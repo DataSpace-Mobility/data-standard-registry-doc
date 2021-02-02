@@ -13,7 +13,7 @@ function DocContent(props) {
             
             <div className="row">
                 <div className="col-10">
-                    <DocMainContent StandardJSON={props.StandardJSON}/>
+                    <DocMainContent StandardJSON={props.StandardJSON} standardId={props.standardId}/>
                 </div>
                 <div className="col-2 nopadding">
                     <DocContentList StandardJSON={props.StandardJSON}/>

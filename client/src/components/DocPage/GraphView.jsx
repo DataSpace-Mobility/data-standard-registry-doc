@@ -63,7 +63,7 @@ function GraphView(props) {
     }
 
     function parseAsTree(standardFileJSONArr) {
-        console.log(treeContainer.current.getBoundingClientRect())
+        // console.log(treeContainer.current.getBoundingClientRect())
         let objMap = {}
         standardFileJSONArr.forEach(file => {
             for(let i=0; i<file.messages.length; i++) {
@@ -84,12 +84,12 @@ function GraphView(props) {
         
         let data = processNode(objMap, feedMsgFullName, undefined)
 
-        console.log(data)
+        // console.log(data)
 
         var width = 1000
         var height = 1000
 
-        console.log(d3.select('#tree-container').node().getBoundingClientRect())
+        // console.log(d3.select('#tree-container').node().getBoundingClientRect())
 
         const zoom = d3Zoom.zoom()
                         .scaleExtent([0.5, 32])
@@ -103,6 +103,7 @@ function GraphView(props) {
                 .attr('width', width)
                 .attr('height', height)
                 .call(zoom) */
+        d3.select('#tree-container-svg').select('*').remove()
 
         var svg = d3.select('#tree-container-svg')
             .call(zoom)
@@ -120,7 +121,7 @@ function GraphView(props) {
 
         cluster(root)
 
-        console.log(root)
+        // console.log(root)
 
         svgContainer.append("g")
             .attr("fill", "none")
@@ -197,8 +198,8 @@ function GraphView(props) {
     }
 
     useEffect(() => {
-        console.log('useEffect')
-        console.log(treeContainer)
+        /* console.log('useEffect')
+        console.log(treeContainer) */
         parseAsTree(props.StandardJSON.files)
     })
 

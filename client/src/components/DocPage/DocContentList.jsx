@@ -37,15 +37,15 @@ function DocContentList(props) {
             {/* <h5>About</h5> */}
             <div className="shadow-box hori-align">
                 <img src={Version} alt=""/>
-                <div className="content version">v0.0.3</div>
+                <div className="content version">{props.StandardJSON.version}</div>
             </div>
             <div className="shadow-box hori-align">
                 <img src={License} alt=""/>
-                <div className="content license">Apache 2.0</div>
+                <div className="content license">{props.StandardJSON.license}</div>
             </div>
             <div className="shadow-box hori-align">
                 <img src={Clock} alt=""/>
-                <div className="content last-updated"><b>Last Updated:</b><br/> 09:30 AM, 26th Oct, 2020 IST</div>
+                <div className="content last-updated"><b>Last Updated: </b><br/>{props.StandardJSON.time.lastUpdatedOn}</div>
             </div>
 
             {/* <div className="row shadow-box like-share-box">
