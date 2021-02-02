@@ -52,9 +52,9 @@ function renderNavBar() {
 
         let links = []
 
-        Object.keys(items[domain]).forEach(st => {
+        Object.keys(items[domain]).forEach((st, stIdx) => {
             links.push(
-                <li><Link to={"/" + st}>{items[domain][st]}</Link></li>
+                <li key={stIdx}><Link to={"/" + st}>{items[domain][st]}</Link></li>
             )
         })
 
