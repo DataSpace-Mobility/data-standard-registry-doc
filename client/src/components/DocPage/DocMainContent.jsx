@@ -32,7 +32,13 @@ function DocMainContent(props) {
         
         fetch('/sample/' + props.standardId + '.json')
             .then(res => res.text())
-            .then(setSampleDataContent)
+            .then(res => {
+                if(res[0] != '<') {
+                    setSampleDataContent(res)
+                } else {
+                    setSampleDataContent('Sample data not available for this standard')
+                }
+            })
     }
 
     function renderProto() {
