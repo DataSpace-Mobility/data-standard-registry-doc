@@ -21,6 +21,7 @@ section.DocSearch {
         padding-top: 0.2rem;
         color: #fff;
         font-size: 16px;
+        border: none;
     }
     .collapsible a {
         color: #fff;
@@ -30,17 +31,20 @@ section.DocSearch {
     }
     .collapsible .card-header {
         padding: 0px;
+        font-size: 18px;
+        margin-top: 5px;
     }
     .collapsible .card-body {
         padding: 0rem;
-        font-size: 14px;
+        font-size: 13px;
         ul {
             margin-bottom: 0rem;
             padding-left: 1rem;
         }
         li {
             list-style-type:none;
-            margin-top: 5px;
+            margin-top: 0px;
+            margin-bottom: 5px;
             a:hover {
                 color: $tertiary-color;
             }
