@@ -31,7 +31,11 @@ function DocPage(params) {
     useEffect(() => {
         fetch('/standards/' + standardId + '.json')
             .then(res => res.json())
-            .then(setStandardJSON)       
+            .then(value => {
+                window.scrollTo(0, 0)
+                setStandardJSON(value)
+            }) 
+                 
     }, [standardId])
 
     
