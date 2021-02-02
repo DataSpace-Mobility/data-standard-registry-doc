@@ -9,7 +9,6 @@ function DocTable(props) {
     function parseMessageRows(fields) {
         let res = []
        fields.forEach((f, idx) => {
-           console.log(f)
            let typeLink = f.type
            let repeated = ''
            if(f.type[0] === f.type[0].toUpperCase()) {
