@@ -2,7 +2,7 @@ var Standard = require("../../models/standard.model");
 
 var create = async (req, res, next) => {
   let data = req.body;
-  const shortName = data.info.shortName;
+  const shortName = data.info && data.info.shortName ? data.info.shortName : res.status(400).json({message:"Invalid Request"});
   if (shortName) {
     await Standard.find({ "info.shortName": shortName })
       .then(async (result) => {
