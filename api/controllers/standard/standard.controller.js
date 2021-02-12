@@ -166,11 +166,11 @@ const updateStandard = async (req, res) => {
               result["versions"][result["versions"].length - 1],
             ];
             version = result["versions"][0].version;
-            if (kindOfUpdate.toLowerCase == "major") {
+            if (kindOfUpdate.toLowerCase() == "major") {
               version["major"]++;
               version["minor"] = 0;
               version["patch"] = 0;
-            } else if (kindOfUpdate.toLowerCase == "minor") {
+            } else if (kindOfUpdate.toLowerCase() == "minor") {
               version["minor"]++;
               version["patch"] = 0;
             } else {
