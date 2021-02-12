@@ -156,8 +156,7 @@ const updateStandard = async (req, res) => {
     const versions = req.body.versions[0];
     // what to update, options -> major, minor, or patch
     const kindOfUpdate = req.body.kindOfUpdate;
-    const api_auth_key = data.api_auth_key;
-    if (req.body.api_auth_key && process.env.api_auth_key === api_auth_key) {
+    if (req.body.api_auth_key && (process.env.api_auth_key === req.body.api_auth_key)) {
       await Standard.find({ "info.shortName": shortName })
         .then(async (result) => {
           if (result.length > 0) {
