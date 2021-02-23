@@ -14,171 +14,6 @@
     "protoURL": "https://raw.githubusercontent.com/DataSpace-Mobility/data-standard-registry/master/transit/atcs/TrafficSignalStatic.proto",
     "files": [
       {
-        "name": "Header.proto",
-        "description": "",
-        "package": "",
-        "hasEnums": false,
-        "hasExtensions": false,
-        "hasMessages": true,
-        "hasServices": false,
-        "enums": [
-          {
-            "name": "Incrementality",
-            "longName": "Header.Incrementality",
-            "fullName": ".Header.Incrementality",
-            "description": "Determines whether the current fetch is incremental.",
-            "values": [
-              {
-                "name": "UNKNOWN",
-                "number": "0",
-                "description": ""
-              },
-              {
-                "name": "FULL_DATASET",
-                "number": "1",
-                "description": ""
-              },
-              {
-                "name": "DIFFERENTIAL",
-                "number": "2",
-                "description": ""
-              }
-            ]
-          }
-        ],
-        "extensions": [],
-        "messages": [
-          {
-            "name": "Header",
-            "longName": "Header",
-            "fullName": ".Header",
-            "description": "",
-            "hasExtensions": false,
-            "hasFields": true,
-            "extensions": [],
-            "fields": [
-              {
-                "name": "version",
-                "description": "Version of the dataset.",
-                "label": "",
-                "type": "string",
-                "longType": "string",
-                "fullType": "string",
-                "ismap": false,
-                "defaultValue": ""
-              },
-              {
-                "name": "incrementality",
-                "description": "",
-                "label": "",
-                "type": "Incrementality",
-                "longType": "Header.Incrementality",
-                "fullType": "Header.Incrementality",
-                "ismap": false,
-                "defaultValue": ""
-              },
-              {
-                "name": "timestamp",
-                "description": "This timestamp identifies the moment when the content of this feed has been\ncreated (time at the server). In POSIX time (i.e., number of seconds since\nJanuary 1st 1970 00:00:00 UTC).",
-                "label": "",
-                "type": "uint64",
-                "longType": "uint64",
-                "fullType": "uint64",
-                "ismap": false,
-                "defaultValue": ""
-              },
-              {
-                "name": "provider",
-                "description": "Publisher/Provider of the dataset.",
-                "label": "",
-                "type": "Provider",
-                "longType": "Provider",
-                "fullType": "Provider",
-                "ismap": false,
-                "defaultValue": ""
-              }
-            ]
-          },
-          {
-            "name": "Provider",
-            "longName": "Provider",
-            "fullName": ".Provider",
-            "description": "",
-            "hasExtensions": false,
-            "hasFields": true,
-            "extensions": [],
-            "fields": [
-              {
-                "name": "id",
-                "description": "Unique identifier of the provider.",
-                "label": "",
-                "type": "string",
-                "longType": "string",
-                "fullType": "string",
-                "ismap": false,
-                "defaultValue": ""
-              },
-              {
-                "name": "name",
-                "description": "Name of the provider.",
-                "label": "",
-                "type": "string",
-                "longType": "string",
-                "fullType": "string",
-                "ismap": false,
-                "defaultValue": ""
-              }
-            ]
-          }
-        ],
-        "services": []
-      },
-      {
-        "name": "Location.proto",
-        "description": "",
-        "package": "",
-        "hasEnums": false,
-        "hasExtensions": false,
-        "hasMessages": true,
-        "hasServices": false,
-        "enums": [],
-        "extensions": [],
-        "messages": [
-          {
-            "name": "Location",
-            "longName": "Location",
-            "fullName": ".Location",
-            "description": "",
-            "hasExtensions": false,
-            "hasFields": true,
-            "extensions": [],
-            "fields": [
-              {
-                "name": "latitude",
-                "description": "",
-                "label": "",
-                "type": "float",
-                "longType": "float",
-                "fullType": "float",
-                "ismap": false,
-                "defaultValue": ""
-              },
-              {
-                "name": "longitude",
-                "description": "",
-                "label": "",
-                "type": "float",
-                "longType": "float",
-                "fullType": "float",
-                "ismap": false,
-                "defaultValue": ""
-              }
-            ]
-          }
-        ],
-        "services": []
-      },
-      {
         "name": "TrafficSignalStatic.proto",
         "description": "",
         "package": "atcs_traffic_signal_static",
@@ -356,7 +191,7 @@
               },
               {
                 "name": "shape",
-                "description": "Series of lat/lon points defining a corridor. It is an encoded polyline string. Refer to https://developers.google.com/maps/documentation/utilities/polylinealgorithm to know how to decode the string. to get a series of lat/lon points.",
+                "description": "Series of lat/lon points defining a corridor. It is an encoded polyline string. Refer to https://developers.google.com/maps/documentation/utilities/polylinealgorithm to know how to decode the string to get a series of lat/lon points.",
                 "label": "",
                 "type": "string",
                 "longType": "string",
@@ -550,8 +385,8 @@
               },
               {
                 "name": "sequenceNo",
-                "description": "Position (ordered) of the lane in the junction. This value is with respect to the junction. Similar value for two lanes would mean that the traffic starts on them simultaneously.",
-                "label": "",
+                "description": "Position (ordered) of the lane in the junction. This value is with respect to the junction. Similar value for two lanes would mean that the traffic starts on them simultaneously. Multiple values in sequenceNo would mean that this lane would be green or on in different configurations.",
+                "label": "repeated",
                 "type": "uint32",
                 "longType": "uint32",
                 "fullType": "uint32",
@@ -560,7 +395,7 @@
               },
               {
                 "name": "shape",
-                "description": "Series of lat/lon points defining a lane. It is an encoded polyline string. Refer to https://developers.google.com/maps/documentation/utilities/polylinealgorithm to know how to decode the string. to get a series of lat/lon points.",
+                "description": "Series of lat/lon points defining a lane. It is an encoded polyline string. Refer to https://developers.google.com/maps/documentation/utilities/polylinealgorithm to know how to decode the string to get a series of lat/lon points.",
                 "label": "",
                 "type": "string",
                 "longType": "string",
@@ -636,6 +471,171 @@
                 "type": "Turn",
                 "longType": "TrafficLane.Direction.Turn",
                 "fullType": "atcs_traffic_signal_static.TrafficLane.Direction.Turn",
+                "ismap": false,
+                "defaultValue": ""
+              }
+            ]
+          }
+        ],
+        "services": []
+      },
+      {
+        "name": "Header.proto",
+        "description": "",
+        "package": "",
+        "hasEnums": false,
+        "hasExtensions": false,
+        "hasMessages": true,
+        "hasServices": false,
+        "enums": [
+          {
+            "name": "Incrementality",
+            "longName": "Header.Incrementality",
+            "fullName": ".Header.Incrementality",
+            "description": "Determines whether the current fetch is incremental.",
+            "values": [
+              {
+                "name": "UNKNOWN",
+                "number": "0",
+                "description": ""
+              },
+              {
+                "name": "FULL_DATASET",
+                "number": "1",
+                "description": ""
+              },
+              {
+                "name": "DIFFERENTIAL",
+                "number": "2",
+                "description": ""
+              }
+            ]
+          }
+        ],
+        "extensions": [],
+        "messages": [
+          {
+            "name": "Header",
+            "longName": "Header",
+            "fullName": ".Header",
+            "description": "",
+            "hasExtensions": false,
+            "hasFields": true,
+            "extensions": [],
+            "fields": [
+              {
+                "name": "version",
+                "description": "Version of the dataset.",
+                "label": "",
+                "type": "string",
+                "longType": "string",
+                "fullType": "string",
+                "ismap": false,
+                "defaultValue": ""
+              },
+              {
+                "name": "incrementality",
+                "description": "",
+                "label": "",
+                "type": "Incrementality",
+                "longType": "Header.Incrementality",
+                "fullType": "Header.Incrementality",
+                "ismap": false,
+                "defaultValue": ""
+              },
+              {
+                "name": "timestamp",
+                "description": "This timestamp identifies the moment when the content of this feed has been\ncreated (time at the server). In POSIX time (i.e., number of seconds since\nJanuary 1st 1970 00:00:00 UTC).",
+                "label": "",
+                "type": "uint64",
+                "longType": "uint64",
+                "fullType": "uint64",
+                "ismap": false,
+                "defaultValue": ""
+              },
+              {
+                "name": "provider",
+                "description": "Publisher/Provider of the dataset.",
+                "label": "",
+                "type": "Provider",
+                "longType": "Provider",
+                "fullType": "Provider",
+                "ismap": false,
+                "defaultValue": ""
+              }
+            ]
+          },
+          {
+            "name": "Provider",
+            "longName": "Provider",
+            "fullName": ".Provider",
+            "description": "",
+            "hasExtensions": false,
+            "hasFields": true,
+            "extensions": [],
+            "fields": [
+              {
+                "name": "id",
+                "description": "Unique identifier of the provider.",
+                "label": "",
+                "type": "string",
+                "longType": "string",
+                "fullType": "string",
+                "ismap": false,
+                "defaultValue": ""
+              },
+              {
+                "name": "name",
+                "description": "Name of the provider.",
+                "label": "",
+                "type": "string",
+                "longType": "string",
+                "fullType": "string",
+                "ismap": false,
+                "defaultValue": ""
+              }
+            ]
+          }
+        ],
+        "services": []
+      },
+      {
+        "name": "Location.proto",
+        "description": "",
+        "package": "",
+        "hasEnums": false,
+        "hasExtensions": false,
+        "hasMessages": true,
+        "hasServices": false,
+        "enums": [],
+        "extensions": [],
+        "messages": [
+          {
+            "name": "Location",
+            "longName": "Location",
+            "fullName": ".Location",
+            "description": "",
+            "hasExtensions": false,
+            "hasFields": true,
+            "extensions": [],
+            "fields": [
+              {
+                "name": "latitude",
+                "description": "",
+                "label": "",
+                "type": "float",
+                "longType": "float",
+                "fullType": "float",
+                "ismap": false,
+                "defaultValue": ""
+              },
+              {
+                "name": "longitude",
+                "description": "",
+                "label": "",
+                "type": "float",
+                "longType": "float",
+                "fullType": "float",
                 "ismap": false,
                 "defaultValue": ""
               }
