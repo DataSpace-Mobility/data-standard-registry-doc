@@ -9,7 +9,7 @@
     "lastUpdatedOn": "01:09 PM, 24th Feb, 2021 IST",
     "createdOn": "09:30 AM, 21st Jan, 2021 IST"
     },
-    "version": "v0.0.3",
+    "version": "v0.0.4",
     "license": "MIT",
     "protoURL": "https://raw.githubusercontent.com/DataSpace-Mobility/data-standard-registry/master/transit/atcs/TrafficSignalStatic.proto",
     "files": [
