@@ -15,8 +15,8 @@
           "maxCycleTimeSeconds": 240,
           "operationMode": "OPERATION_MODE_FULL_VA_SPLIT",
           "location": {
-            "latitude": 62.300032,
-            "longitude": 24.3782467
+            "type": "Point",
+            "coordinates": [24.3782467, 62.300032]
           },
           "corridorRelationships": [
             {
@@ -29,8 +29,8 @@
             {
               "id": "542206ba-cad9-41fc-9671-aa281e3d66c7",
               "location": {
-                "latitude": 62.300124,
-                "longitude": 24.3782345
+                "type": "Point",
+                "coordinates": [24.3782345, 62.300124]
               },
               "trafficLanes": [
                 {
@@ -44,8 +44,8 @@
                   },
                   "modeOfTransportAllowed": "MOTORISED",
                   "location": {
-                    "latitude": 62.300124,
-                    "longitude": 24.3782345
+                    "type": "Point",
+                    "coordinates": [24.3782345, 62.300124]
                   }
                 }
               ]

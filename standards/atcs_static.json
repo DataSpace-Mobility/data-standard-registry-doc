@@ -6,7 +6,7 @@
         "category": "TrafficSignal"
     },
     "time": {
-    "lastUpdatedOn": "01:24 PM, 24th Jan, 2021 IST",
+    "lastUpdatedOn": "01:09 PM, 24th Feb, 2021 IST",
     "createdOn": "09:30 AM, 21st Jan, 2021 IST"
     },
     "version": "v0.0.3",
@@ -607,7 +607,21 @@
         "hasExtensions": false,
         "hasMessages": true,
         "hasServices": false,
-        "enums": [],
+        "enums": [
+          {
+            "name": "Type",
+            "longName": "Location.Type",
+            "fullName": ".Location.Type",
+            "description": "",
+            "values": [
+              {
+                "name": "Point",
+                "number": "0",
+                "description": ""
+              }
+            ]
+          }
+        ],
         "extensions": [],
         "messages": [
           {
@@ -620,19 +634,19 @@
             "extensions": [],
             "fields": [
               {
-                "name": "latitude",
+                "name": "type",
                 "description": "",
                 "label": "",
-                "type": "float",
-                "longType": "float",
-                "fullType": "float",
+                "type": "Type",
+                "longType": "Location.Type",
+                "fullType": "Location.Type",
                 "ismap": false,
                 "defaultValue": ""
               },
               {
-                "name": "longitude",
-                "description": "",
-                "label": "",
+                "name": "coordinates",
+                "description": "Specifies latitude and longitude coordinates, list the longitude first and then latitude.",
+                "label": "repeated",
                 "type": "float",
                 "longType": "float",
                 "fullType": "float",
