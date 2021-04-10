@@ -6,10 +6,10 @@
         "category": "TrafficSignal"
     },
     "time": {
-    "lastUpdatedOn": "01:09 PM, 24th Feb, 2021 IST",
+    "lastUpdatedOn": "01:47 PM, 10th Apr, 2021 IST",
     "createdOn": "09:30 AM, 21st Jan, 2021 IST"
     },
-    "version": "v0.0.4",
+    "version": "v0.0.5",
     "license": "MIT",
     "protoURL": "https://raw.githubusercontent.com/DataSpace-Mobility/data-standard-registry/master/transit/atcs/TrafficSignalStatic.proto",
     "files": [
@@ -121,6 +121,16 @@
               {
                 "name": "id",
                 "description": "Unique ID for the way.",
+                "label": "",
+                "type": "string",
+                "longType": "string",
+                "fullType": "string",
+                "ismap": false,
+                "defaultValue": ""
+              },
+              {
+                "name": "name",
+                "description": "Name of the carriageway.",
                 "label": "",
                 "type": "string",
                 "longType": "string",
@@ -545,7 +555,7 @@
               },
               {
                 "name": "timestamp",
-                "description": "This timestamp identifies the moment when the content of this feed has been\ncreated (time at the server). In POSIX time (i.e., number of seconds since\nJanuary 1st 1970 00:00:00 UTC).",
+                "description": "This timestamp identifies the moment when the content of this feed has been\ncreated (time at the server). Milliseconds since Unix Epoch (i.e., number of milliseconds since\nJanuary 1st 1970 00:00:00 UTC).",
                 "label": "",
                 "type": "uint64",
                 "longType": "uint64",
@@ -617,7 +627,7 @@
               {
                 "name": "Point",
                 "number": "0",
-                "description": ""
+                "description": "GeoJSON point type."
               }
             ]
           }
@@ -628,14 +638,14 @@
             "name": "Location",
             "longName": "Location",
             "fullName": ".Location",
-            "description": "",
+            "description": "GeoJSON Point Object representing a location.",
             "hasExtensions": false,
             "hasFields": true,
             "extensions": [],
             "fields": [
               {
                 "name": "type",
-                "description": "",
+                "description": "Type of GeoJSON object.",
                 "label": "",
                 "type": "Type",
                 "longType": "Location.Type",
