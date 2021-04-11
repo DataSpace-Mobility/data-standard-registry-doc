@@ -1,0 +1,95 @@
+{
+    "header": {
+        "version": "0.0.1",
+        "incrementality": "FULL_DATASET",
+        "timestamp": 1602673612,
+        "provider": {
+            "id": "9153b228-7cc8-4765-9143-605dc2dd3f6f",
+            "name": "Ministry of Housing and Urban Affairs"
+        }
+    },
+    "stations": [
+        {
+            "id": "a63f5658-8226-453f-b6e3-a7a3071d66e0",
+            "batteryAvailability": [
+                {
+                    "batteryType": "SWAPPING_POD_BATTERY_TYPE_NIMH",
+                    "availableCount": 3
+                }
+            ],
+            "podAvailability": [
+                {
+                    "podType": "POD_TYPE_WIRED_CHARGING",
+                    "availableCount": 7
+                }
+            ],
+            "transactions": [
+                {
+                    "id": "542206ba-cad9-41fc-9671-aa281e3d66c7",
+                    "timestamp": 15253530000,
+                    "powerConsumption": 3.3,
+                    "durationOfService": {
+                        "startingTimeStamp": 15253330000,
+                        "endTimestamp": 15253430000
+                    },
+                    "modeOfCharging": {
+                        "chargerType": "POD_TYPE_WIRED_CHARGING",
+                        "id": "61a1ce7a-b10e-435d-a793-141e5d0762f6"
+                    },
+                    "modeOfPaymentUsed": "PAYMENT_BANK_CARD",
+                    "transactionRate": {
+                        "baseUnitPrice": 3.4,
+                        "surcharge": 0.3,
+                        "taxes": 0.1,
+                        "subsidy": 1.2,
+                        "pricePerUnit": 5.0
+                    }
+                }
+            ],
+            "alerts": [
+                {
+                    "activePeriod": [
+                        {
+                            "start": 15253000,
+                            "end": 15254000
+                        }
+                    ],
+                    "informedEntity": [
+                        {
+                            "id": "29db318b-0285-4054-96b7-a643bbc27a5f",
+                            "name": "EESL",
+                            "endpointUrl": "https://example.com"
+                        }
+                    ],
+                    "cause": "Charging Unit id 542206ba-cad9-41fc-9671-aa281e3d66c7 is down",
+                    "effect": "Service Required",
+                    "url": "https://example.com/unit-down-542206ba-cad9-41fc-9671-aa281e3d66c7"
+                }
+            ],
+            "chargingUnits": [
+                {
+                    "id": "3bfa3ce6-6be8-4248-b9a7-e327a762376b",
+                    "availability": [
+                        {
+                            "podType": "POD_TYPE_WIRED_CHARGING",
+                            "podId": "2a6ff2d1-313f-42c3-b181-a579a449fe4f",
+                            "isPodAvailable": true
+                        }
+                    ]
+                }
+            ],
+            "swappingUnits": [
+                {
+                    "id": "629388e4-37bb-43e0-bbfd-1e0ccec4902b",
+                    "availability": [
+                        {
+                            "batteryType": "SWAPPING_POD_BATTERY_TYPE_NIMH",
+                            "podId": "85147698-b0f5-4a89-8119-83948f5359a6",
+                            "isPodAvailable": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

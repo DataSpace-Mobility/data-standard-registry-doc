@@ -1,0 +1,1435 @@
+{
+      "info": {
+          "name": "Electric Vehicle Charging Infrastructure Specification - Realtime",
+          "description": "This specification defines realtime EV charging infrastructure data points.",  
+          "sector": "Transit",
+          "category": "Electric Mobility"
+      },
+      "time": {
+      "lastUpdatedOn": "02:42 PM, 11th April, 2021 IST",
+      "createdOn": "02:42 PM, 11th April, 2021 IST"
+      },
+      "version": "v0.0.2",
+      "license": "MIT",
+      "protoURL": "https://raw.githubusercontent.com/DataSpace-Mobility/data-standard-registry/master/transit/ev_charging/EVChargingRealtime.proto",
+      "files": [
+        {
+          "name": "EVChargingRealtime.proto",
+          "description": "",
+          "package": "ev_charging_realtime",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "PodType",
+              "longName": "Station.PodType",
+              "fullName": "ev_charging_realtime.Station.PodType",
+              "description": "",
+              "values": [
+                {
+                  "name": "POD_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "POD_TYPE_WIRED_CHARGING",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "POD_TYPE_WIRELESS_CHARGING",
+                  "number": "2",
+                  "description": ""
+                },
+                {
+                  "name": "POD_TYPE_BATTERY_SWAPPING",
+                  "number": "3",
+                  "description": ""
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "FeedMessage",
+              "longName": "FeedMessage",
+              "fullName": "ev_charging_realtime.FeedMessage",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "header",
+                  "description": "Metadata",
+                  "label": "",
+                  "type": "Header",
+                  "longType": "Header",
+                  "fullType": "Header",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "stations",
+                  "description": "Information about the specific EV charging station.",
+                  "label": "repeated",
+                  "type": "Station",
+                  "longType": "Station",
+                  "fullType": "ev_charging_realtime.Station",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Station",
+              "longName": "Station",
+              "fullName": "ev_charging_realtime.Station",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identification number assigned to the specific Station.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "batteryAvailability",
+                  "description": "Infomation about the availability of battery sets at the Station.",
+                  "label": "repeated",
+                  "type": "BatteryAvailability",
+                  "longType": "Station.BatteryAvailability",
+                  "fullType": "ev_charging_realtime.Station.BatteryAvailability",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "podAvailability",
+                  "description": "Infomation about the availability of charging pods at the Station.",
+                  "label": "repeated",
+                  "type": "PodAvailability",
+                  "longType": "Station.PodAvailability",
+                  "fullType": "ev_charging_realtime.Station.PodAvailability",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "transactions",
+                  "description": "List of transactions performed at the station.",
+                  "label": "repeated",
+                  "type": "Transaction",
+                  "longType": "Station.Transaction",
+                  "fullType": "ev_charging_realtime.Station.Transaction",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "alerts",
+                  "description": "List of alerts emitted.",
+                  "label": "repeated",
+                  "type": "Alert",
+                  "longType": "Alert",
+                  "fullType": "Alert",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "chargingUnits",
+                  "description": "Information about the specific charging unit.",
+                  "label": "repeated",
+                  "type": "ChargingUnit",
+                  "longType": "Station.ChargingUnit",
+                  "fullType": "ev_charging_realtime.Station.ChargingUnit",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "swappingUnits",
+                  "description": "Information about the specific battery swapping unit.",
+                  "label": "repeated",
+                  "type": "SwappingUnit",
+                  "longType": "Station.SwappingUnit",
+                  "fullType": "ev_charging_realtime.Station.SwappingUnit",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "BatteryAvailability",
+              "longName": "Station.BatteryAvailability",
+              "fullName": "ev_charging_realtime.Station.BatteryAvailability",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "batteryType",
+                  "description": "Indicates the typology of battery(ies) available at the Station.",
+                  "label": "",
+                  "type": "BatteryType",
+                  "longType": "BatteryType",
+                  "fullType": "BatteryType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "availableCount",
+                  "description": "Number of total available battery(ies) of a specific batteryType at the station.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "ChargingUnit",
+              "longName": "Station.ChargingUnit",
+              "fullName": "ev_charging_realtime.Station.ChargingUnit",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identification number assigned to the specific ChargingUnit. Please refer to the Static data standard.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "availability",
+                  "description": "Provides information about the availability of the ChargingUnit.",
+                  "label": "repeated",
+                  "type": "Availability",
+                  "longType": "Station.ChargingUnit.Availability",
+                  "fullType": "ev_charging_realtime.Station.ChargingUnit.Availability",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "alerts",
+                  "description": "List of alerts emitted.",
+                  "label": "repeated",
+                  "type": "Alert",
+                  "longType": "Alert",
+                  "fullType": "Alert",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Availability",
+              "longName": "Station.ChargingUnit.Availability",
+              "fullName": "ev_charging_realtime.Station.ChargingUnit.Availability",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "podType",
+                  "description": "Indicates the typology of pod(s) available at the Station.",
+                  "label": "",
+                  "type": "PodType",
+                  "longType": "Station.PodType",
+                  "fullType": "ev_charging_realtime.Station.PodType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "podId",
+                  "description": "Unique identification number assigned to the pod at the ChargingUnit. Please refer to the Static data standard.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "isPodAvailable",
+                  "description": "Identifies if the pod at the ChargingUnitis available. Valid options are: 0 - The pod is not available. 1 - The pod is available.",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "PodAvailability",
+              "longName": "Station.PodAvailability",
+              "fullName": "ev_charging_realtime.Station.PodAvailability",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "podType",
+                  "description": "Indicates the typology of pod(s) available at the Station.",
+                  "label": "",
+                  "type": "PodType",
+                  "longType": "Station.PodType",
+                  "fullType": "ev_charging_realtime.Station.PodType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "availableCount",
+                  "description": "Number of total available pod(s) a specific podType at the station.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "SwappingUnit",
+              "longName": "Station.SwappingUnit",
+              "fullName": "ev_charging_realtime.Station.SwappingUnit",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identification number assigned to the specific ChargingUnit. Please refer to the Static data standard.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "availability",
+                  "description": "Provides information about the availability of the ChargingUnit.",
+                  "label": "repeated",
+                  "type": "Availability",
+                  "longType": "Station.SwappingUnit.Availability",
+                  "fullType": "ev_charging_realtime.Station.SwappingUnit.Availability",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "alerts",
+                  "description": "List of alerts emitted.",
+                  "label": "repeated",
+                  "type": "Alert",
+                  "longType": "Alert",
+                  "fullType": "Alert",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Availability",
+              "longName": "Station.SwappingUnit.Availability",
+              "fullName": "ev_charging_realtime.Station.SwappingUnit.Availability",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "batteryType",
+                  "description": "Indicates the typology of pod(s) available at the Station.",
+                  "label": "",
+                  "type": "BatteryType",
+                  "longType": "BatteryType",
+                  "fullType": "BatteryType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "podId",
+                  "description": "Unique identification number assigned to the pod at the ChargingUnit. Please refer to the Static data standard.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "isBatteryAvailable",
+                  "description": "Identifies if the pod at the ChargingUnitis available. Valid options are: 0 - The pod is not available. 1 - The pod is available.",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Transaction",
+              "longName": "Station.Transaction",
+              "fullName": "ev_charging_realtime.Station.Transaction",
+              "description": "Information containing the different characteristics of a performed Transaction.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identification number assigned to a Transaction.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "timestamp",
+                  "description": "Identifies the moment when the Transaction has been performed. In POSIX time (i.e., number of milliseconds since January 1st 1970 00:00:00 UTC).",
+                  "label": "",
+                  "type": "uint64",
+                  "longType": "uint64",
+                  "fullType": "uint64",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "powerConsumption",
+                  "description": "Indicates the total amount of power consumed at the Station at the specific point of time. The unit is kilowatt-hour (kWh).",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "durationOfService",
+                  "description": "Information about the amount of time required to perform the Transaction.",
+                  "label": "",
+                  "type": "DurationOfService",
+                  "longType": "Station.Transaction.DurationOfService",
+                  "fullType": "ev_charging_realtime.Station.Transaction.DurationOfService",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "modeOfCharging",
+                  "description": "Information about the charging mode utilised during the Transaction.",
+                  "label": "",
+                  "type": "ModeOfCharging",
+                  "longType": "Station.Transaction.ModeOfCharging",
+                  "fullType": "ev_charging_realtime.Station.Transaction.ModeOfCharging",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "modeOfPaymentUsed",
+                  "description": "Identifies the financial mechanism utilises by the user to pay the service provided during the Transaction.",
+                  "label": "",
+                  "type": "ModeOfPayment",
+                  "longType": "ModeOfPayment",
+                  "fullType": "ModeOfPayment",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "transactionRate",
+                  "description": "Provides information about the structure utilised to calculate the final rate paid by the user for the performed Transaction.",
+                  "label": "",
+                  "type": "TransactionRate",
+                  "longType": "Station.Transaction.TransactionRate",
+                  "fullType": "ev_charging_realtime.Station.Transaction.TransactionRate",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "DurationOfService",
+              "longName": "Station.Transaction.DurationOfService",
+              "fullName": "ev_charging_realtime.Station.Transaction.DurationOfService",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "startingTimeStamp",
+                  "description": "Identifies the moment when the Charging of a EV started. In POSIX time (i.e., number of milliseconds since January 1st 1970 00:00:00 UTC).",
+                  "label": "",
+                  "type": "uint64",
+                  "longType": "uint64",
+                  "fullType": "uint64",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "endTimestamp",
+                  "description": "Identifies the moment when the Charging of a EV finished. In POSIX time (i.e., number of milliseconds since January 1st 1970 00:00:00 UTC).",
+                  "label": "",
+                  "type": "uint64",
+                  "longType": "uint64",
+                  "fullType": "uint64",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "ModeOfCharging",
+              "longName": "Station.Transaction.ModeOfCharging",
+              "fullName": "ev_charging_realtime.Station.Transaction.ModeOfCharging",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "chargerType",
+                  "description": "Information about the charging mode utilised during the Transaction.",
+                  "label": "",
+                  "type": "PodType",
+                  "longType": "Station.PodType",
+                  "fullType": "ev_charging_realtime.Station.PodType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "id",
+                  "description": "Indicates the unique identification number assigned to the charging unit utilised during the Transaction. Please refer to the Static data standard.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "TransactionRate",
+              "longName": "Station.Transaction.TransactionRate",
+              "fullName": "ev_charging_realtime.Station.Transaction.TransactionRate",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "baseUnitPrice",
+                  "description": "Indicates the price (in Indian Rupees) charged to the user per consumed powerUnit (kWh) during the Transaction.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "surcharge",
+                  "description": "Identifies the amount (if any) paid by the user as a result of surcharge(s) applicable during the Transaction. Unit is Indian Rupees.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "taxes",
+                  "description": "Identifies the amount (if any) paid by the user as a result of tax(es) applicable during the Transaction.  Unit is Indian Rupees.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "subsidy",
+                  "description": "Identifies the amount (if any) saved by the user as a result of subsidy(ies) applicable during the Transaction.  Unit is Indian Rupees.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "pricePerUnit",
+                  "description": "Identifies the final amount paid by the user per power unit consumed. Unit is Indian Rupees. Formula used: baseUnitPrice + surcharge + taxes + subsidy = pricePerUnit.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        },
+        {
+          "name": "BatteryType.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": true,
+          "hasExtensions": false,
+          "hasMessages": false,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "BatteryType",
+              "longName": "BatteryType",
+              "fullName": ".BatteryType",
+              "description": "",
+              "values": [
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": "Battery type is not known."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_LFP",
+                  "number": "1",
+                  "description": "The specific swapping pod supports Lithium-i on Iron Phosphate (LFP) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_NCA",
+                  "number": "2",
+                  "description": "The specific swapping pod supports Lithium-i on Nickel Cobalt Aluminum (NCA) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_NMC",
+                  "number": "3",
+                  "description": "The specific swapping pod supports Lithium-i on Nickel Cobalt Manganese (NMC) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_LTO",
+                  "number": "4",
+                  "description": "The specific swapping pod supports Lithium-i on Titanium Oxide (LTO) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_ZEBRA",
+                  "number": "5",
+                  "description": "The specific swapping pod supports Sodium Nickel Chloride (Zebra) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_NIMH",
+                  "number": "6",
+                  "description": "The specific swapping pod supports Nickel-Metal Hydride (NiMH) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_FLOODED_LEAD_ACID",
+                  "number": "7",
+                  "description": "The specific swapping pod supports Flooded Lead-Acid batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_ULTRA_CAPACITORS",
+                  "number": "8",
+                  "description": "The specific swapping pod supports Ultracapacitors."
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [],
+          "services": []
+        },
+        {
+          "name": "Header.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "Incrementality",
+              "longName": "Header.Incrementality",
+              "fullName": ".Header.Incrementality",
+              "description": "Determines whether the current fetch is incremental.",
+              "values": [
+                {
+                  "name": "UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "FULL_DATASET",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "DIFFERENTIAL",
+                  "number": "2",
+                  "description": ""
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "Header",
+              "longName": "Header",
+              "fullName": ".Header",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "version",
+                  "description": "Version of the dataset.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "incrementality",
+                  "description": "",
+                  "label": "",
+                  "type": "Incrementality",
+                  "longType": "Header.Incrementality",
+                  "fullType": "Header.Incrementality",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "timestamp",
+                  "description": "This timestamp identifies the moment when the content of this feed has been\ncreated (time at the server). Milliseconds since Unix Epoch (i.e., number of milliseconds since\nJanuary 1st 1970 00:00:00 UTC).",
+                  "label": "",
+                  "type": "uint64",
+                  "longType": "uint64",
+                  "fullType": "uint64",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "provider",
+                  "description": "Publisher/Provider of the dataset.",
+                  "label": "",
+                  "type": "Provider",
+                  "longType": "Provider",
+                  "fullType": "Provider",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Provider",
+              "longName": "Provider",
+              "fullName": ".Provider",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identifier of the provider.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "name",
+                  "description": "Name of the provider.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        },
+        {
+          "name": "OperatingSchedule.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "DaysOfWeek",
+              "longName": "OperatingSchedule.DaysOfWeek",
+              "fullName": ".OperatingSchedule.DaysOfWeek",
+              "description": "",
+              "values": [
+                {
+                  "name": "DAY_UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_SUNDAY",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_MONDAY",
+                  "number": "2",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_TUESDAY",
+                  "number": "3",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_WEDNESDAY",
+                  "number": "4",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_THURSDAY",
+                  "number": "5",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_FRIDAY",
+                  "number": "6",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_SATURDAY",
+                  "number": "7",
+                  "description": ""
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "OperatingSchedule",
+              "longName": "OperatingSchedule",
+              "fullName": ".OperatingSchedule",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "opening",
+                  "description": "Opening time",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "closing",
+                  "description": "Closing time.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "dayOfWeek",
+                  "description": "Open day of the week.",
+                  "label": "repeated",
+                  "type": "DaysOfWeek",
+                  "longType": "OperatingSchedule.DaysOfWeek",
+                  "fullType": "OperatingSchedule.DaysOfWeek",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        },
+        {
+          "name": "ModeOfPayment.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": true,
+          "hasExtensions": false,
+          "hasMessages": false,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "ModeOfPayment",
+              "longName": "ModeOfPayment",
+              "fullName": ".ModeOfPayment",
+              "description": "",
+              "values": [
+                {
+                  "name": "PAYMENT_UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "PAYMENT_BANK_CARD",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "PAYMENT_CASH",
+                  "number": "2",
+                  "description": ""
+                },
+                {
+                  "name": "PAYMENT_SMART_CARD",
+                  "number": "3",
+                  "description": ""
+                },
+                {
+                  "name": "PAYMENT_COUPONS",
+                  "number": "4",
+                  "description": ""
+                },
+                {
+                  "name": "PAYMENT_UPI",
+                  "number": "5",
+                  "description": ""
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [],
+          "services": []
+        },
+        {
+          "name": "Location.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "Type",
+              "longName": "Location.Type",
+              "fullName": ".Location.Type",
+              "description": "",
+              "values": [
+                {
+                  "name": "Point",
+                  "number": "0",
+                  "description": "GeoJSON point type."
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "Location",
+              "longName": "Location",
+              "fullName": ".Location",
+              "description": "GeoJSON Point Object representing a location.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "type",
+                  "description": "Type of GeoJSON object.",
+                  "label": "",
+                  "type": "Type",
+                  "longType": "Location.Type",
+                  "fullType": "Location.Type",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "coordinates",
+                  "description": "Specifies latitude and longitude coordinates, list the longitude first and then latitude.",
+                  "label": "repeated",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        },
+        {
+          "name": "VehicleType.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": true,
+          "hasExtensions": false,
+          "hasMessages": false,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "VehicleType",
+              "longName": "VehicleType",
+              "fullName": ".VehicleType",
+              "description": "",
+              "values": [
+                {
+                  "name": "VEHICLE_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": "Vehicle type is not known or not specified."
+                },
+                {
+                  "name": "VEHICLE_TYPE_AGRICULTURAL_VEHICLE",
+                  "number": "1",
+                  "description": "Vehicle is used for agricultural purposes."
+                },
+                {
+                  "name": "VEHICLE_TYPE_BICYCLE",
+                  "number": "2",
+                  "description": "Vehicle type is a bicycle."
+                },
+                {
+                  "name": "VEHICLE_TYPE_BUS",
+                  "number": "3",
+                  "description": "Vehicle type is a bus."
+                },
+                {
+                  "name": "VEHICLE_TYPE_CAR",
+                  "number": "4",
+                  "description": "Vehicle type is car."
+                },
+                {
+                  "name": "VEHICLE_TYPE_CARAVAN",
+                  "number": "5",
+                  "description": "Vehicle type is a caravan."
+                },
+                {
+                  "name": "VEHICLE_TYPE_CAR_WITH_CARAVAN",
+                  "number": "6",
+                  "description": "Vehicle type is a car with an attached caravan."
+                },
+                {
+                  "name": "VEHICLE_TYPE_CAR_WITH_TRAILER",
+                  "number": "7",
+                  "description": "Vehicle type is a car with an attached trailer."
+                },
+                {
+                  "name": "VEHICLE_TYPE_CONSTRUCTION_OR_MAINTENANCE_VEHICLE",
+                  "number": "8",
+                  "description": "Vehicle is used for construction and maintainance purposes."
+                },
+                {
+                  "name": "VEHICLE_TYPE_LORRY",
+                  "number": "9",
+                  "description": "Vehicle type is a lorry."
+                },
+                {
+                  "name": "VEHICLE_TYPE_MOPED",
+                  "number": "10",
+                  "description": "Vehicle type is a moped."
+                },
+                {
+                  "name": "VEHICLE_TYPE_MOTORCYCLE",
+                  "number": "11",
+                  "description": "Vehicle type is a motorcycle."
+                },
+                {
+                  "name": "VEHICLE_TYPE_MOTORCYCLE_WITH_SIDECAR",
+                  "number": "12",
+                  "description": "Vehicle type is a motorcycle with an attached sidecar."
+                },
+                {
+                  "name": "VEHICLE_TYPE_MOTOR_SCOOTER",
+                  "number": "13",
+                  "description": "Vehicle type is a motor scooter."
+                },
+                {
+                  "name": "VEHICLE_TYPE_TANKER",
+                  "number": "14",
+                  "description": "Vehicle type is a tanker."
+                },
+                {
+                  "name": "VEHICLE_TYPE_TRAILER",
+                  "number": "15",
+                  "description": "Vehicle type is a trailer."
+                },
+                {
+                  "name": "VEHICLE_TYPE_VAN",
+                  "number": "16",
+                  "description": "Vehicle type is a van."
+                },
+                {
+                  "name": "VEHICLE_TYPE_ANY_VEHICLE",
+                  "number": "17",
+                  "description": "Vehicle type could be anything."
+                },
+                {
+                  "name": "VEHICLE_TYPE_AUTORICKSHAW",
+                  "number": "18",
+                  "description": "Vehicle type is an autorickshaw."
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [],
+          "services": []
+        },
+        {
+          "name": "Alert.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "Alert",
+              "longName": "Alert",
+              "fullName": ".Alert",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "activePeriod",
+                  "description": "Time when the alert should be shown to the user. If missing, the\nalert will be shown as long as it appears in the feed.\nIf multiple ranges are given, the alert will be shown during all of them.",
+                  "label": "repeated",
+                  "type": "TimeRange",
+                  "longType": "TimeRange",
+                  "fullType": "TimeRange",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "informedEntity",
+                  "description": "Entities whose users we should notify of this alert.",
+                  "label": "repeated",
+                  "type": "EntitySelector",
+                  "longType": "EntitySelector",
+                  "fullType": "EntitySelector",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "cause",
+                  "description": "Cause of this alert.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "effect",
+                  "description": "What is the effect of this problem on the affected entity.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "url",
+                  "description": "URL endpoint to know more information on the alert.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "EntitySelector",
+              "longName": "EntitySelector",
+              "fullName": ".EntitySelector",
+              "description": "A selector for an entity.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique id of the entity.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "name",
+                  "description": "Name if the entity.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "endpointUrl",
+                  "description": "Endpoint to send alert data using POST request.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "TimeRange",
+              "longName": "TimeRange",
+              "fullName": ".TimeRange",
+              "description": "A time interval. The interval is considered active at time 't' if 't' is\ngreater than or equal to the start time and less than the end time.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "start",
+                  "description": "Start time, in POSIX time (i.e., number of seconds since January 1st 1970\n00:00:00 UTC). If missing, the interval starts at minus infinity.",
+                  "label": "",
+                  "type": "uint64",
+                  "longType": "uint64",
+                  "fullType": "uint64",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "end",
+                  "description": "End time, in POSIX time (i.e., number of seconds since January 1st 1970\n00:00:00 UTC). If missing, the interval ends at plus infinity.",
+                  "label": "",
+                  "type": "uint64",
+                  "longType": "uint64",
+                  "fullType": "uint64",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        }
+      ],
+      "scalarValueTypes": [
+        {
+          "protoType": "double",
+          "notes": "",
+          "cppType": "double",
+          "csType": "double",
+          "goType": "float64",
+          "javaType": "double",
+          "phpType": "float",
+          "pythonType": "float",
+          "rubyType": "Float"
+        },
+        {
+          "protoType": "float",
+          "notes": "",
+          "cppType": "float",
+          "csType": "float",
+          "goType": "float32",
+          "javaType": "float",
+          "phpType": "float",
+          "pythonType": "float",
+          "rubyType": "Float"
+        },
+        {
+          "protoType": "int32",
+          "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "int64",
+          "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "uint32",
+          "notes": "Uses variable-length encoding.",
+          "cppType": "uint32",
+          "csType": "uint",
+          "goType": "uint32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int/long",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "uint64",
+          "notes": "Uses variable-length encoding.",
+          "cppType": "uint64",
+          "csType": "ulong",
+          "goType": "uint64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sint32",
+          "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sint64",
+          "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "fixed32",
+          "notes": "Always four bytes. More efficient than uint32 if values are often greater than 2^28.",
+          "cppType": "uint32",
+          "csType": "uint",
+          "goType": "uint32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "fixed64",
+          "notes": "Always eight bytes. More efficient than uint64 if values are often greater than 2^56.",
+          "cppType": "uint64",
+          "csType": "ulong",
+          "goType": "uint64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "sfixed32",
+          "notes": "Always four bytes.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sfixed64",
+          "notes": "Always eight bytes.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "bool",
+          "notes": "",
+          "cppType": "bool",
+          "csType": "bool",
+          "goType": "bool",
+          "javaType": "boolean",
+          "phpType": "boolean",
+          "pythonType": "boolean",
+          "rubyType": "TrueClass/FalseClass"
+        },
+        {
+          "protoType": "string",
+          "notes": "A string must always contain UTF-8 encoded or 7-bit ASCII text.",
+          "cppType": "string",
+          "csType": "string",
+          "goType": "string",
+          "javaType": "String",
+          "phpType": "string",
+          "pythonType": "str/unicode",
+          "rubyType": "String (UTF-8)"
+        },
+        {
+          "protoType": "bytes",
+          "notes": "May contain any arbitrary sequence of bytes.",
+          "cppType": "string",
+          "csType": "ByteString",
+          "goType": "[]byte",
+          "javaType": "ByteString",
+          "phpType": "string",
+          "pythonType": "str",
+          "rubyType": "String (ASCII-8BIT)"
+        }
+      ]
+  }

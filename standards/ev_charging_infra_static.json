@@ -701,6 +701,73 @@
         "services": []
       },
       {
+        "name": "BatteryType.proto",
+        "description": "",
+        "package": "",
+        "hasEnums": true,
+        "hasExtensions": false,
+        "hasMessages": false,
+        "hasServices": false,
+        "enums": [
+          {
+            "name": "BatteryType",
+            "longName": "BatteryType",
+            "fullName": ".BatteryType",
+            "description": "",
+            "values": [
+              {
+                "name": "SWAPPING_POD_BATTERY_TYPE_UNKNOWN",
+                "number": "0",
+                "description": "Battery type is not known."
+              },
+              {
+                "name": "SWAPPING_POD_BATTERY_TYPE_LFP",
+                "number": "1",
+                "description": "The specific swapping pod supports Lithium-i on Iron Phosphate (LFP) batteries."
+              },
+              {
+                "name": "SWAPPING_POD_BATTERY_TYPE_NCA",
+                "number": "2",
+                "description": "The specific swapping pod supports Lithium-i on Nickel Cobalt Aluminum (NCA) batteries."
+              },
+              {
+                "name": "SWAPPING_POD_BATTERY_TYPE_NMC",
+                "number": "3",
+                "description": "The specific swapping pod supports Lithium-i on Nickel Cobalt Manganese (NMC) batteries."
+              },
+              {
+                "name": "SWAPPING_POD_BATTERY_TYPE_LTO",
+                "number": "4",
+                "description": "The specific swapping pod supports Lithium-i on Titanium Oxide (LTO) batteries."
+              },
+              {
+                "name": "SWAPPING_POD_BATTERY_TYPE_ZEBRA",
+                "number": "5",
+                "description": "The specific swapping pod supports Sodium Nickel Chloride (Zebra) batteries."
+              },
+              {
+                "name": "SWAPPING_POD_BATTERY_TYPE_NIMH",
+                "number": "6",
+                "description": "The specific swapping pod supports Nickel-Metal Hydride (NiMH) batteries."
+              },
+              {
+                "name": "SWAPPING_POD_BATTERY_TYPE_FLOODED_LEAD_ACID",
+                "number": "7",
+                "description": "The specific swapping pod supports Flooded Lead-Acid batteries."
+              },
+              {
+                "name": "SWAPPING_POD_BATTERY_TYPE_ULTRA_CAPACITORS",
+                "number": "8",
+                "description": "The specific swapping pod supports Ultracapacitors."
+              }
+            ]
+          }
+        ],
+        "extensions": [],
+        "messages": [],
+        "services": []
+      },
+      {
         "name": "Header.proto",
         "description": "",
         "package": "",
@@ -766,7 +833,7 @@
               },
               {
                 "name": "timestamp",
-                "description": "This timestamp identifies the moment when the content of this feed has been\ncreated (time at the server). In POSIX time (i.e., number of seconds since\nJanuary 1st 1970 00:00:00 UTC).",
+                "description": "This timestamp identifies the moment when the content of this feed has been\ncreated (time at the server). Milliseconds since Unix Epoch (i.e., number of milliseconds since\nJanuary 1st 1970 00:00:00 UTC).",
                 "label": "",
                 "type": "uint64",
                 "longType": "uint64",
@@ -984,32 +1051,46 @@
         "hasExtensions": false,
         "hasMessages": true,
         "hasServices": false,
-        "enums": [],
+        "enums": [
+          {
+            "name": "Type",
+            "longName": "Location.Type",
+            "fullName": ".Location.Type",
+            "description": "",
+            "values": [
+              {
+                "name": "Point",
+                "number": "0",
+                "description": "GeoJSON point type."
+              }
+            ]
+          }
+        ],
         "extensions": [],
         "messages": [
           {
             "name": "Location",
             "longName": "Location",
             "fullName": ".Location",
-            "description": "",
+            "description": "GeoJSON Point Object representing a location.",
             "hasExtensions": false,
             "hasFields": true,
             "extensions": [],
             "fields": [
               {
-                "name": "latitude",
-                "description": "",
+                "name": "type",
+                "description": "Type of GeoJSON object.",
                 "label": "",
-                "type": "float",
-                "longType": "float",
-                "fullType": "float",
+                "type": "Type",
+                "longType": "Location.Type",
+                "fullType": "Location.Type",
                 "ismap": false,
                 "defaultValue": ""
               },
               {
-                "name": "longitude",
-                "description": "",
-                "label": "",
+                "name": "coordinates",
+                "description": "Specifies latitude and longitude coordinates, list the longitude first and then latitude.",
+                "label": "repeated",
                 "type": "float",
                 "longType": "float",
                 "fullType": "float",
