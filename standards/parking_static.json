@@ -1,0 +1,2229 @@
+{
+    "info": {
+        "name": "Parking Data Specification - Static",
+        "description": "Parking Static data standard defines a common format to share static information from various parking locations within the defined zone. It provides information on various parking complex, parking lots, kind of infrastructure, access policies, entry / exit gate information, reservation information and tariffs. This data standard is based on Protocol Buffers. The hierarchy of elements and their type definitions are specified in the linked .proto file.",  
+        "sector": "Transit",
+        "category": "Parking"
+    },
+    "time": {
+    "lastUpdatedOn": "05:40 PM, 16th June, 2021 IST",
+    "createdOn": "05:40 PM, 16th June, 2021 IST"
+    },
+    "version": "v0.0.1",
+    "license": "MIT",
+    "protoURL": "https://raw.githubusercontent.com/DataSpace-Mobility/data-standard-registry/master/transit/parking/ParkingDataSpecificationStatic.proto",
+    "files": [
+        {
+          "name": "ParkingDataSpecificationStatic.proto",
+          "description": "",
+          "package": "parking_specification_static",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "BuildingType",
+              "longName": "ParkingComplex.ParkingLot.Infrastructure.BuildingType",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure.BuildingType",
+              "description": "",
+              "values": [
+                {
+                  "name": "BUILDING_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "Access",
+              "longName": "ParkingComplex.ParkingLot.Infrastructure.Gate.Access",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure.Gate.Access",
+              "description": "",
+              "values": [
+                {
+                  "name": "ACCESS_UNKNOWN",
+                  "number": "0",
+                  "description": "The operation of the specific Gate is not known / specified."
+                },
+                {
+                  "name": "ACCESS_ENTRY_ONLY",
+                  "number": "1",
+                  "description": "The specific Gate is only for entry."
+                },
+                {
+                  "name": "ACCESS_EXIT_ONLY",
+                  "number": "2",
+                  "description": "The specific Gate is only for exit"
+                },
+                {
+                  "name": "ACCESS_ENTRY_EXIT",
+                  "number": "3",
+                  "description": "The specific Gate is for both, entry and exit."
+                }
+              ]
+            },
+            {
+              "name": "SurfaceType",
+              "longName": "ParkingComplex.ParkingLot.Infrastructure.SurfaceType",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure.SurfaceType",
+              "description": "",
+              "values": [
+                {
+                  "name": "SURFACE_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "Accessibility",
+              "longName": "ParkingComplex.ParkingLot.ParkingSpot.Accessibility",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot.Accessibility",
+              "description": "",
+              "values": [
+                {
+                  "name": "ACCESSIBILITY_UNKNOWN",
+                  "number": "0",
+                  "description": "Accessibility is not known."
+                },
+                {
+                  "name": "ACCESSIBILITY_WHEELCHAIR",
+                  "number": "1",
+                  "description": "The specific ParkingSpot is wheelchair accesible."
+                },
+                {
+                  "name": "ACCESSIBILITY_NEARBY_ELEVATOR",
+                  "number": "2",
+                  "description": "The specific ParkingSpot has an elevator nearby."
+                },
+                {
+                  "name": "ACCESSIBILITY_RAMP",
+                  "number": "3",
+                  "description": "The specific ParkingSpot has a ramp nearby."
+                }
+              ]
+            },
+            {
+              "name": "OccupancyDetectionMethod",
+              "longName": "ParkingComplex.ParkingLot.ParkingSpot.OccupancyDetectionMethod",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot.OccupancyDetectionMethod",
+              "description": "",
+              "values": [
+                {
+                  "name": "OCCUPANCY_DETECTION_METHOD_UNKNOWN",
+                  "number": "0",
+                  "description": "The OccupancyDetectionMethod at the specific ParkingSpot is not known / specified."
+                },
+                {
+                  "name": "OCCUPANCY_DETECTION_METHOD_MANUAL",
+                  "number": "1",
+                  "description": "The OccupancyDetectionMethod at the specific ParkingSpot is manual."
+                },
+                {
+                  "name": "OCCUPANCY_DETECTION_METHOD_AUTOMATED",
+                  "number": "2",
+                  "description": "The OccupancyDetectionMethod at the specific ParkingSpot is automated."
+                },
+                {
+                  "name": "OCCUPANCY_DETECTION_METHOD_OTHER",
+                  "number": "3",
+                  "description": "The OccupancyDetectionMethod at the specific ParkingSpot is other."
+                }
+              ]
+            },
+            {
+              "name": "ReservationType",
+              "longName": "ParkingComplex.ParkingLot.ParkingSpot.ReservationType",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot.ReservationType",
+              "description": "",
+              "values": [
+                {
+                  "name": "RESERVATION_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": "Reservation type is not known."
+                },
+                {
+                  "name": "RESERVATION_TYPE_OPTIONAL",
+                  "number": "1",
+                  "description": "The specific ParkingSpot can be reserved."
+                },
+                {
+                  "name": "RESERVATION_TYPE_MANDATORY",
+                  "number": "2",
+                  "description": "The specific ParkingSpot must be reserved."
+                },
+                {
+                  "name": "RESERVATION_TYPE_NOT_AVAILABLE",
+                  "number": "3",
+                  "description": "The specific ParkingSpot cannot be reserved."
+                }
+              ]
+            },
+            {
+              "name": "ReservedFor",
+              "longName": "ParkingComplex.ParkingLot.ParkingSpot.ReservedFor",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot.ReservedFor",
+              "description": "",
+              "values": [
+                {
+                  "name": "RESERVED_FOR_UNKNOWN",
+                  "number": "0",
+                  "description": "It is unknown for which category this spot is reserved for."
+                },
+                {
+                  "name": "RESERVED_FOR_NONE",
+                  "number": "1",
+                  "description": "The specific ParkingSpot is not reserved."
+                },
+                {
+                  "name": "RESERVED_FOR_EMPLOYEES",
+                  "number": "2",
+                  "description": "The specific ParkingSpot is reserved for employees."
+                },
+                {
+                  "name": "RESERVED_FOR_STUDENTS",
+                  "number": "3",
+                  "description": "The specific ParkingSpot is reserved for students."
+                },
+                {
+                  "name": "RESERVED_FOR_GOVERNMENT_OFFICIALS",
+                  "number": "4",
+                  "description": "The specific ParkingSpot is reserved for government officials."
+                },
+                {
+                  "name": "RESERVED_FOR_RESIDENTS",
+                  "number": "5",
+                  "description": "The specific ParkingSpot is reserved for residents."
+                },
+                {
+                  "name": "RESERVED_FOR_VISITORS",
+                  "number": "6",
+                  "description": "The specific ParkingSpot is reserved for visitors."
+                },
+                {
+                  "name": "RESERVED_FOR_OTHERS",
+                  "number": "7",
+                  "description": "The specific ParkingSpot is reserved for other user(s)."
+                }
+              ]
+            },
+            {
+              "name": "ParkingManagementType",
+              "longName": "ParkingComplex.ParkingLot.Policy.ParkingManagementType",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.Policy.ParkingManagementType",
+              "description": "",
+              "values": [
+                {
+                  "name": "PARKING_MANAGEMENT_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": "The ParkingManagement system at the specific ParkingLot is not known / specified."
+                },
+                {
+                  "name": "PARKING_MANAGEMENT_TYPE_AUTOMATED",
+                  "number": "1",
+                  "description": "An automated ParkingManagement system is utilised at the specific ParkingLot."
+                },
+                {
+                  "name": "PARKING_MANAGEMENT_TYPE_SEMIAUTOMATED",
+                  "number": "2",
+                  "description": "A semiautomated ParkingManagement system is utilised at the specific ParkingLot."
+                },
+                {
+                  "name": "PARKING_MANAGEMENT_TYPE_MANUAL",
+                  "number": "3",
+                  "description": "A manual ParkingManagement system is utilised at the specific ParkingLot."
+                },
+                {
+                  "name": "PARKING_MANAGEMENT_TYPE_OTHER",
+                  "number": "4",
+                  "description": "Any other ParkingManagement system is utilised at the specific ParkingLot."
+                }
+              ]
+            },
+            {
+              "name": "SecurityFeature",
+              "longName": "ParkingComplex.ParkingLot.SecurityFeature",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.SecurityFeature",
+              "description": "",
+              "values": [
+                {
+                  "name": "SECURITY_FEATURE_UNKNOWN",
+                  "number": "0",
+                  "description": "Security feature of the parking lot is not known."
+                },
+                {
+                  "name": "SECURITY_FEATURE_PATROLLED",
+                  "number": "1",
+                  "description": "The specific ParkingLot is patrolled as a security mechanism."
+                },
+                {
+                  "name": "SECURITY_FEATURE_EXTERNAL_SECURITY",
+                  "number": "2",
+                  "description": "The specific ParkingLot has external security."
+                },
+                {
+                  "name": "SECURITY_FEATURE_CCTV",
+                  "number": "3",
+                  "description": "The specific ParkingLot has CCTV system(s) as a security mechanism."
+                },
+                {
+                  "name": "SECURITY_FEATURE_LIGHTING",
+                  "number": "4",
+                  "description": "The specific ParkingLot has lighting as a security mechanism."
+                },
+                {
+                  "name": "SECURITY_FEATURE_FENCES",
+                  "number": "5",
+                  "description": "The specific ParkingLot has fence(s) as a security mechanism."
+                }
+              ]
+            },
+            {
+              "name": "PenaltyType",
+              "longName": "ParkingComplex.Tariff.Penalty.PenaltyType",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.Penalty.PenaltyType",
+              "description": "",
+              "values": [
+                {
+                  "name": "PENALTY_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "PENALTY_TYPE_TICKET_LOST",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "PENALTY_TYPE_TIME_OVERSHOOT",
+                  "number": "2",
+                  "description": ""
+                },
+                {
+                  "name": "PENALTY_TYPE_ILLEGAL_SPOT",
+                  "number": "3",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "TariffCalculationMethod",
+              "longName": "ParkingComplex.Tariff.TariffCalculationMethod",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.TariffCalculationMethod",
+              "description": "",
+              "values": [
+                {
+                  "name": "TARIFF_CALCULATION_METHOD_ADDITIVE",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "TARIFF_CALCULATION_METHOD_NON_ADDITIVE",
+                  "number": "1",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "TariffType",
+              "longName": "ParkingComplex.Tariff.TariffType",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.TariffType",
+              "description": "",
+              "values": [
+                {
+                  "name": "TARIFF_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "TARIFF_TYPE_FIXED",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "TARIFF_TYPE_DYNAMIC",
+                  "number": "2",
+                  "description": ""
+                },
+                {
+                  "name": "TARIFF_TYPE_HYBRID",
+                  "number": "3",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "TariffUnit",
+              "longName": "ParkingComplex.Tariff.TariffUnit",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.TariffUnit",
+              "description": "",
+              "values": [
+                {
+                  "name": "TARIFF_UNIT_UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "TARIFF_UNIT_MINUTE",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "TARIFF_UNIT_HOUR",
+                  "number": "2",
+                  "description": ""
+                },
+                {
+                  "name": "TARIFF_UNIT_DAY",
+                  "number": "3",
+                  "description": ""
+                },
+                {
+                  "name": "TARIFF_UNIT_WEEK",
+                  "number": "4",
+                  "description": ""
+                },
+                {
+                  "name": "TARIFF_UNIT_MONTH",
+                  "number": "5",
+                  "description": ""
+                },
+                {
+                  "name": "TARIFF_UNIT_NIGHT",
+                  "number": "6",
+                  "description": ""
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "FeedMessage",
+              "longName": "FeedMessage",
+              "fullName": "parking_specification_static.FeedMessage",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "header",
+                  "description": "Metadata",
+                  "label": "",
+                  "type": "Header",
+                  "longType": "Header",
+                  "fullType": "Header",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "parkingComplexes",
+                  "description": "Information about all the junctions in the system.",
+                  "label": "repeated",
+                  "type": "ParkingComplex",
+                  "longType": "ParkingComplex",
+                  "fullType": "parking_specification_static.ParkingComplex",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "ParkingComplex",
+              "longName": "ParkingComplex",
+              "fullName": "parking_specification_static.ParkingComplex",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "information",
+                  "description": "",
+                  "label": "",
+                  "type": "Information",
+                  "longType": "ParkingComplex.Information",
+                  "fullType": "parking_specification_static.ParkingComplex.Information",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "vehicleCapacity",
+                  "description": "Vehicle capacity at the parking complex.",
+                  "label": "repeated",
+                  "type": "VehicleCapacity",
+                  "longType": "ParkingComplex.VehicleCapacity",
+                  "fullType": "parking_specification_static.ParkingComplex.VehicleCapacity",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "parkinglots",
+                  "description": "",
+                  "label": "repeated",
+                  "type": "ParkingLot",
+                  "longType": "ParkingComplex.ParkingLot",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "tariffs",
+                  "description": "",
+                  "label": "repeated",
+                  "type": "Tariff",
+                  "longType": "ParkingComplex.Tariff",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Information",
+              "longName": "ParkingComplex.Information",
+              "fullName": "parking_specification_static.ParkingComplex.Information",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "name",
+                  "description": "Name of the parking complex.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "address",
+                  "description": "Address of the parking complex..",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "imageUrls",
+                  "description": "URL of the image of the parking complex.",
+                  "label": "repeated",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "location",
+                  "description": "Location of the parking complex.",
+                  "label": "",
+                  "type": "Location",
+                  "longType": "Location",
+                  "fullType": "Location",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "operator",
+                  "description": "Operator of the parking complex.",
+                  "label": "",
+                  "type": "Operator",
+                  "longType": "ParkingComplex.Information.Operator",
+                  "fullType": "parking_specification_static.ParkingComplex.Information.Operator",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "owner",
+                  "description": "Owner of the parking complex.",
+                  "label": "",
+                  "type": "Owner",
+                  "longType": "ParkingComplex.Information.Owner",
+                  "fullType": "parking_specification_static.ParkingComplex.Information.Owner",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Operator",
+              "longName": "ParkingComplex.Information.Operator",
+              "fullName": "parking_specification_static.ParkingComplex.Information.Operator",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identification number of the operator of the parking complex.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "name",
+                  "description": "Name of the operator of the parking complex.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "phone",
+                  "description": "Phone number of the operator of the parking complex.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "email",
+                  "description": "Email ID of the operator of the parking complex.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Owner",
+              "longName": "ParkingComplex.Information.Owner",
+              "fullName": "parking_specification_static.ParkingComplex.Information.Owner",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identification number of the owner of the parking complex.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "name",
+                  "description": "Name of the owner of the parking complex.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "ParkingLot",
+              "longName": "ParkingComplex.ParkingLot",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identification number of the operator of the parking lot.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "infrastructure",
+                  "description": "",
+                  "label": "",
+                  "type": "Infrastructure",
+                  "longType": "ParkingComplex.ParkingLot.Infrastructure",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "vehicleCapacity",
+                  "description": "",
+                  "label": "repeated",
+                  "type": "VehicleCapacity",
+                  "longType": "ParkingComplex.VehicleCapacity",
+                  "fullType": "parking_specification_static.ParkingComplex.VehicleCapacity",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "policy",
+                  "description": "",
+                  "label": "",
+                  "type": "Policy",
+                  "longType": "ParkingComplex.ParkingLot.Policy",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.Policy",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "securityFeature",
+                  "description": "",
+                  "label": "",
+                  "type": "SecurityFeature",
+                  "longType": "ParkingComplex.ParkingLot.SecurityFeature",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.SecurityFeature",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Infrastructure",
+              "longName": "ParkingComplex.ParkingLot.Infrastructure",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "buildArea",
+                  "description": "Total area of the parking lot.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "buildingType",
+                  "description": "Typology of building of the parking lot.",
+                  "label": "",
+                  "type": "BuildingType",
+                  "longType": "ParkingComplex.ParkingLot.Infrastructure.BuildingType",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure.BuildingType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "surfaceType",
+                  "description": "Ground surface cover at the parking lot.",
+                  "label": "",
+                  "type": "SurfaceType",
+                  "longType": "ParkingComplex.ParkingLot.Infrastructure.SurfaceType",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure.SurfaceType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "gates",
+                  "description": "Entry gate(s) available at the parking lot.",
+                  "label": "repeated",
+                  "type": "Gate",
+                  "longType": "ParkingComplex.ParkingLot.Infrastructure.Gate",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure.Gate",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Gate",
+              "longName": "ParkingComplex.ParkingLot.Infrastructure.Gate",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure.Gate",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identification number of the specific Gate of a parking lot.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "location",
+                  "description": "Exact geoposition of a specific Gate at a parking lot.",
+                  "label": "",
+                  "type": "Location",
+                  "longType": "Location",
+                  "fullType": "Location",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "access",
+                  "description": "Information about the Access operation status of the specific Gate of a  parking lot.",
+                  "label": "",
+                  "type": "Access",
+                  "longType": "ParkingComplex.ParkingLot.Infrastructure.Gate.Access",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure.Gate.Access",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "accessDimension",
+                  "description": "Information about maximum dimensions supported at the specific Gate of a parking lot.",
+                  "label": "",
+                  "type": "AccessDimension",
+                  "longType": "ParkingComplex.ParkingLot.Infrastructure.Gate.AccessDimension",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure.Gate.AccessDimension",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "AccessDimension",
+              "longName": "ParkingComplex.ParkingLot.Infrastructure.Gate.AccessDimension",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.Infrastructure.Gate.AccessDimension",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "maxHeight",
+                  "description": "Maximum permisible height at the specific Gate.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "maxWidth",
+                  "description": "Maximum permisible width at the specific Gate.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "maxSlope",
+                  "description": "Maximum ramp slope at the specific Gate.",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "ParkingSpot",
+              "longName": "ParkingComplex.ParkingLot.ParkingSpot",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identification number of the specific ParkingSpot.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "level",
+                  "description": "Level in which the specific ParkingSpot is located. Ground is 0, first basement is -1 etc.",
+                  "label": "",
+                  "type": "int32",
+                  "longType": "int32",
+                  "fullType": "int32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "chargingUnit",
+                  "description": "Information on EV charging unit if avaailable at the parking spot.",
+                  "label": "",
+                  "type": "ChargingUnit",
+                  "longType": "ParkingComplex.ParkingLot.ParkingSpot.ChargingUnit",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot.ChargingUnit",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "location",
+                  "description": "Geoposition of the ParkingSpot.",
+                  "label": "",
+                  "type": "Location",
+                  "longType": "Location",
+                  "fullType": "Location",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "allowedVehicleType",
+                  "description": "Typology of vehicle(s) allowed at the specific ParkingSpot.",
+                  "label": "repeated",
+                  "type": "VehicleType",
+                  "longType": "VehicleType",
+                  "fullType": "VehicleType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "accessibility",
+                  "description": "",
+                  "label": "repeated",
+                  "type": "Accessibility",
+                  "longType": "ParkingComplex.ParkingLot.ParkingSpot.Accessibility",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot.Accessibility",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "reservationType",
+                  "description": "",
+                  "label": "",
+                  "type": "ReservationType",
+                  "longType": "ParkingComplex.ParkingLot.ParkingSpot.ReservationType",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot.ReservationType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "reservedFor",
+                  "description": "",
+                  "label": "repeated",
+                  "type": "ReservedFor",
+                  "longType": "ParkingComplex.ParkingLot.ParkingSpot.ReservedFor",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot.ReservedFor",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "occupancyDetectionMethod",
+                  "description": "",
+                  "label": "",
+                  "type": "OccupancyDetectionMethod",
+                  "longType": "ParkingComplex.ParkingLot.ParkingSpot.OccupancyDetectionMethod",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot.OccupancyDetectionMethod",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "ChargingUnit",
+              "longName": "ParkingComplex.ParkingLot.ParkingSpot.ChargingUnit",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.ParkingSpot.ChargingUnit",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identification number of the ChargingUnit available at a ParkingSpot.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "batteryTypeAvailable",
+                  "description": "Type of batteries available at the parking spot.",
+                  "label": "repeated",
+                  "type": "BatteryType",
+                  "longType": "BatteryType",
+                  "fullType": "BatteryType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "socketTypeAvailable",
+                  "description": "Type of charging socket available at the parking spot.",
+                  "label": "repeated",
+                  "type": "SocketType",
+                  "longType": "SocketType",
+                  "fullType": "SocketType",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Policy",
+              "longName": "ParkingComplex.ParkingLot.Policy",
+              "fullName": "parking_specification_static.ParkingComplex.ParkingLot.Policy",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "isAuthorisedByGovt",
+                  "description": "Specifies if the parking lot has a goverment authorization to operate.",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "maxParkingDuration",
+                  "description": "Maximum allowed parking duration at the specific parking lot.",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "isOvernightParkingAllowed",
+                  "description": "Specifies if over night parking is allowed at the specific parking lot.",
+                  "label": "",
+                  "type": "bool",
+                  "longType": "bool",
+                  "fullType": "bool",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "parkingManagementType",
+                  "description": "Information on operation mechanism of the parking lot.",
+                  "label": "",
+                  "type": "ParkingManagementType",
+                  "longType": "ParkingComplex.ParkingLot.Policy.ParkingManagementType",
+                  "fullType": "parking_specification_static.ParkingComplex.ParkingLot.Policy.ParkingManagementType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "operatingSchedule",
+                  "description": "Operating schedule of the parking lot.",
+                  "label": "",
+                  "type": "OperatingSchedule",
+                  "longType": "OperatingSchedule",
+                  "fullType": "OperatingSchedule",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Tariff",
+              "longName": "ParkingComplex.Tariff",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "parkingType",
+                  "description": "",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "vehicleType",
+                  "description": "",
+                  "label": "",
+                  "type": "VehicleType",
+                  "longType": "VehicleType",
+                  "fullType": "VehicleType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "tariffType",
+                  "description": "",
+                  "label": "",
+                  "type": "TariffType",
+                  "longType": "ParkingComplex.Tariff.TariffType",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.TariffType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "tariffCalculationMethod",
+                  "description": "",
+                  "label": "",
+                  "type": "TariffCalculationMethod",
+                  "longType": "ParkingComplex.Tariff.TariffCalculationMethod",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.TariffCalculationMethod",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "fixedTariff",
+                  "description": "",
+                  "label": "",
+                  "type": "FixedTariff",
+                  "longType": "ParkingComplex.Tariff.FixedTariff",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.FixedTariff",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "dynamicTariff",
+                  "description": "",
+                  "label": "",
+                  "type": "DynamicTariff",
+                  "longType": "ParkingComplex.Tariff.DynamicTariff",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.DynamicTariff",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "nightTariff",
+                  "description": "",
+                  "label": "",
+                  "type": "NightTariff",
+                  "longType": "ParkingComplex.Tariff.NightTariff",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.NightTariff",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "pass",
+                  "description": "",
+                  "label": "",
+                  "type": "Pass",
+                  "longType": "ParkingComplex.Tariff.Pass",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.Pass",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "penalty",
+                  "description": "",
+                  "label": "repeated",
+                  "type": "Penalty",
+                  "longType": "ParkingComplex.Tariff.Penalty",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.Penalty",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "ApplicabilityRange",
+              "longName": "ParkingComplex.Tariff.ApplicabilityRange",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.ApplicabilityRange",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "fromUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "toUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "DynamicTariff",
+              "longName": "ParkingComplex.Tariff.DynamicTariff",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.DynamicTariff",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "pricePerUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "tariffUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "TariffUnit",
+                  "longType": "ParkingComplex.Tariff.TariffUnit",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.TariffUnit",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "applicabilityRange",
+                  "description": "",
+                  "label": "repeated",
+                  "type": "ApplicabilityRange",
+                  "longType": "ParkingComplex.Tariff.ApplicabilityRange",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.ApplicabilityRange",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "FixedTariff",
+              "longName": "ParkingComplex.Tariff.FixedTariff",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.FixedTariff",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "tariffUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "TariffUnit",
+                  "longType": "ParkingComplex.Tariff.TariffUnit",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.TariffUnit",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "pricingModel",
+                  "description": "",
+                  "label": "repeated",
+                  "type": "PricingModel",
+                  "longType": "ParkingComplex.Tariff.FixedTariff.PricingModel",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.FixedTariff.PricingModel",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "applicabilityRange",
+                  "description": "",
+                  "label": "repeated",
+                  "type": "ApplicabilityRange",
+                  "longType": "ParkingComplex.Tariff.ApplicabilityRange",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.ApplicabilityRange",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "PricingModel",
+              "longName": "ParkingComplex.Tariff.FixedTariff.PricingModel",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.FixedTariff.PricingModel",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "fromUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "toUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "price",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "NightTariff",
+              "longName": "ParkingComplex.Tariff.NightTariff",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.NightTariff",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "pricePerUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "tariffUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "TariffUnit",
+                  "longType": "ParkingComplex.Tariff.TariffUnit",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.TariffUnit",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "nightTiming",
+                  "description": "",
+                  "label": "",
+                  "type": "NightTiming",
+                  "longType": "ParkingComplex.Tariff.NightTariff.NightTiming",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.NightTariff.NightTiming",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "NightTiming",
+              "longName": "ParkingComplex.Tariff.NightTariff.NightTiming",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.NightTariff.NightTiming",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "from",
+                  "description": "",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "to",
+                  "description": "",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Pass",
+              "longName": "ParkingComplex.Tariff.Pass",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.Pass",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "pricePerUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "tariffUnit",
+                  "description": "",
+                  "label": "",
+                  "type": "TariffUnit",
+                  "longType": "ParkingComplex.Tariff.TariffUnit",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.TariffUnit",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Penalty",
+              "longName": "ParkingComplex.Tariff.Penalty",
+              "fullName": "parking_specification_static.ParkingComplex.Tariff.Penalty",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "price",
+                  "description": "",
+                  "label": "",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "penaltyType",
+                  "description": "",
+                  "label": "",
+                  "type": "PenaltyType",
+                  "longType": "ParkingComplex.Tariff.Penalty.PenaltyType",
+                  "fullType": "parking_specification_static.ParkingComplex.Tariff.Penalty.PenaltyType",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "VehicleCapacity",
+              "longName": "ParkingComplex.VehicleCapacity",
+              "fullName": "parking_specification_static.ParkingComplex.VehicleCapacity",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "vehicleType",
+                  "description": "",
+                  "label": "",
+                  "type": "VehicleType",
+                  "longType": "VehicleType",
+                  "fullType": "VehicleType",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "count",
+                  "description": "",
+                  "label": "",
+                  "type": "uint32",
+                  "longType": "uint32",
+                  "fullType": "uint32",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        },
+        {
+          "name": "Header.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "Incrementality",
+              "longName": "Header.Incrementality",
+              "fullName": ".Header.Incrementality",
+              "description": "Determines whether the current fetch is incremental.",
+              "values": [
+                {
+                  "name": "UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "FULL_DATASET",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "DIFFERENTIAL",
+                  "number": "2",
+                  "description": ""
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "Header",
+              "longName": "Header",
+              "fullName": ".Header",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "version",
+                  "description": "Version of the dataset.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "incrementality",
+                  "description": "",
+                  "label": "",
+                  "type": "Incrementality",
+                  "longType": "Header.Incrementality",
+                  "fullType": "Header.Incrementality",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "timestamp",
+                  "description": "This timestamp identifies the moment when the content of this feed has been\ncreated (time at the server). Milliseconds since Unix Epoch (i.e., number of milliseconds since\nJanuary 1st 1970 00:00:00 UTC).",
+                  "label": "",
+                  "type": "uint64",
+                  "longType": "uint64",
+                  "fullType": "uint64",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "provider",
+                  "description": "Publisher/Provider of the dataset.",
+                  "label": "",
+                  "type": "Provider",
+                  "longType": "Provider",
+                  "fullType": "Provider",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            },
+            {
+              "name": "Provider",
+              "longName": "Provider",
+              "fullName": ".Provider",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "id",
+                  "description": "Unique identifier of the provider.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "name",
+                  "description": "Name of the provider.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        },
+        {
+          "name": "Location.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "Type",
+              "longName": "Location.Type",
+              "fullName": ".Location.Type",
+              "description": "",
+              "values": [
+                {
+                  "name": "Point",
+                  "number": "0",
+                  "description": "GeoJSON point type."
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "Location",
+              "longName": "Location",
+              "fullName": ".Location",
+              "description": "GeoJSON Point Object representing a location.",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "type",
+                  "description": "Type of GeoJSON object.",
+                  "label": "",
+                  "type": "Type",
+                  "longType": "Location.Type",
+                  "fullType": "Location.Type",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "coordinates",
+                  "description": "Specifies latitude and longitude coordinates, list the longitude first and then latitude.",
+                  "label": "repeated",
+                  "type": "float",
+                  "longType": "float",
+                  "fullType": "float",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        },
+        {
+          "name": "VehicleType.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": true,
+          "hasExtensions": false,
+          "hasMessages": false,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "VehicleType",
+              "longName": "VehicleType",
+              "fullName": ".VehicleType",
+              "description": "",
+              "values": [
+                {
+                  "name": "VEHICLE_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": "Vehicle type is not known or not specified."
+                },
+                {
+                  "name": "VEHICLE_TYPE_AGRICULTURAL_VEHICLE",
+                  "number": "1",
+                  "description": "Vehicle is used for agricultural purposes."
+                },
+                {
+                  "name": "VEHICLE_TYPE_BICYCLE",
+                  "number": "2",
+                  "description": "Vehicle type is a bicycle."
+                },
+                {
+                  "name": "VEHICLE_TYPE_BUS",
+                  "number": "3",
+                  "description": "Vehicle type is a bus."
+                },
+                {
+                  "name": "VEHICLE_TYPE_CAR",
+                  "number": "4",
+                  "description": "Vehicle type is car."
+                },
+                {
+                  "name": "VEHICLE_TYPE_CARAVAN",
+                  "number": "5",
+                  "description": "Vehicle type is a caravan."
+                },
+                {
+                  "name": "VEHICLE_TYPE_CAR_WITH_CARAVAN",
+                  "number": "6",
+                  "description": "Vehicle type is a car with an attached caravan."
+                },
+                {
+                  "name": "VEHICLE_TYPE_CAR_WITH_TRAILER",
+                  "number": "7",
+                  "description": "Vehicle type is a car with an attached trailer."
+                },
+                {
+                  "name": "VEHICLE_TYPE_CONSTRUCTION_OR_MAINTENANCE_VEHICLE",
+                  "number": "8",
+                  "description": "Vehicle is used for construction and maintainance purposes."
+                },
+                {
+                  "name": "VEHICLE_TYPE_LORRY",
+                  "number": "9",
+                  "description": "Vehicle type is a lorry."
+                },
+                {
+                  "name": "VEHICLE_TYPE_MOPED",
+                  "number": "10",
+                  "description": "Vehicle type is a moped."
+                },
+                {
+                  "name": "VEHICLE_TYPE_MOTORCYCLE",
+                  "number": "11",
+                  "description": "Vehicle type is a motorcycle."
+                },
+                {
+                  "name": "VEHICLE_TYPE_MOTORCYCLE_WITH_SIDECAR",
+                  "number": "12",
+                  "description": "Vehicle type is a motorcycle with an attached sidecar."
+                },
+                {
+                  "name": "VEHICLE_TYPE_MOTOR_SCOOTER",
+                  "number": "13",
+                  "description": "Vehicle type is a motor scooter."
+                },
+                {
+                  "name": "VEHICLE_TYPE_TANKER",
+                  "number": "14",
+                  "description": "Vehicle type is a tanker."
+                },
+                {
+                  "name": "VEHICLE_TYPE_TRAILER",
+                  "number": "15",
+                  "description": "Vehicle type is a trailer."
+                },
+                {
+                  "name": "VEHICLE_TYPE_VAN",
+                  "number": "16",
+                  "description": "Vehicle type is a van."
+                },
+                {
+                  "name": "VEHICLE_TYPE_ANY_VEHICLE",
+                  "number": "17",
+                  "description": "Vehicle type could be anything."
+                },
+                {
+                  "name": "VEHICLE_TYPE_AUTORICKSHAW",
+                  "number": "18",
+                  "description": "Vehicle type is an autorickshaw."
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [],
+          "services": []
+        },
+        {
+          "name": "OperatingSchedule.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": false,
+          "hasExtensions": false,
+          "hasMessages": true,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "DaysOfWeek",
+              "longName": "OperatingSchedule.DaysOfWeek",
+              "fullName": ".OperatingSchedule.DaysOfWeek",
+              "description": "",
+              "values": [
+                {
+                  "name": "DAY_UNKNOWN",
+                  "number": "0",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_SUNDAY",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_MONDAY",
+                  "number": "2",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_TUESDAY",
+                  "number": "3",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_WEDNESDAY",
+                  "number": "4",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_THURSDAY",
+                  "number": "5",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_FRIDAY",
+                  "number": "6",
+                  "description": ""
+                },
+                {
+                  "name": "DAY_SATURDAY",
+                  "number": "7",
+                  "description": ""
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [
+            {
+              "name": "OperatingSchedule",
+              "longName": "OperatingSchedule",
+              "fullName": ".OperatingSchedule",
+              "description": "",
+              "hasExtensions": false,
+              "hasFields": true,
+              "extensions": [],
+              "fields": [
+                {
+                  "name": "opening",
+                  "description": "Opening time. Format: HH:MM:SS in 24-hour format.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "closing",
+                  "description": "Closing time. Format: HH:MM:SS in 24-hour format.",
+                  "label": "",
+                  "type": "string",
+                  "longType": "string",
+                  "fullType": "string",
+                  "ismap": false,
+                  "defaultValue": ""
+                },
+                {
+                  "name": "dayOfWeek",
+                  "description": "Open day of the week.",
+                  "label": "repeated",
+                  "type": "DaysOfWeek",
+                  "longType": "OperatingSchedule.DaysOfWeek",
+                  "fullType": "OperatingSchedule.DaysOfWeek",
+                  "ismap": false,
+                  "defaultValue": ""
+                }
+              ]
+            }
+          ],
+          "services": []
+        },
+        {
+          "name": "BatteryType.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": true,
+          "hasExtensions": false,
+          "hasMessages": false,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "BatteryType",
+              "longName": "BatteryType",
+              "fullName": ".BatteryType",
+              "description": "",
+              "values": [
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": "Battery type is not known."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_LFP",
+                  "number": "1",
+                  "description": "The specific swapping pod supports Lithium-i on Iron Phosphate (LFP) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_NCA",
+                  "number": "2",
+                  "description": "The specific swapping pod supports Lithium-i on Nickel Cobalt Aluminum (NCA) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_NMC",
+                  "number": "3",
+                  "description": "The specific swapping pod supports Lithium-i on Nickel Cobalt Manganese (NMC) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_LTO",
+                  "number": "4",
+                  "description": "The specific swapping pod supports Lithium-i on Titanium Oxide (LTO) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_ZEBRA",
+                  "number": "5",
+                  "description": "The specific swapping pod supports Sodium Nickel Chloride (Zebra) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_NIMH",
+                  "number": "6",
+                  "description": "The specific swapping pod supports Nickel-Metal Hydride (NiMH) batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_FLOODED_LEAD_ACID",
+                  "number": "7",
+                  "description": "The specific swapping pod supports Flooded Lead-Acid batteries."
+                },
+                {
+                  "name": "SWAPPING_POD_BATTERY_TYPE_ULTRA_CAPACITORS",
+                  "number": "8",
+                  "description": "The specific swapping pod supports Ultracapacitors."
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [],
+          "services": []
+        },
+        {
+          "name": "SocketType.proto",
+          "description": "",
+          "package": "",
+          "hasEnums": true,
+          "hasExtensions": false,
+          "hasMessages": false,
+          "hasServices": false,
+          "enums": [
+            {
+              "name": "SocketType",
+              "longName": "SocketType",
+              "fullName": ".SocketType",
+              "description": "",
+              "values": [
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_UNKNOWN",
+                  "number": "0",
+                  "description": "The specific socket is not known / specified."
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_BEVC_AC001",
+                  "number": "1",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_BEVC_DC001",
+                  "number": "2",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_TYPE2",
+                  "number": "3",
+                  "description": "The specific socket is TYPE2."
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_TYPE3",
+                  "number": "4",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_CHADEMO",
+                  "number": "5",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_CCS_SAE",
+                  "number": "6",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_CCS1",
+                  "number": "7",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_CCS2",
+                  "number": "8",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_TESLA",
+                  "number": "9",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_J_1772",
+                  "number": "10",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_WALL_EURO",
+                  "number": "11",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_CARAVAN_MAINS_SOCKET",
+                  "number": "12",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_DUAL_J_1772",
+                  "number": "13",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_DUAL_CHADEMO",
+                  "number": "14",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_MENNEKES",
+                  "number": "15",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_DUAL_MENNEKES",
+                  "number": "16",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_GB_T",
+                  "number": "17",
+                  "description": ""
+                },
+                {
+                  "name": "CHARGING_UNIT_SOCKET_TYPE_OTHER",
+                  "number": "18",
+                  "description": ""
+                }
+              ]
+            }
+          ],
+          "extensions": [],
+          "messages": [],
+          "services": []
+        }
+      ],
+      "scalarValueTypes": [
+        {
+          "protoType": "double",
+          "notes": "",
+          "cppType": "double",
+          "csType": "double",
+          "goType": "float64",
+          "javaType": "double",
+          "phpType": "float",
+          "pythonType": "float",
+          "rubyType": "Float"
+        },
+        {
+          "protoType": "float",
+          "notes": "",
+          "cppType": "float",
+          "csType": "float",
+          "goType": "float32",
+          "javaType": "float",
+          "phpType": "float",
+          "pythonType": "float",
+          "rubyType": "Float"
+        },
+        {
+          "protoType": "int32",
+          "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "int64",
+          "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "uint32",
+          "notes": "Uses variable-length encoding.",
+          "cppType": "uint32",
+          "csType": "uint",
+          "goType": "uint32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int/long",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "uint64",
+          "notes": "Uses variable-length encoding.",
+          "cppType": "uint64",
+          "csType": "ulong",
+          "goType": "uint64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sint32",
+          "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sint64",
+          "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "fixed32",
+          "notes": "Always four bytes. More efficient than uint32 if values are often greater than 2^28.",
+          "cppType": "uint32",
+          "csType": "uint",
+          "goType": "uint32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "fixed64",
+          "notes": "Always eight bytes. More efficient than uint64 if values are often greater than 2^56.",
+          "cppType": "uint64",
+          "csType": "ulong",
+          "goType": "uint64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "sfixed32",
+          "notes": "Always four bytes.",
+          "cppType": "int32",
+          "csType": "int",
+          "goType": "int32",
+          "javaType": "int",
+          "phpType": "integer",
+          "pythonType": "int",
+          "rubyType": "Bignum or Fixnum (as required)"
+        },
+        {
+          "protoType": "sfixed64",
+          "notes": "Always eight bytes.",
+          "cppType": "int64",
+          "csType": "long",
+          "goType": "int64",
+          "javaType": "long",
+          "phpType": "integer/string",
+          "pythonType": "int/long",
+          "rubyType": "Bignum"
+        },
+        {
+          "protoType": "bool",
+          "notes": "",
+          "cppType": "bool",
+          "csType": "bool",
+          "goType": "bool",
+          "javaType": "boolean",
+          "phpType": "boolean",
+          "pythonType": "boolean",
+          "rubyType": "TrueClass/FalseClass"
+        },
+        {
+          "protoType": "string",
+          "notes": "A string must always contain UTF-8 encoded or 7-bit ASCII text.",
+          "cppType": "string",
+          "csType": "string",
+          "goType": "string",
+          "javaType": "String",
+          "phpType": "string",
+          "pythonType": "str/unicode",
+          "rubyType": "String (UTF-8)"
+        },
+        {
+          "protoType": "bytes",
+          "notes": "May contain any arbitrary sequence of bytes.",
+          "cppType": "string",
+          "csType": "ByteString",
+          "goType": "[]byte",
+          "javaType": "ByteString",
+          "phpType": "string",
+          "pythonType": "str",
+          "rubyType": "String (ASCII-8BIT)"
+        }
+      ]
+  }
